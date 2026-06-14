@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ko" data-lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이용약관 | (주)케이시네마</title>
+    <meta name="description" content="(주)케이시네마 이용약관 · K-Cinema Inc. Terms of Service">
+    <meta name="robots" content="index,follow">
+    <link rel="icon" type="image/png" href="logo.png">
+    <script>(function(){try{var s=localStorage.getItem('kc-lang');var l=(s==='ko'||s==='en')?s:((navigator.language||'').toLowerCase().indexOf('ko')===0?'ko':'en');document.documentElement.setAttribute('data-lang',l);document.documentElement.setAttribute('lang',l);}catch(e){}})();</script>
+    <style>
+        :root {
+            --bg: #0B0B0F; --surface: #14141A; --card: #1C1C24; --card-border: #2A2A33;
+            --text: #F5F5F7; --text-muted: #A0A0AC; --text-dim: #6B6B78;
+            --primary: #E53935; --primary-soft: #FF5252; --primary-dim: #7A1F1D;
+            --radius-card: 14px; --radius-chip: 999px;
+            --font-stack: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Malgun Gothic', '맑은 고딕', sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { background: var(--bg); }
+        body { font-family: var(--font-stack); color: var(--text); background: var(--bg); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+        img { display: block; max-width: 100%; }
+        a { color: inherit; text-decoration: none; }
+        .container { max-width: 880px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 40px); }
+
+        [data-lang="ko"] [lang="en"].i18n-el { display: none; }
+        [data-lang="en"] [lang="ko"].i18n-el { display: none; }
+
+        .nav { position: sticky; top: 0; z-index: 50; background: rgba(11,11,15,0.75); backdrop-filter: saturate(180%) blur(16px); -webkit-backdrop-filter: saturate(180%) blur(16px); border-bottom: 1px solid var(--card-border); }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+        .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; letter-spacing: -0.4px; }
+        .brand img { height: 38px; width: auto; }
+        .brand .k { color: var(--primary); }
+        .brand .rest { color: var(--text); }
+        .nav-right { display: flex; align-items: center; gap: 24px; }
+        .lang-toggle { display: inline-flex; background: var(--card); border: 1px solid var(--card-border); border-radius: var(--radius-chip); padding: 2px; }
+        .lang-toggle button { background: transparent; border: 0; color: var(--text-muted); font-weight: 700; font-size: 12px; padding: 6px 14px; border-radius: var(--radius-chip); cursor: pointer; letter-spacing: 0.5px; transition: all 0.15s; }
+        .lang-toggle button:hover { color: var(--text); }
+        [data-lang="ko"] .lang-toggle [data-setlang="ko"], [data-lang="en"] .lang-toggle [data-setlang="en"] { background: var(--primary); color: #FFF; }
+
+        .legal-wrap { padding: clamp(44px, 6vw, 80px) 0 clamp(64px, 9vw, 120px); }
+        .legal-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); font-weight: 600; margin-bottom: 28px; transition: color 0.15s; }
+        .legal-back:hover { color: var(--primary-soft); }
+        .legal-title { font-size: clamp(28px, 4.5vw, 44px); font-weight: 800; letter-spacing: -1.2px; line-height: 1.15; }
+        .legal-doc { margin-top: 30px; font-size: 15px; line-height: 1.85; color: var(--text-muted); }
+        .legal-doc h2 { color: var(--text); font-size: clamp(18px, 2.4vw, 21px); font-weight: 800; letter-spacing: -0.4px; margin: 40px 0 14px; padding-top: 28px; border-top: 1px solid var(--card-border); }
+        .legal-doc > div > h2:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+        .legal-doc h3 { color: var(--text); font-size: 15.5px; font-weight: 700; margin: 22px 0 8px; }
+        .legal-doc p { margin: 0 0 12px; }
+        .legal-doc ul { margin: 0 0 12px; padding-left: 20px; }
+        .legal-doc li { margin-bottom: 4px; }
+
+        footer { border-top: 1px solid var(--card-border); padding: 32px 0; font-size: 13px; color: var(--text-dim); }
+        .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 16px 24px; flex-wrap: wrap; }
+        .footer-left { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+        .footer-brand { font-weight: 800; letter-spacing: -0.5px; color: var(--text); font-size: 14px; }
+        .footer-brand .k { color: var(--primary); }
+        .footer-links { display: flex; gap: 18px; font-size: 13px; }
+        .footer-links a { color: var(--text-muted); font-weight: 600; transition: color 0.15s; }
+        .footer-links a.priv { color: var(--text); }
+        .footer-links a:hover { color: var(--primary-soft); }
+        @media (max-width: 560px) { .legal-doc { font-size: 14px; } }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="container nav-inner">
+        <a class="brand" href="index.html" aria-label="K-Cinema">
+            <img src="logo.png" alt="">
+            <span><span class="k">K</span><span class="rest">-Cinema</span></span>
+        </a>
+        <div class="nav-right">
+            <div class="lang-toggle" role="group" aria-label="Language">
+                <button type="button" data-setlang="ko">KO</button>
+                <button type="button" data-setlang="en">EN</button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<main class="legal-wrap">
+    <div class="container">
+        <a class="legal-back" href="index.html"><span lang="ko" class="i18n-el">← 홈으로</span><span lang="en" class="i18n-el">← Back to home</span></a>
+        <h1 class="legal-title"><span lang="ko" class="i18n-el">이용약관</span><span lang="en" class="i18n-el">Terms of Service</span></h1>
+
+        <div class="legal-doc">
+            <!-- ===== Korean ===== -->
+            <div lang="ko" class="i18n-el">
+                <h2>제 1 장 총 칙</h2>
+                <h3>제 1 조 (목적)</h3>
+                <p>본 약관은 주식회사 케이시네마(이하 "회사"라 합니다)가 제공하는 케이시네마 홈페이지(이하 "서비스"라 합니다)를 이용함에 있어 회사와 이용자의 권리, 의무 및 책임사항을 규정함을 목적으로 합니다.</p>
+                <h3>제 2 조 (약관의 효력 및 변경)</h3>
+                <p>1) 본 약관은 서비스를 이용하고자 본 약관에 동의한 모든 회원에 대하여 그 효력을 발생합니다.</p>
+                <p>2) 본 약관의 내용은 회원(서비스)가입 시 게재되거나 공지된 내용에 회원이 동의함으로써 그 효력이 발생합니다.</p>
+                <p>3) 회사는 약관이 변경되는 경우 변경된 약관의 내용과 시행일을 정하여 시행일로부터 최소 7일 전, 고객에게 불리하게 변경되거나 중요한 내용인 경우에는 최소 30일 전에 회사의 홈페이지 또는 전자메일 등을 통해 공지합니다.</p>
+                <p>4) 회원은 변경된 약관에 동의하지 않을 경우 회원 탈퇴/약관철회를 요청할 수 있으며, 변경된 약관의 효력 발생일 이후 탈퇴/약관철회 요청을 하지 않을 경우 약관의 변경 사항에 동의한 것으로 간주됩니다.</p>
+                <h3>제 3 조 (약관 외 준칙)</h3>
+                <p>1) 본 약관에 명시되지 아니한 사항에 대해서는 전자서명법, 전자상거래 등에서의 소비자보호에 관한 법률, 정보통신망 이용촉진 및 정보보호 등에 관한 법률 등 관련 제반 규정 및 상관례에 따릅니다.</p>
+                <p>2) 본 약관에 명시되지 않은 서비스에 대한 사항은 당사 홈페이지, 모바일 또는 영화관 현장을 통한 해당 서비스 공지사항에 따릅니다.</p>
+                <h3>제 4 조 (용어의 정의)</h3>
+                <p>본 약관에서 사용하는 주요한 용어의 정의는 다음과 같습니다.</p>
+                <p>1) "사이트"란 회사가 재화•용역•정보를 이용자에게 제공하기 위하여 컴퓨터 등 정보통신 설비를 이용하여 재화•용역을 거래할 수 있도록 설정한 가상의 영업장 또는 회사가 운영하는 웹사이트(홈페이지, 모바일 웹/어플리케이션, SNS 등)를 말하며, 아울러 사이트를 운영하는 사업자의 의미로도 사용합니다.</p>
+                <p>2) “회원”이란 회사에 개인정보를 제공하여 회원등록을 한 자로서, 회사가 제공하는 정보를 수령하고 회사의 서비스를 계속적으로 이용할 수 있는 자를 의미하며, 하기 각호의 회원을 통칭합니다.</p>
+                <p>(1) 회원 : 케이시네마 홈페이지에서 가입한 회원을 말합니다.</p>
+                <p>(2) 비회원 : 회원에 가입하지 않고 케이시네마 홈페이지에서 제공하는 서비스를 이용하는 자를 말합니다.</p>
+                <p>(3) 아이디 : 회원의 식별과 회원의 서비스 이용을 위하여 회원이 선정하고 회사가 승인하는 문자나 숫자 혹은 그 조합을 말합니다(이하 "ID"라 합니다).</p>
+                <p>(4) 비밀번호 : 회원이 부여 받은 ID와 일치된 회원임을 확인하고, 회원 자신의 비밀을 보호하기 위하여 회원이 정한 문자와 숫자의 조합을 말합니다.</p>
+                <p>(5) 이용중지 : 회사가 정한 일정한 요건에 따라 일정기간 동안 서비스의 제공을 중지하는 것을 말합니다.</p>
+
+                <h2>제 2 장 서비스 이용 약관</h2>
+                <h3>제 5 조 (회원가입)</h3>
+                <p>1) 회원 가입은 회사가 운영하는 사이트를 통해 가능하며, 서비스 가입 신청 시 본 약관과 개인정보 처리방침(‘개인정보수집 및 이용안내’ 및 ‘마케팅 활용 동의’ 등)에 동의함으로써 회원 가입을 신청합니다.</p>
+                <p>2) 고객으로부터 회원 가입 신청이 있는 경우 회사는 자체 기준에 따른 심사를 거친 후 고객에게 회원 자격을 부여 할 수 있으며 회원 자격이 부여된 고객은 회사로부터 가입 완료 공지를 받은 시점부터 회원으로서의 지위를 취득합니다.</p>
+                <h3>제 6 조 (이용약관의 성립)</h3>
+                <p>1) 서비스신청 시 본 약관을 읽고 "동의함" 버튼을 클릭하면 본 약관에 동의하는 것으로 간주됩니다.</p>
+                <p>2) 이용약관은 서비스 이용희망자의 이용약관 동의 후 이용 신청에 대하여 회사가 승낙함으로써 성립하며, 이용 신청 및 회사의 승낙에 대해서는 본 약관 제7조 및 제8조에서 규정된 바에 따릅니다.</p>
+                <p>3) 『정보통신망이용촉진및정보보호등에관한법률』상 만14세 미만의 아동은 온라인으로 타인에게 개인정보를 보내기 전에 반드시 개인정보의 수집 및 이용목적에 대하여 충분히 숙지하고 법정대리인(부모)의 동의를 받아야 합니다. 법정 대리인의 동의를 받아도 19세 이상 관람가 영화 예매 등 일부 서비스는 제한될 수 있습니다.</p>
+                <h3>제 7 조 (이용신청)</h3>
+                <p>회원으로 가입하여 서비스를 이용하기를 희망하는 자는 회사가 정한 소정 양식에 따라 요청하는 개인 인적 사항을 제공하여 이용신청을 합니다.</p>
+                <h3>제 8 조 (이용 신청의 승낙)</h3>
+                <p>1) 회사는 제 7 조에 따른 이용신청에 대하여 특별한 사정이 없는 한 접수 순서대로 이용 신청을 승낙합니다.</p>
+                <p>2) 회사는 다음 각 호에 해당하는 경우 이용신청에 대한 승낙을 제한할 수 있고, 그 사유가 해소될 때까지 승낙을 유보할 수 있습니다.</p>
+                <p>(1) 기술상 서비스 제공이 불가한 경우</p>
+                <p>(2) 기타 회사가 정한 이용신청 요건에 만족되지 않았을 경우</p>
+                <p>(3) 본인의 실명으로 신청하지 않은 경우</p>
+                <p>(4) 다른 사람의 명의를 사용하여 신청한 경우</p>
+                <p>(5) 이용 신청 시 필요 사항을 허위로 기재하여 신청한 경우</p>
+                <p>(6) 사회의 안녕과 질서 혹은 미풍양속을 저해할 목적으로 신청한 경우</p>
+                <p>(7) 기타 회사가 정한 이용 신청 요건이 미비 된 경우</p>
+                <p>3) 이용신청의 승낙을 유보하거나 승낙하지 아니하는 경우, 회사는 이를 이용신청자에게 알려야 합니다. 다만, 회사의 귀책사유 없이 이용신청자에게 통지할 수 없는 경우는 예외로 합니다.</p>
+                <p>4) 제 9조 2항, 제13조, 제15조 중 하나의 사유로 인해 회원 탈퇴 또는 약관철회 조치를 당한 사람이 제7조의 이용신청을 하는 경우 회사는 이를 승낙하지 않을 수 있습니다.</p>
+                <h3>제 9 조 (계약해지, 이용제한 및 재가입 제한)</h3>
+                <p>1) 회원이 이용 계약을 해지(탈퇴) 하고자 하는 경우에는 회원 본인이 사이트나 고객센터 또는 E-MAIL 등 기타 회사가 정하는 방법으로 회원탈퇴 또는 이용약관 철회를 요청할 수 있으며, 회사는 회원의 요청에 따라 조속히 회원 탈퇴에 필요한 제반 절차를 수행합니다. 단, 회원 탈퇴 시 이벤트 부정 이용 방지 등을 위하여 탈퇴일로부터 30일 이내에 재가입이 불가하며 회원 탈퇴 시 적립된 포인트 및 보유한 쿠폰 등의 개인 혜택들은 모두 삭제됩니다.</p>
+                <p>2) 회사는 회원이 다음 각 호에 해당하는 행위를 하였을 경우 사전통지 없이 이용약관을 해지하거나 또는 기간을 정하여 서비스 이용을 중지할 수 있습니다.</p>
+                <p>(1) 타인의 개인정보, ID 및 비밀번호를 도용한 경우</p>
+                <p>(2) 가입한 이름이 실명이 아닌 경우</p>
+                <p>(3) 타인의 명예를 손상시키거나 불이익을 주는 행위를 한 경우</p>
+                <p>(4) 회사, 다른 회원 또는 제 3자의 지적재산권을 침해하는 경우</p>
+                <p>(5) 공공질서 및 미풍양속에 저해되는 내용을 고의로 유포시킨 경우</p>
+                <p>(6) 회원이 국익 또는 사회적 공익을 저해할 목적으로 서비스 이용을 계획 또는 실행하는 경우</p>
+                <p>(7) 서비스 운영을 고의로 방해한 경우</p>
+                <p>(8) 서비스의 안정적 운영을 방해할 목적으로 다량의 정보를 전송하거나 광고성 정보를 전송하는 경우</p>
+                <p>(9) 정보통신설비의 오작동이나 정보의 파괴를 유발시키는 컴퓨터 바이러스 프로그램 등을 유포하는 경우</p>
+                <p>(10) 정보통신윤리위원회 등 외부기관의 시정요구가 있거나 불법선거운동과 관련하여 선거관리위원회의 유권해석을 받은 경우</p>
+                <p>(11) 회사의 서비스를 이용하여 얻은 정보를 회사의 사전 승낙 없이 복제 또는 유통시키거나 상업적으로 이용하는 경우</p>
+                <p>(12) 회원이 자신의 홈페이지와 게시판에 음란물을 게재하거나 음란 사이트 링크하는 경우</p>
+                <p>(13) 본 약관을 포함하여 기타 회사가 정한 이용 조건에 위반한 경우</p>
+                <p>3) 회원이 자발적으로 탈퇴하거나 당사에 요청하여 회원 탈퇴한 때로부터 1개월이 이내에 재가입이 불가하며, 제9조 2항, 제13조 6항, 제15조에 따라 회원 자격이 상실된 회원의 경우에도 서비스 부정 이용 및 추가적인 피해 방지를 위하여 회원 자격이 상실된 날로부터 1개월 간 재가입 및 서비스 이용이 불가합니다.</p>
+                <h3>제 10 조 (회원에 대한 통지)</h3>
+                <p>1) 회원에 대한 통지를 하는 경우, 회사는 회원이 등록한 e-mail 주소 또는 SMS 등으로 할 수 있습니다.</p>
+                <p>2) 회사는 불특정 다수 회원에 대한 통지의 경우 서비스 게시판 등에 게시함으로써 개별 통지에 갈음할 수 있습니다.</p>
+                <h3>제 11 조 (회원 정보의 변경)</h3>
+                <p>1) 회원은 개인정보처리방침을 통해 언제든지 본인의 개인정보를 열람하고 수정할 수 있습니다.</p>
+                <p>2) 회원은 이용신청 시 기재한 사항이 변경되었을 경우 온라인으로 직접 수정을 하거나, contact@k-cine.com으로 연락하시어 수정 요청을 해야 하며, 회원정보를 변경하지 아니하여 발생되는 문제의 책임은 회원에게 있습니다.</p>
+
+                <h2>제 3 장 계약 당사자의 의무</h2>
+                <h3>제 12 조 (회사의 의무)</h3>
+                <p>1) 회사는 특별한 사정이 없는 한 회원이 서비스 이용을 신청한 날에 서비스를 이용할 수 있도록 합니다.</p>
+                <p>2) 회사는 본 약관에서 정한 바에 따라 계속적이고 안정적인 서비스의 제공을 위하여 지속적으로 노력하며, 설비에 장애가 생기거나 멸실 된 때에는 지체 없이 이를 수리 복구하여야 합니다. 다만, 천재지변, 비상사태 또는 그 밖에 부득이한 경우에는 그 서비스를 일시 중단하거나 중지할 수 있습니다.</p>
+                <p>3) 회사는 서비스 관련하여 회원으로부터 소정의 절차에 의해 제기되는 의견이나 불만이 정당하다고 인정할 경우에는 적절한 절차를 거처 처리하여야 합니다. 처리 시 일정 기간이 소요될 경우 회원에게 그 사유와 처리 일정을 알려주어야 합니다.</p>
+                <p>4) 회사는 회원의 프라이버시 보호와 관련하여 개인정보처리방침 제 2 조에 제시된 내용을 지킵니다.</p>
+                <p>5) 회사는 본 약관의 체결, 계약사항의 변경 및 해지 등 이용고객과의 계약 관련 절차 및 내용 등에 있어 이용고객에게 편의를 제공하도록 노력합니다.</p>
+                <h3>제 13 조 (회원의 의무)</h3>
+                <p>1) 회원은 본 약관에서 규정하는 사항과 이용안내 또는 공지사항 등을 통하여 회사가 공지하는 사항을 준수하여야 하며, 기타 회사의 업무에 방해되는 행위를 하여서는 안됩니다.</p>
+                <p>2) 회원의 ID와 비밀번호에 관한 모든 관리책임은 회원에게 있습니다. 회원에게 부여된 ID와 비밀번호의 관리 소홀, 부정 사용에 의하여 발생하는 모든 결과에 대한 책임은 회원에게 있습니다.</p>
+                <p>3) 회원은 자신의 ID나 비밀번호가 부정하게 사용되었다는 사실을 발견한 경우에는 즉시 회사에 신고하여야 하며, 신고를 하지 않아 발생하는 모든 결과에 대한 책임은 회원에게 있습니다.</p>
+                <p>4) 회원은 회사의 사전승낙 없이는 서비스를 이용하여 영업활동을 할 수 없으며, 그 영업활동의 결과와 회원이 약관에 위반한 영업활동을 하여 발생한 결과에 대하여 회사는 책임을 지지 않습니다. 회원은 이와 같은 영업활동으로 회사가 손해를 입은 경우 회원은 회사에 대하여 손해배상의무를 집니다.</p>
+                <p>5) 회원은 회사의 명시적인 동의가 없는 한 서비스의 이용권한, 기타 이용 계약상 지위를 타인에게 양도, 증여할 수 없으며, 이를 담보로 제공할 수 없습니다.</p>
+                <p>6) 회원은 서비스 이용과 관련하여 다음 각 호에 해당되는 행위를 하여서는 안됩니다.</p>
+                <p>(1) 다른 회원의 ID와 비밀번호 등 개인정보를 도용하는 행위</p>
+                <p>(2) 본 서비스를 통하여 얻은 정보를 회사의 사전승낙 없이 회원의 이용 이외 목적으로 복제하거나 이를 출판 및 방송 등에 사용하거나 제3자에게 제공하는 행위</p>
+                <p>(3) 타인의 특허, 상표, 영업비밀, 저작권 기타 지적재산권을 침해하는 내용을 게시, 전자메일 또는 기타의 방법으로 타인에게 유포하는 행위</p>
+                <p>(4) 공공질서 및 미풍양속에 위반되는 저속, 음란한 내용의 정보, 문장, 도형 등을 전송, 게시, 전자메일 또는 기타의 방법으로 타인에게 유포하는 행위</p>
+                <p>(5) 모욕적이거나 위협적이어서 타인의 프라이버시를 침해할 수 있는 내용을 전송, 게시, 전자메일 또는 기타의 방법으로 타인에게 유포하는 행위</p>
+                <p>(6) 범죄와 결부된다고 객관적으로 판단되는 행위</p>
+                <p>(7) 회사의 승인을 받지 않고 다른 사용자의 개인정보를 수집 또는 저장하는 행위</p>
+                <p>(8) 기타 관계법령에 위배되는 행위</p>
+
+                <h2>제 4 장 서비스 이용 상세</h2>
+                <h3>제 14 조 (회원서비스 혜택)</h3>
+                <p>1) 회원은 회사 홈페이지를 이용한 인터넷예매를 실시할 수 있으며, 이메일, 핸드폰 문자 메시지 서비스(SMS), 모바일 앱 푸쉬(app push)를 통한 영화 및 극장 정보를 제공받습니다.</p>
+                <p>2) 회사는 가능한 한 회원에게 회사에서 계획하는 모든 행사에 참여할 수 있는 우선권을 부여토록 합니다.</p>
+                <h3>제 15 조 (회원서비스 혜택의 제한)</h3>
+                <p>1) 회원이 다음 각 호에서 정한 방법으로 티켓을 양도하는 경우 회사는 회원탈퇴/약관철회 등의 조치를 취할 수 있습니다. 이 경우 회사는 회원 서비스 혜택을 제한한 때로부터 1주일 이내에 그 사유를 회원에게 통보하여야 합니다.</p>
+                <p>2) 제휴 포인트 적립이나 영리의 목적으로 티켓을 발권한 다음 다른 사람에게 대가를 받고 양도하거나 포인트를 적립하는 경우</p>
+                <p>3) 재판매 등의 영업활동(제16조 제1항 제1호)의 행위가 2회 이상 반복되거나 로그인 제한 등 시정 통보 후 30일 이내에 그 사유가 시정되지 아니하는 경우 재판매 성사여부에 관계없이 회원탈퇴/약관철회 등의 조치를 취할 수 있습니다.</p>
+                <h3>제 16 조 (정보의 제공)</h3>
+                <p>1) 회사는 회원이 서비스 이용 중 필요가 있다고 인정되는 다양한 정보를 공지사항이나 이메일 등의 방법으로 회원에게 제공할 수 있습니다.</p>
+                <p>2) 회사는 회원에게 보다 나은 서비스 혜택 제공을 위해 다양한 전달 방법(전화, 안내문, 메일 등)을 통해 서비스 관련 정보를 제공할 수 있습니다. 단, 회사는 회원이 서비스 혜택 정보 제공을 원치 않는다는 의사를 밝히는 경우 정보 제공 대상에서 해당 회원을 제외하여야 하며, 대상에서 제외되어 서비스 정보를 제공받지 못해 불이익이 발생하더라도 이에 대해서는 회사가 책임지지 않습니다.</p>
+                <h3>제 17 조 (회원의 게시물)</h3>
+                <p>1) 회사는 회원이 [홈페이지, 모바일 웹/어플리케이션, SNS 등]에 게시하거나 등록하는 내용물이 다음 각 호에 해당한다고 판단되는 경우에 사전통지 없이 삭제할 수 있습니다.</p>
+                <p>(1) 다른 회원 또는 제3자를 비방하거나 중상모략으로 명예를 손상시키는 내용인 경우</p>
+                <p>(2) 공공질서 및 미풍양속에 위반되는 내용인 경우</p>
+                <p>(3) 범죄적 행위에 결부된다고 인정되는 내용일 경우</p>
+                <p>(4) 회사의 저작권, 제 3 자의 저작권 등 기타 권리를 침해하는 내용인 경우</p>
+                <p>(5) 회사에서 규정한 게시기간이나 용량을 초과한 경우</p>
+                <p>(6) 회원이 자신의 홈페이지와 게시판에 음란물을 게재하거나 음란사이트를 링크하는 경우</p>
+                <p>(7) 게시판의 성격에 부합하지 않는 게시물의 경우</p>
+                <p>(8) 기타 관계법령에 위반 된다고 판단되는 경우</p>
+                <h3>제 18 조 (게시물의 저작권)</h3>
+                <p>1) [홈페이지, 모바일 웹/어플리케이션, SNS 등]에 게재된 자료에 대한 권리는 다음 각 호와 같습니다.</p>
+                <p>(1) 게시물에 대한 권리와 책임은 게시자에게 있으며 회사는 게시자의 동의 없이는 이를 [홈페이지, 모바일 웹/어플리케이션, SNS 등] 게재 이외에 영리적 목적으로 사용할 수 없습니다. 단, 비영리적인 경우에는 그러하지 아니하며 또한 회사는 [홈페이지, 모바일 웹/어플리케이션, SNS 등] 의 게재권을 보유합니다.</p>
+                <p>(2) 회원은 서비스를 이용하여 얻은 정보를 가공, 판매하는 행위 등 [홈페이지, 모바일 웹/어플리케이션, SNS 등]에 게재된 자료를 상업적으로 사용할 수 없습니다.</p>
+                <h3>제 19 조 (광고 게재 및 광고주와의 거래)</h3>
+                <p>1) 회사가 회원에게 서비스를 제공할 수 있는 서비스 투자기반의 일부는 광고게재를 통한 수익으로부터 나옵니다. 서비스를 이용하고자 하는 자는 서비스 이용 시 노출되는 광고게재에 대해 동의하는 것으로 간주됩니다.</p>
+                <p>2) 회사는 본 [홈페이지, 모바일 웹/어플리케이션, SNS 등]에 게재되어 있거나 본 서비스를 통한 광고주의 판촉활동에 회원이 참여하거나 교신 또는 거래의 결과로서 발생하는 모든 손실 또는 손해에 대해 책임을 지지 않습니다.</p>
+                <h3>제 20 조 (서비스 이용 시간)</h3>
+                <p>1) 서비스의 이용은 회사의 업무상 또는 기술상 특별한 지장이 없는 한 연중무휴 1일 24시간 가능함을 원칙으로 합니다. 다만 정기 점검 등이 필요할 경우, 회사 홈페이지를 통해 사전 공지하여 그 내용을 알립니다.</p>
+                <p>2) 회사는 서비스를 일정범위로 분할하여 각 범위별로 이용가능 시간을 별도로 정할 수 있습니다. 이 경우 회사 홈페이지를 통해 사전 공지하여 그 내용을 알립니다.</p>
+                <h3>제 21 조 (서비스 이용 책임)</h3>
+                <p>회원은 회사가 정식 인감이 날인된 서면을 통해 명시적으로 동의한 경우를 제외하고는 서비스를 이용하여 상품을 판매하는 영업활동을 할 수 없으며 특히 해킹, 돈벌이 광고, 음란 사이트 등을 통한 상업행위, 상용S/W 불법배포 등을 할 수 없습니다. 이를 어기고 발생한 영업활동의 결과 및 손실, 관계기관에 의한 구속 등 법적 조치 등에 관해서는 회사가 책임을 지지 않습니다.</p>
+                <h3>제 22 조 (서비스 제공의 중지 등)</h3>
+                <p>1) 회사는 다음 각 호에 해당하는 경우 서비스 제공을 중지할 수 있습니다.</p>
+                <p>(1) 서비스용 설비의 보수 등 공사로 인한 부득이한 경우</p>
+                <p>(2) 전기통신사업법에 규정된 기간통신사업자가 전기통신 서비스를 중지했을 경우</p>
+                <p>(3) 기타 불가항력적 사유가 있는 경우</p>
+                <p>2) 회사는 국가비상사태, 정전, 서비스 설비의 장애 또는 서비스 이용의 폭주 등으로 정상적인 서비스 이용에 지장이 있는 때에는 서비스의 전부 또는 일부를 제한하거나 중지할 수 있습니다.</p>
+                <p>3) 회사는 제 1 항 및 2항의 규정에 의하여 서비스의 이용을 제한하거나 중지한 때에는 그 사유 및 제한기간 등을 지체 없이 회원에게 알려야 합니다.</p>
+
+                <h2>제 5 장 손해배상 및 기타</h2>
+                <h3>제 23 조 (손해배상)</h3>
+                <p>회사는 이용 요금이 무료인 서비스 이용과 관련하여 회원에게 발생한 어떠한 손해에 관하여도 책임을 지지 않습니다. 유료 서비스의 경우는 서비스별 이용약관에 따릅니다.</p>
+                <h3>제 24 조 (면책조항)</h3>
+                <p>1) 회사는 천재지변 또는 이에 준하는 불가항력으로 인하여 서비스를 제공할 수 없는 경우에는 서비스 제공에 관한 책임이 면제됩니다.</p>
+                <p>2) 회사는 회원의 귀책사유로 인한 서비스 이용의 장애에 대하여 책임을 지지 않습니다.</p>
+                <p>3) 회사는 회원이 서비스를 이용하여 기대하는 수익을 상실한 것이나 서비스를 통하여 얻은 자료로 인한 손해에 관하여 책임을 지지 않습니다.</p>
+                <p>4) 회사는 회원이 [홈페이지, 모바일 웹/어플리케이션, SNS 등]에 게재한 정보, 자료, 사실의 신뢰도, 정확성 등 내용에 관하여는 책임을 지지 않습니다.</p>
+                <p>5) 회사는 서비스 이용과 관련하여 회원에게 발생한 손해 가운데 회원의 고의, 과실에 의한 손해에 대하여 책임을 지지 않습니다.</p>
+                <h3>제 25 조 (관할법원)</h3>
+                <p>서비스 이용으로 발생한 분쟁에 대해 소송이 제기될 경우 회사의 본사 소재지를 관할하는 법원을 전속 관할법원으로 합니다.</p>
+
+                <h2>[부칙] (시행일)</h2>
+                <p>본 약관은 2026년 4월 15일부터 시행합니다.</p>
+            </div>
+
+            <!-- ===== English ===== -->
+            <div lang="en" class="i18n-el">
+                <h2>Chapter 1. General Provisions</h2>
+                <h3>Article 1 (Purpose)</h3>
+                <p>The purpose of these Terms is to set out the rights, obligations, and responsibilities of the Company and users in connection with the use of the K-Cinema website (hereinafter the “Service”) provided by K-Cinema Inc. (hereinafter the “Company”).</p>
+                <h3>Article 2 (Effect and Amendment of the Terms)</h3>
+                <p>1) These Terms take effect with respect to all members who have agreed to these Terms in order to use the Service.</p>
+                <p>2) These Terms take effect when a member agrees to the content posted or notified at the time of member (service) registration.</p>
+                <p>3) Where the Terms are amended, the Company will set out the content and effective date of the amended Terms and give notice via the Company’s website, email, or similar means at least 7 days before the effective date, or at least 30 days in advance where the amendment is unfavorable to customers or concerns important matters.</p>
+                <p>4) A member who does not agree to the amended Terms may request membership withdrawal / withdrawal of consent to the Terms. If the member does not request withdrawal after the effective date of the amended Terms, the member is deemed to have agreed to the amendments.</p>
+                <h3>Article 3 (Rules Outside the Terms)</h3>
+                <p>1) Matters not specified in these Terms shall be governed by the relevant provisions and commercial practices, including the Digital Signature Act, the Act on Consumer Protection in Electronic Commerce, and the Act on Promotion of Information and Communications Network Utilization and Information Protection.</p>
+                <p>2) Matters concerning services not specified in these Terms shall be governed by the relevant service notices provided through the Company’s website, mobile, or at the theater on site.</p>
+                <h3>Article 4 (Definitions)</h3>
+                <p>The principal terms used in these Terms are defined as follows:</p>
+                <p>1) “Site” means a virtual place of business set up by the Company using computers and other information and communications facilities so that users can trade goods, services, and information, or the website operated by the Company (homepage, mobile web/application, SNS, etc.); it is also used to refer to the operator of the Site.</p>
+                <p>2) “Member” means a person who has provided personal information to the Company and registered as a member, and who may receive information provided by the Company and continuously use the Company’s services. It collectively refers to the members listed below.</p>
+                <p>(1) Member: a person who has registered on the K-Cinema website.</p>
+                <p>(2) Non-member: a person who uses the services provided on the K-Cinema website without registering as a member.</p>
+                <p>(3) ID: a combination of characters or numbers selected by the member and approved by the Company for member identification and use of the Service (hereinafter “ID”).</p>
+                <p>(4) Password: a combination of characters and numbers determined by the member to confirm that the member matches the assigned ID and to protect the member’s own confidentiality.</p>
+                <p>(5) Suspension of use: the suspension of the provision of the Service for a certain period in accordance with requirements determined by the Company.</p>
+
+                <h2>Chapter 2. Terms of Service Use</h2>
+                <h3>Article 5 (Member Registration)</h3>
+                <p>1) Member registration is available through the Site operated by the Company. When applying for service registration, the applicant applies for membership by agreeing to these Terms and the Privacy Policy (including the “Notice on Collection and Use of Personal Information” and “Consent to Marketing Use,” etc.).</p>
+                <p>2) When a customer applies for membership, the Company may grant membership status after review under its own criteria. A customer granted membership acquires the status of a member from the time the customer receives the registration-completion notice from the Company.</p>
+                <h3>Article 6 (Formation of the Terms of Use)</h3>
+                <p>1) If, when applying for the Service, you read these Terms and click the “Agree” button, you are deemed to have agreed to these Terms.</p>
+                <p>2) The Terms of Use are formed when the Company accepts the application for use made by a prospective user after that user agrees to the Terms of Use. The application for use and the Company’s acceptance are governed by Articles 7 and 8 of these Terms.</p>
+                <p>3) Under the Act on Promotion of Information and Communications Network Utilization and Information Protection, a child under the age of 14 must, before sending personal information to others online, fully understand the purpose of collecting and using personal information and obtain the consent of a legal representative (parent). Even with a legal representative’s consent, some services—such as booking films rated for ages 19 and over—may be restricted.</p>
+                <h3>Article 7 (Application for Use)</h3>
+                <p>A person who wishes to register as a member and use the Service applies for use by providing the personal particulars requested in accordance with the prescribed form set by the Company.</p>
+                <h3>Article 8 (Acceptance of the Application for Use)</h3>
+                <p>1) The Company accepts applications for use under Article 7 in the order received, absent special circumstances.</p>
+                <p>2) The Company may restrict acceptance of an application for use in the following cases, and may withhold acceptance until the relevant cause is resolved:</p>
+                <p>(1) Where it is technically impossible to provide the Service</p>
+                <p>(2) Where other application requirements set by the Company are not met</p>
+                <p>(3) Where the application is not made under the applicant’s real name</p>
+                <p>(4) Where the application is made using another person’s name</p>
+                <p>(5) Where required matters are falsely entered in the application for use</p>
+                <p>(6) Where the application is made for the purpose of undermining public peace, order, or good morals</p>
+                <p>(7) Where other application requirements set by the Company are not satisfied</p>
+                <p>3) Where the Company withholds or declines acceptance of an application for use, it shall notify the applicant. However, this does not apply where the Company cannot notify the applicant for reasons not attributable to the Company.</p>
+                <p>4) Where a person who has been subjected to membership withdrawal or withdrawal of the Terms for one of the reasons in Article 9(2), Article 13, or Article 15 applies for use under Article 7, the Company may decline to accept the application.</p>
+                <h3>Article 9 (Termination, Restriction of Use, and Restriction on Re-registration)</h3>
+                <p>1) A member who wishes to terminate (withdraw from) the use agreement may request membership withdrawal or withdrawal of consent to the Terms through the Site, the customer center, email, or other methods determined by the Company, and the Company will promptly carry out the procedures necessary for withdrawal in accordance with the member’s request. However, upon withdrawal, to prevent fraudulent use of events and the like, re-registration is not permitted within 30 days of the withdrawal date, and accumulated points and held coupons and other personal benefits are all deleted upon withdrawal.</p>
+                <p>2) The Company may, without prior notice, terminate the Terms of Use or suspend the use of the Service for a fixed period where a member commits any of the following acts:</p>
+                <p>(1) Misappropriating another person’s personal information, ID, and password</p>
+                <p>(2) Where the registered name is not the member’s real name</p>
+                <p>(3) Damaging another person’s reputation or committing acts that cause disadvantage to others</p>
+                <p>(4) Infringing the intellectual property rights of the Company, other members, or third parties</p>
+                <p>(5) Intentionally disseminating content that undermines public order and good morals</p>
+                <p>(6) Where a member plans or carries out use of the Service for the purpose of undermining the national interest or social public interest</p>
+                <p>(7) Intentionally interfering with the operation of the Service</p>
+                <p>(8) Transmitting large volumes of information or advertising information for the purpose of interfering with the stable operation of the Service</p>
+                <p>(9) Disseminating computer virus programs or the like that cause malfunction of information and communications facilities or destruction of information</p>
+                <p>(10) Where there is a corrective request from an external body such as the Information and Communications Ethics Committee, or an authoritative interpretation from the National Election Commission in connection with illegal election campaigning</p>
+                <p>(11) Reproducing or distributing information obtained through the Company’s services without the Company’s prior consent, or using it commercially</p>
+                <p>(12) Where a member posts obscene material on, or links obscene sites from, the member’s own homepage and bulletin board</p>
+                <p>(13) Violating these Terms or other conditions of use set by the Company</p>
+                <p>3) Re-registration is not permitted within one month from the time a member voluntarily withdraws or withdraws at the member’s request to the Company. Likewise, where a member’s membership has been forfeited under Article 9(2), Article 13(6), or Article 15, re-registration and use of the Service are not permitted for one month from the date of forfeiture, in order to prevent fraudulent use of the Service and additional harm.</p>
+                <h3>Article 10 (Notices to Members)</h3>
+                <p>1) Where the Company gives notice to a member, it may do so via the email address or SMS registered by the member.</p>
+                <p>2) For notices to an unspecified large number of members, the Company may substitute individual notice by posting on the Service bulletin board or the like.</p>
+                <h3>Article 11 (Change of Member Information)</h3>
+                <p>1) Members may view and correct their own personal information at any time through the Privacy Policy.</p>
+                <p>2) Where the matters entered at the time of application for use have changed, the member must make corrections directly online or request corrections by contacting contact@k-cine.com. The member is responsible for any problems arising from failure to update member information.</p>
+
+                <h2>Chapter 3. Obligations of the Parties</h2>
+                <h3>Article 12 (Obligations of the Company)</h3>
+                <p>1) Absent special circumstances, the Company shall make the Service available to a member on the day the member applies to use the Service.</p>
+                <p>2) The Company shall continuously endeavor to provide the Service continuously and stably as set out in these Terms, and shall repair or restore facilities without delay if they fail or are lost. However, in the event of natural disaster, emergency, or other unavoidable circumstances, the Company may temporarily interrupt or suspend the Service.</p>
+                <p>3) Where the Company recognizes that an opinion or complaint raised by a member through the prescribed procedure is legitimate, it shall handle it through appropriate procedures. If handling requires a certain period, the Company shall inform the member of the reason and the handling schedule.</p>
+                <p>4) The Company shall comply with the matters set out in Article 2 of the Privacy Policy with respect to the protection of members’ privacy.</p>
+                <p>5) The Company shall endeavor to provide convenience to customers in the procedures and content related to contracts with customers, such as the conclusion of these Terms and the amendment or termination of contractual matters.</p>
+                <h3>Article 13 (Obligations of the Member)</h3>
+                <p>1) Members shall comply with the matters set out in these Terms and the matters the Company announces through usage guides or notices, and shall not commit other acts that interfere with the Company’s business.</p>
+                <p>2) All responsibility for managing a member’s ID and password rests with the member. The member is responsible for all consequences arising from negligent management or unauthorized use of the ID and password assigned to the member.</p>
+                <p>3) Where a member discovers that the member’s ID or password has been used fraudulently, the member shall immediately report it to the Company. The member is responsible for all consequences arising from failure to report.</p>
+                <p>4) A member may not engage in business activities using the Service without the Company’s prior consent. The Company is not responsible for the results of such business activities or for results arising from business activities conducted by a member in violation of these Terms. Where the Company suffers damage from such business activities, the member is liable to compensate the Company.</p>
+                <p>5) Unless expressly consented to by the Company, a member may not transfer or give the right to use the Service or any other status under the use agreement to a third party, nor provide it as collateral.</p>
+                <p>6) Members shall not commit any of the following acts in connection with the use of the Service:</p>
+                <p>(1) Misappropriating other members’ personal information such as ID and password</p>
+                <p>(2) Reproducing information obtained through the Service for purposes other than the member’s own use, or using it in publications or broadcasts, or providing it to third parties, without the Company’s prior consent</p>
+                <p>(3) Posting or disseminating to others, by email or other means, content that infringes another person’s patents, trademarks, trade secrets, copyrights, or other intellectual property rights</p>
+                <p>(4) Transmitting, posting, or disseminating to others, by email or other means, information, text, or graphics of a vulgar or obscene nature that violate public order and good morals</p>
+                <p>(5) Transmitting, posting, or disseminating to others, by email or other means, content that is insulting or threatening and may infringe another person’s privacy</p>
+                <p>(6) Acts objectively judged to be associated with crime</p>
+                <p>(7) Collecting or storing other users’ personal information without the Company’s approval</p>
+                <p>(8) Other acts that violate applicable statutes</p>
+
+                <h2>Chapter 4. Details of Service Use</h2>
+                <h3>Article 14 (Member Service Benefits)</h3>
+                <p>1) Members may make online bookings using the Company’s website and receive film and theater information via email, SMS, and mobile app push notifications.</p>
+                <p>2) The Company shall, where possible, grant members priority to participate in all events planned by the Company.</p>
+                <h3>Article 15 (Restriction of Member Service Benefits)</h3>
+                <p>1) Where a member transfers tickets by the methods set out in the following items, the Company may take measures such as membership withdrawal / withdrawal of consent to the Terms. In this case, the Company shall notify the member of the reason within one week from the time it restricts the member service benefits.</p>
+                <p>2) Where, for the purpose of accumulating partner points or for profit, a member issues tickets and then transfers them to others for consideration or accumulates points.</p>
+                <p>3) Where acts of business activity such as resale (Article 16(1)(1)) are repeated two or more times, or where the cause is not corrected within 30 days after a corrective notice such as a login restriction, the Company may take measures such as membership withdrawal / withdrawal of consent to the Terms, regardless of whether the resale was completed.</p>
+                <h3>Article 16 (Provision of Information)</h3>
+                <p>1) The Company may provide members with various information deemed necessary during the use of the Service, by notices, email, or other methods.</p>
+                <p>2) The Company may provide service-related information through various delivery methods (telephone, notices, mail, etc.) in order to provide members with better service benefits. However, where a member expresses an intention not to receive service-benefit information, the Company shall exclude that member from the provision of information; and the Company is not responsible for any disadvantage arising from the member’s failure to receive service information due to such exclusion.</p>
+                <h3>Article 17 (Member Postings)</h3>
+                <p>1) The Company may delete, without prior notice, content posted or registered by a member on [the website, mobile web/application, SNS, etc.] where it judges that the content falls under any of the following:</p>
+                <p>(1) Content that defames or, through slander, damages the reputation of other members or third parties</p>
+                <p>(2) Content that violates public order and good morals</p>
+                <p>(3) Content recognized as being associated with criminal acts</p>
+                <p>(4) Content that infringes the Company’s copyright, a third party’s copyright, or other rights</p>
+                <p>(5) Content that exceeds the posting period or capacity prescribed by the Company</p>
+                <p>(6) Where a member posts obscene material on, or links obscene sites from, the member’s own homepage and bulletin board</p>
+                <p>(7) Postings that do not match the nature of the bulletin board</p>
+                <p>(8) Other content judged to violate applicable statutes</p>
+                <h3>Article 18 (Copyright of Postings)</h3>
+                <p>1) Rights to materials posted on [the website, mobile web/application, SNS, etc.] are as follows:</p>
+                <p>(1) The rights and responsibility for a posting rest with the poster, and the Company may not use it for commercial purposes other than posting it on [the website, mobile web/application, SNS, etc.] without the poster’s consent. However, this does not apply to non-commercial cases, and the Company retains the right to post on [the website, mobile web/application, SNS, etc.].</p>
+                <p>(2) Members may not commercially use materials posted on [the website, mobile web/application, SNS, etc.], such as by processing or selling information obtained through the Service.</p>
+                <h3>Article 19 (Advertising and Transactions with Advertisers)</h3>
+                <p>1) Part of the investment base that enables the Company to provide the Service to members comes from revenue through advertising. A person who wishes to use the Service is deemed to consent to the advertising displayed when using the Service.</p>
+                <p>2) The Company is not responsible for any loss or damage arising as a result of a member participating in, communicating with, or transacting with advertisers’ promotional activities posted on [the website, mobile web/application, SNS, etc.] or through the Service.</p>
+                <h3>Article 20 (Service Hours)</h3>
+                <p>1) Use of the Service is, in principle, available 24 hours a day, year-round, absent special operational or technical impediments on the Company’s part. However, where regular maintenance or the like is necessary, the Company will give advance notice via its website.</p>
+                <p>2) The Company may divide the Service into certain ranges and set available hours separately for each range. In this case, the Company will give advance notice via its website.</p>
+                <h3>Article 21 (Responsibility for Service Use)</h3>
+                <p>Except where the Company has expressly consented in a writing bearing its official seal, a member may not engage in business activities selling goods using the Service, and in particular may not engage in commercial conduct through hacking, money-making advertising, obscene sites, or the illegal distribution of commercial software. The Company is not responsible for the results and losses of business activities conducted in violation of this, or for legal measures such as detention by the relevant authorities.</p>
+                <h3>Article 22 (Suspension of Service Provision, etc.)</h3>
+                <p>1) The Company may suspend the provision of the Service in the following cases:</p>
+                <p>(1) Where it is unavoidable due to construction such as repair of service facilities</p>
+                <p>(2) Where a key telecommunications business operator stipulated in the Telecommunications Business Act has suspended telecommunications services</p>
+                <p>(3) Where there are other force majeure reasons</p>
+                <p>2) The Company may restrict or suspend all or part of the Service where there is an impediment to normal service use due to a national emergency, power outage, failure of service facilities, or a surge in service use, etc.</p>
+                <p>3) Where the Company restricts or suspends the use of the Service under paragraphs 1 and 2, it shall notify the member of the reason and the period of restriction without delay.</p>
+
+                <h2>Chapter 5. Damages and Miscellaneous</h2>
+                <h3>Article 23 (Damages)</h3>
+                <p>The Company is not responsible for any damage incurred by a member in connection with the use of services for which the usage fee is free. Paid services are governed by the terms of use for each service.</p>
+                <h3>Article 24 (Disclaimer)</h3>
+                <p>1) The Company is exempt from responsibility for providing the Service where it cannot provide the Service due to a natural disaster or equivalent force majeure.</p>
+                <p>2) The Company is not responsible for impediments to service use caused by reasons attributable to the member.</p>
+                <p>3) The Company is not responsible for a member’s loss of expected profits from using the Service, or for damage arising from materials obtained through the Service.</p>
+                <p>4) The Company is not responsible for the reliability, accuracy, or other content of information, materials, or facts posted by a member on [the website, mobile web/application, SNS, etc.].</p>
+                <p>5) The Company is not responsible, among damage incurred by a member in connection with the use of the Service, for damage caused by the member’s intent or negligence.</p>
+                <h3>Article 25 (Jurisdiction)</h3>
+                <p>Where a lawsuit is filed over a dispute arising from the use of the Service, the court having jurisdiction over the location of the Company’s head office shall be the exclusive court of jurisdiction.</p>
+
+                <h2>[Addendum] (Effective Date)</h2>
+                <p>These Terms take effect on April 15, 2026.</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container footer-inner">
+        <div class="footer-left">
+            <div class="footer-brand"><span class="k">K</span>-Cinema Inc.</div>
+            <div class="footer-links">
+                <a class="priv" href="privacy.html"><span lang="ko" class="i18n-el">개인정보처리방침</span><span lang="en" class="i18n-el">Privacy Policy</span></a>
+                <a href="terms.html"><span lang="ko" class="i18n-el">이용약관</span><span lang="en" class="i18n-el">Terms of Service</span></a>
+            </div>
+        </div>
+        <div>
+            <span lang="ko" class="i18n-el">© 2026 (주)케이시네마 · 사업자등록번호 452-86-03560 · 통신판매업 신고번호 제2026-서울영등포-1199호 · All rights reserved.</span>
+            <span lang="en" class="i18n-el">© 2026 K-Cinema Inc. · Business Reg. 452-86-03560 · E-Commerce Reg. 2026-Seoul Yeongdeungpo-1199 · All rights reserved.</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+(function(){
+    var KEY = 'kc-lang';
+    function apply(l){
+        document.documentElement.setAttribute('data-lang', l);
+        document.documentElement.setAttribute('lang', l);
+        try { localStorage.setItem(KEY, l); } catch(e){}
+    }
+    document.addEventListener('DOMContentLoaded', function(){
+        document.querySelectorAll('.lang-toggle button').forEach(function(b){
+            b.addEventListener('click', function(){ apply(b.getAttribute('data-setlang')); });
+        });
+    });
+})();
+</script>
+
+</body>
+</html>

@@ -549,7 +549,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 16px;
+            gap: 16px 24px;
+            flex-wrap: wrap;
+        }
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 22px;
             flex-wrap: wrap;
         }
         .footer-brand {
@@ -559,6 +565,19 @@
             font-size: 14px;
         }
         .footer-brand .k { color: var(--primary); }
+        .footer-links {
+            display: flex;
+            gap: 18px;
+            font-size: 13px;
+        }
+        .footer-links a {
+            color: var(--text-muted);
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.15s;
+        }
+        .footer-links a.priv { color: var(--text); }
+        .footer-links a:hover { color: var(--primary-soft); }
     </style>
 </head>
 <body>
@@ -808,7 +827,13 @@
 
 <footer>
     <div class="container footer-inner">
-        <div class="footer-brand"><span class="k">K</span>-Cinema Inc.</div>
+        <div class="footer-left">
+            <div class="footer-brand"><span class="k">K</span>-Cinema Inc.</div>
+            <div class="footer-links">
+                <a class="priv" href="privacy.html" data-i18n="footer.privacy">개인정보처리방침</a>
+                <a href="terms.html" data-i18n="footer.terms">이용약관</a>
+            </div>
+        </div>
         <div data-i18n="footer.meta">&copy; 2026 (주)케이시네마 · 사업자등록번호 452-86-03560 · 통신판매업 신고번호 제2026-서울영등포-1199호 · All rights reserved.</div>
     </div>
 </footer>
@@ -894,6 +919,8 @@
             'contact.addressV': '서울 영등포구 국회대로74길 20, 맨하탄21 517호 (07238)',
             'contact.reach': '연락처',
 
+            'footer.privacy': '개인정보처리방침',
+            'footer.terms': '이용약관',
             'footer.meta': '© 2026 (주)케이시네마 · 사업자등록번호 452-86-03560 · 통신판매업 신고번호 제2026-서울영등포-1199호 · All rights reserved.'
         },
         en: {
@@ -974,6 +1001,8 @@
             'contact.addressV': 'Manhattan21 #517, 20 Gukhoe-daero 74-gil, Yeongdeungpo-gu, Seoul 07238, Republic of Korea',
             'contact.reach': 'Contact',
 
+            'footer.privacy': 'Privacy Policy',
+            'footer.terms': 'Terms of Service',
             'footer.meta': '© 2026 K-Cinema Inc. · Business Reg. 452-86-03560 · E-Commerce Reg. 2026-Seoul Yeongdeungpo-1199 · All rights reserved.'
         }
     };
