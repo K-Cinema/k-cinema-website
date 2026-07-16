@@ -7,7 +7,7 @@
     <meta name="description" content="(주)케이시네마 데이터 삭제 안내 · K-Cinema Inc. Data Deletion Instructions">
     <meta name="robots" content="index,follow">
     <link rel="icon" type="image/png" href="logo.png">
-    <script>(function(){try{var s=localStorage.getItem('kc-lang');var l=(s==='ko'||s==='en')?s:((navigator.language||'').toLowerCase().indexOf('ko')===0?'ko':'en');document.documentElement.setAttribute('data-lang',l);document.documentElement.setAttribute('lang',l);}catch(e){}})();</script>
+    <script>(function(){try{var L=['ko','en','zh','vi','th'];var q=new URLSearchParams(location.search).get('lang');if(q)q=q.toLowerCase();var s=localStorage.getItem('kc-lang');var n=(navigator.language||'').toLowerCase();var l=L.indexOf(q)>=0?q:L.indexOf(s)>=0?s:n.indexOf('ko')===0?'ko':n.indexOf('zh')===0?'zh':n.indexOf('vi')===0?'vi':n.indexOf('th')===0?'th':'en';document.documentElement.setAttribute('data-lang',l);document.documentElement.setAttribute('lang',l);if(L.indexOf(q)>=0)try{localStorage.setItem('kc-lang',q);}catch(e){}}catch(e){}})();</script>
     <style>
         :root {
             --bg: #0B0B0F; --surface: #14141A; --card: #1C1C24; --card-border: #2A2A33;
@@ -23,8 +23,11 @@
         a { color: inherit; text-decoration: none; }
         .container { max-width: 880px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 40px); }
 
-        [data-lang="ko"] [lang="en"].i18n-el { display: none; }
-        [data-lang="en"] [lang="ko"].i18n-el { display: none; }
+        [data-lang="ko"] .i18n-el[lang]:not([lang="ko"]),
+        [data-lang="en"] .i18n-el[lang]:not([lang="en"]),
+        [data-lang="zh"] .i18n-el[lang]:not([lang="zh"]),
+        [data-lang="vi"] .i18n-el[lang]:not([lang="vi"]),
+        [data-lang="th"] .i18n-el[lang]:not([lang="th"]) { display: none; }
 
         .nav { position: sticky; top: 0; z-index: 50; background: rgba(11,11,15,0.75); backdrop-filter: saturate(180%) blur(16px); -webkit-backdrop-filter: saturate(180%) blur(16px); border-bottom: 1px solid var(--card-border); }
         .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
@@ -36,7 +39,11 @@
         .lang-toggle { display: inline-flex; background: var(--card); border: 1px solid var(--card-border); border-radius: var(--radius-chip); padding: 2px; }
         .lang-toggle button { background: transparent; border: 0; color: var(--text-muted); font-weight: 700; font-size: 12px; padding: 6px 14px; border-radius: var(--radius-chip); cursor: pointer; letter-spacing: 0.5px; transition: all 0.15s; }
         .lang-toggle button:hover { color: var(--text); }
-        [data-lang="ko"] .lang-toggle [data-setlang="ko"], [data-lang="en"] .lang-toggle [data-setlang="en"] { background: var(--primary); color: #FFF; }
+        [data-lang="ko"] .lang-toggle [data-setlang="ko"],
+        [data-lang="en"] .lang-toggle [data-setlang="en"],
+        [data-lang="zh"] .lang-toggle [data-setlang="zh"],
+        [data-lang="vi"] .lang-toggle [data-setlang="vi"],
+        [data-lang="th"] .lang-toggle [data-setlang="th"] { background: var(--primary); color: #FFF; }
 
         .legal-wrap { padding: clamp(44px, 6vw, 80px) 0 clamp(64px, 9vw, 120px); }
         .legal-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); font-weight: 600; margin-bottom: 28px; transition: color 0.15s; }
@@ -67,7 +74,10 @@
         .footer-links a { color: var(--text-muted); font-weight: 600; transition: color 0.15s; }
         .footer-links a.priv { color: var(--text); }
         .footer-links a:hover { color: var(--primary-soft); }
-        @media (max-width: 560px) { .legal-doc { font-size: 14px; } }
+        @media (max-width: 560px) {
+            .legal-doc { font-size: 14px; }
+            .lang-toggle button { padding: 5px 8px; font-size: 11px; }
+        }
     </style>
 </head>
 <body>
@@ -82,6 +92,9 @@
             <div class="lang-toggle" role="group" aria-label="Language">
                 <button type="button" data-setlang="ko">KO</button>
                 <button type="button" data-setlang="en">EN</button>
+                <button type="button" data-setlang="zh">ZH</button>
+                <button type="button" data-setlang="vi">VI</button>
+                <button type="button" data-setlang="th">TH</button>
             </div>
         </div>
     </div>
@@ -89,8 +102,8 @@
 
 <main class="legal-wrap">
     <div class="container">
-        <a class="legal-back" href="index.html"><span lang="ko" class="i18n-el">← 홈으로</span><span lang="en" class="i18n-el">← Back to home</span></a>
-        <h1 class="legal-title"><span lang="ko" class="i18n-el">데이터 삭제 안내</span><span lang="en" class="i18n-el">Data Deletion Instructions</span></h1>
+        <a class="legal-back" href="index.html"><span lang="ko" class="i18n-el">← 홈으로</span><span lang="en" class="i18n-el">← Back to home</span><span lang="zh" class="i18n-el">← 返回首页</span><span lang="vi" class="i18n-el">← Về trang chủ</span><span lang="th" class="i18n-el">← กลับหน้าหลัก</span></a>
+        <h1 class="legal-title"><span lang="ko" class="i18n-el">데이터 삭제 안내</span><span lang="en" class="i18n-el">Data Deletion Instructions</span><span lang="zh" class="i18n-el">数据删除说明</span><span lang="vi" class="i18n-el">Hướng dẫn xóa dữ liệu</span><span lang="th" class="i18n-el">คำแนะนำการลบข้อมูล</span></h1>
 
         <div class="legal-doc">
             <!-- ===== Korean ===== -->
@@ -204,6 +217,174 @@
                 <p>For inquiries regarding data deletion, you may contact our Chief Privacy Officer.</p>
                 <p>▶ Chief Privacy Officer: Seon-tae Kim, IT Operations Team, 070-4170-6316, <a href="mailto:contact@k-cine.com">contact@k-cine.com</a></p>
             </div>
+
+            <!-- ===== Chinese ===== -->
+            <div lang="zh" class="i18n-el">
+                <p class="intro">K-Cinema Inc.（以下简称“本公司”）尊重您请求删除个人资料及账户数据的权利。您可通过以下方式申请删除或自行删除账户。</p>
+                <p class="legal-effective">○ 本说明自 2026 年 6 月 20 日起生效。</p>
+
+                <h2>1. 删除申请方式</h2>
+                <p>请将以下信息发送至 <a href="mailto:contact@k-cine.com?subject=K-Cinema%20%E6%95%B0%E6%8D%AE%E5%88%A0%E9%99%A4%E7%94%B3%E8%AF%B7">contact@k-cine.com</a>。我们将在核实您的身份后处理该申请。</p>
+                <div class="legal-box">
+                    <ul>
+                        <li>注册时使用的<strong>登录 ID 或社交账户</strong>（Google / Apple / Facebook）</li>
+                        <li>您的<strong>姓名或昵称</strong></li>
+                        <li>删除原因（可选）</li>
+                    </ul>
+                </div>
+
+                <h2>2. 应用内自助注销</h2>
+                <p>登录状态下，您可通过应用内<strong>我的页面 &gt; 注销账户</strong>直接删除账户。注销后账户将立即停用，个人资料将在下述处理期限内删除（依法须保留的记录除外）。</p>
+
+                <h2>3. 删除范围</h2>
+                <ul>
+                    <li>账户标识信息：登录 ID、认证标识符、电子邮箱、手机号码</li>
+                    <li>社交登录信息：社交服务提供商标识符（注销时解除关联）</li>
+                    <li>个人资料：姓名、昵称、性别、出生日期、居住地区、首选语言</li>
+                    <li>社区活动：发布的帖子、评论、点赞（匿名化或删除）</li>
+                    <li>同意记录、预订记录、通知设置/订阅</li>
+                    <li>服务访问日志</li>
+                </ul>
+
+                <h2>4. 依法须保留的项目</h2>
+                <p>根据适用的韩国法律，以下记录将在指定期限内单独保存，期满后予以销毁。</p>
+                <table>
+                    <thead><tr><th>项目</th><th>保留期限</th><th>法律依据</th></tr></thead>
+                    <tbody>
+                        <tr><td>合同或撤销订阅等相关记录</td><td>5 年</td><td>《电子商务等消费者保护相关法律》</td></tr>
+                        <tr><td>付款及商品供应等相关记录</td><td>5 年</td><td>《电子商务等消费者保护相关法律》</td></tr>
+                        <tr><td>消费者投诉或争议处理相关记录</td><td>3 年</td><td>《电子商务等消费者保护相关法律》</td></tr>
+                        <tr><td>公告板用户身份验证相关记录</td><td>6 个月</td><td>《促进信息通信网络利用及信息保护等相关法律》</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>5. 处理时限</h2>
+                <p>核实申请后，我们将在<strong>3 至 7 个工作日</strong>内完成删除，并通过注册邮箱通知您。</p>
+
+                <h2>6. 解除社交登录关联</h2>
+                <p>除账户删除外，您也可通过以下链接在社交平台直接撤销 K-Cinema 的访问权限。</p>
+                <ul>
+                    <li>Facebook：设置 → <a href="https://www.facebook.com/settings?tab=applications" target="_blank" rel="noopener">应用和网站</a></li>
+                    <li>Google：<a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">账户 → 第三方应用和服务</a></li>
+                    <li>Apple：<a href="https://appleid.apple.com" target="_blank" rel="noopener">Apple ID → 通过 Apple 登录</a></li>
+                </ul>
+
+                <h2>7. 联系方式</h2>
+                <p>有关数据删除的咨询，请联系我们的个人信息保护负责人。</p>
+                <p>▶ 个人信息保护负责人：IT 运营团队 金善泰，070-4170-6316，<a href="mailto:contact@k-cine.com">contact@k-cine.com</a></p>
+            </div>
+
+            <!-- ===== Vietnamese ===== -->
+            <div lang="vi" class="i18n-el">
+                <p class="intro">K-Cinema Inc. (sau đây gọi là “Công ty”) tôn trọng quyền của bạn được yêu cầu xóa thông tin cá nhân và dữ liệu tài khoản. Bạn có thể yêu cầu xóa hoặc tự xóa tài khoản theo các phương thức dưới đây.</p>
+                <p class="legal-effective">○ Hướng dẫn này có hiệu lực từ ngày 20 tháng 6 năm 2026.</p>
+
+                <h2>1. Cách yêu cầu xóa dữ liệu</h2>
+                <p>Vui lòng gửi email đến <a href="mailto:contact@k-cine.com?subject=K-Cinema%20Y%C3%AAu%20C%E1%BA%A7u%20X%C3%B3a%20D%E1%BB%AF%20Li%E1%BB%87u">contact@k-cine.com</a> kèm các thông tin sau. Chúng tôi sẽ xử lý yêu cầu sau khi xác minh danh tính của bạn.</p>
+                <div class="legal-box">
+                    <ul>
+                        <li><strong>ID đăng nhập hoặc tài khoản mạng xã hội</strong> (Google / Apple / Facebook) đã sử dụng khi đăng ký</li>
+                        <li><strong>Tên hoặc biệt danh</strong> của bạn</li>
+                        <li>Lý do xóa (tùy chọn)</li>
+                    </ul>
+                </div>
+
+                <h2>2. Tự xóa tài khoản trong ứng dụng</h2>
+                <p>Khi đã đăng nhập, bạn có thể xóa tài khoản trực tiếp qua <strong>Trang của tôi &gt; Xóa tài khoản</strong> trong ứng dụng. Tài khoản sẽ bị vô hiệu hóa ngay lập tức và dữ liệu cá nhân sẽ được xóa trong thời hạn xử lý dưới đây (trừ các hồ sơ phải lưu giữ theo quy định pháp luật).</p>
+
+                <h2>3. Phạm vi xóa dữ liệu</h2>
+                <ul>
+                    <li>Thông tin định danh tài khoản: ID đăng nhập, mã định danh xác thực, email, số điện thoại di động</li>
+                    <li>Dữ liệu đăng nhập mạng xã hội: mã định danh nhà cung cấp mạng xã hội (liên kết bị hủy khi xóa tài khoản)</li>
+                    <li>Hồ sơ: tên, biệt danh, giới tính, ngày sinh, khu vực cư trú, ngôn ngữ ưa thích</li>
+                    <li>Hoạt động cộng đồng: bài đăng, bình luận, lượt thích (ẩn danh hóa hoặc xóa)</li>
+                    <li>Lịch sử đồng ý, hồ sơ đặt vé, cài đặt/thông báo đăng ký</li>
+                    <li>Nhật ký truy cập dịch vụ</li>
+                </ul>
+
+                <h2>4. Hồ sơ phải lưu giữ theo quy định pháp luật</h2>
+                <p>Theo pháp luật Hàn Quốc hiện hành, các hồ sơ sau sẽ được lưu trữ riêng trong thời hạn quy định rồi hủy.</p>
+                <table>
+                    <thead><tr><th>Hạng mục</th><th>Thời hạn lưu giữ</th><th>Căn cứ pháp lý</th></tr></thead>
+                    <tbody>
+                        <tr><td>Hồ sơ về hợp đồng hoặc hủy đăng ký, v.v.</td><td>5 năm</td><td>Luật Bảo vệ Người tiêu dùng trong Thương mại Điện tử, v.v.</td></tr>
+                        <tr><td>Hồ sơ về thanh toán và cung cấp hàng hóa, v.v.</td><td>5 năm</td><td>Luật Bảo vệ Người tiêu dùng trong Thương mại Điện tử, v.v.</td></tr>
+                        <tr><td>Hồ sơ về khiếu nại hoặc giải quyết tranh chấp của người tiêu dùng</td><td>3 năm</td><td>Luật Bảo vệ Người tiêu dùng trong Thương mại Điện tử, v.v.</td></tr>
+                        <tr><td>Hồ sơ về xác minh danh tính người dùng bảng tin</td><td>6 tháng</td><td>Luật Khuyến khích Sử dụng Mạng Thông tin và Bảo vệ Thông tin</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>5. Thời hạn xử lý</h2>
+                <p>Việc xóa sẽ hoàn tất trong vòng <strong>3–7 ngày làm việc</strong> sau khi chúng tôi xác minh yêu cầu, và chúng tôi sẽ thông báo qua email khi hoàn tất.</p>
+
+                <h2>6. Ngắt kết nối đăng nhập mạng xã hội</h2>
+                <p>Tách biệt với việc xóa tài khoản, bạn có thể thu hồi quyền truy cập của K-Cinema trên nền tảng mạng xã hội qua các liên kết dưới đây.</p>
+                <ul>
+                    <li>Facebook: Cài đặt → <a href="https://www.facebook.com/settings?tab=applications" target="_blank" rel="noopener">Ứng dụng và trang web</a></li>
+                    <li>Google: <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Tài khoản → Ứng dụng và dịch vụ của bên thứ ba</a></li>
+                    <li>Apple: <a href="https://appleid.apple.com" target="_blank" rel="noopener">Apple ID → Đăng nhập bằng Apple</a></li>
+                </ul>
+
+                <h2>7. Liên hệ</h2>
+                <p>Để được tư vấn về việc xóa dữ liệu, bạn có thể liên hệ với Người phụ trách Bảo vệ Dữ liệu Cá nhân của chúng tôi.</p>
+                <p>▶ Người phụ trách Bảo vệ Dữ liệu Cá nhân: Kim Seon-tae, Nhóm Vận hành IT, 070-4170-6316, <a href="mailto:contact@k-cine.com">contact@k-cine.com</a></p>
+            </div>
+
+            <!-- ===== Thai ===== -->
+            <div lang="th" class="i18n-el">
+                <p class="intro">K-Cinema Inc. (ต่อไปนี้เรียกว่า “บริษัท”) เคารพสิทธิของคุณในการขอลบข้อมูลส่วนบุคคลและข้อมูลบัญชี คุณสามารถขอลบหรือลบบัญชีด้วยตนเองได้ตามวิธีการด้านล่าง</p>
+                <p class="legal-effective">○ คำแนะนำนี้มีผลบังคับใช้ตั้งแต่วันที่ 20 มิถุนายน 2569</p>
+
+                <h2>1. วิธีการขอลบข้อมูล</h2>
+                <p>กรุณาส่งอีเมลไปที่ <a href="mailto:contact@k-cine.com?subject=K-Cinema%20Data%20Deletion%20Request">contact@k-cine.com</a> พร้อมข้อมูลด้านล่าง เราจะดำเนินการหลังจากยืนยันตัวตนของคุณแล้ว</p>
+                <div class="legal-box">
+                    <ul>
+                        <li><strong>ID เข้าสู่ระบบหรือบัญชีโซเชียล</strong> (Google / Apple / Facebook) ที่ใช้ในการสมัคร</li>
+                        <li><strong>ชื่อหรือชื่อเล่น</strong>ของคุณ</li>
+                        <li>เหตุผลในการลบ (ไม่บังคับ)</li>
+                    </ul>
+                </div>
+
+                <h2>2. การลบบัญชีด้วยตนเองในแอป</h2>
+                <p>เมื่อเข้าสู่ระบบแล้ว คุณสามารถลบบัญชีได้โดยตรงผ่าน <strong>หน้าของฉัน &gt; ลบบัญชี</strong> ในแอป บัญชีจะถูกปิดใช้งานทันที และข้อมูลส่วนบุคคลจะถูกลบภายในระยะเวลาดำเนินการด้านล่าง (ยกเว้นบันทึกที่ต้องเก็บรักษาตามกฎหมาย)</p>
+
+                <h2>3. ขอบเขตการลบ</h2>
+                <ul>
+                    <li>ข้อมูลระบุตัวตนบัญชี: ID เข้าสู่ระบบ ตัวระบุการยืนยันตัวตน อีเมล หมายเลขโทรศัพท์มือถือ</li>
+                    <li>ข้อมูลเข้าสู่ระบบโซเชียล: ตัวระบุผู้ให้บริการโซเชียล (ยกเลิกการเชื่อมต่อเมื่อลบบัญชี)</li>
+                    <li>โปรไฟล์: ชื่อ ชื่อเล่น เพศ วันเกิด ภูมิภาคที่พำนัก ภาษาที่ต้องการ</li>
+                    <li>กิจกรรมชุมชน: โพสต์ ความคิดเห็น การกดถูกใจ (ทำให้ไม่ระบุตัวตนหรือลบ)</li>
+                    <li>ประวัติการยินยอม บันทึกการจอง การตั้งค่า/การสมัครรับการแจ้งเตือน</li>
+                    <li>บันทึกการเข้าใช้บริการ</li>
+                </ul>
+
+                <h2>4. รายการที่ต้องเก็บรักษาตามกฎหมาย</h2>
+                <p>ตามกฎหมายเกาหลีที่ใช้บังคับ บันทึกต่อไปนี้จะถูกเก็บแยกตามระยะเวลาที่กำหนด แล้วจึงทำลาย</p>
+                <table>
+                    <thead><tr><th>รายการ</th><th>ระยะเวลาเก็บรักษา</th><th>ฐานทางกฎหมาย</th></tr></thead>
+                    <tbody>
+                        <tr><td>บันทึกเกี่ยวกับสัญญาหรือการถอนความยินยอม ฯลฯ</td><td>5 ปี</td><td>พระราชบัญญัติคุ้มครองผู้บริโภคในการค้าอิเล็กทรอนิกส์ ฯลฯ</td></tr>
+                        <tr><td>บันทึกเกี่ยวกับการชำระเงินและการจัดหาสินค้า ฯลฯ</td><td>5 ปี</td><td>พระราชบัญญัติคุ้มครองผู้บริโภคในการค้าอิเล็กทรอนิกส์ ฯลฯ</td></tr>
+                        <tr><td>บันทึกเกี่ยวกับข้อร้องเรียนหรือการแก้ไขข้อพิพาทของผู้บริโภค</td><td>3 ปี</td><td>พระราชบัญญัติคุ้มครองผู้บริโภคในการค้าอิเล็กทรอนิกส์ ฯลฯ</td></tr>
+                        <tr><td>บันทึกเกี่ยวกับการยืนยันตัวตนผู้ใช้กระดานข่าว</td><td>6 เดือน</td><td>พระราชบัญญัติส่งเสริมการใช้เครือข่ายสารสนเทศและการคุ้มครองข้อมูล</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>5. ระยะเวลาดำเนินการ</h2>
+                <p>การลบจะเสร็จสิ้นภายใน <strong>3–7 วันทำการ</strong> หลังจากเรายืนยันคำขอของคุณ และเราจะแจ้งให้ทราบทางอีเมลเมื่อดำเนินการเสร็จสิ้น</p>
+
+                <h2>6. ยกเลิกการเชื่อมต่อเข้าสู่ระบบโซเชียล</h2>
+                <p>แยกจากการลบบัญชี คุณสามารถเพิกถอนการเข้าถึงของ K-Cinema จากแพลตฟอร์มโซเชียลผ่านลิงก์ด้านล่าง</p>
+                <ul>
+                    <li>Facebook: การตั้งค่า → <a href="https://www.facebook.com/settings?tab=applications" target="_blank" rel="noopener">แอปและเว็บไซต์</a></li>
+                    <li>Google: <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">บัญชี → แอปและบริการของบุคคลที่สาม</a></li>
+                    <li>Apple: <a href="https://appleid.apple.com" target="_blank" rel="noopener">Apple ID → Sign in with Apple</a></li>
+                </ul>
+
+                <h2>7. ติดต่อ</h2>
+                <p>สำหรับการสอบถามเกี่ยวกับการลบข้อมูล คุณสามารถติดต่อเจ้าหน้าที่คุ้มครองข้อมูลส่วนบุคคลของเรา</p>
+                <p>▶ เจ้าหน้าที่คุ้มครองข้อมูลส่วนบุคคล: Kim Seon-tae ทีมปฏิบัติการ IT 070-4170-6316 <a href="mailto:contact@k-cine.com">contact@k-cine.com</a></p>
+            </div>
         </div>
     </div>
 </main>
@@ -213,33 +394,22 @@
         <div class="footer-left">
             <div class="footer-brand"><span class="k">K</span>-Cinema Inc.</div>
             <div class="footer-links">
-                <a href="privacy.html"><span lang="ko" class="i18n-el">개인정보처리방침</span><span lang="en" class="i18n-el">Privacy Policy</span></a>
-                <a href="terms.html"><span lang="ko" class="i18n-el">이용약관</span><span lang="en" class="i18n-el">Terms of Service</span></a>
-                <a class="priv" href="data-deletion.html"><span lang="ko" class="i18n-el">데이터 삭제 안내</span><span lang="en" class="i18n-el">Data Deletion</span></a>
+                <a href="privacy.html"><span lang="ko" class="i18n-el">개인정보처리방침</span><span lang="en" class="i18n-el">Privacy Policy</span><span lang="zh" class="i18n-el">隐私政策</span><span lang="vi" class="i18n-el">Chính sách bảo mật</span><span lang="th" class="i18n-el">นโยบายความเป็นส่วนตัว</span></a>
+                <a href="terms.html"><span lang="ko" class="i18n-el">이용약관</span><span lang="en" class="i18n-el">Terms of Service</span><span lang="zh" class="i18n-el">使用条款</span><span lang="vi" class="i18n-el">Điều khoản sử dụng</span><span lang="th" class="i18n-el">ข้อกำหนดการใช้งาน</span></a>
+                <a class="priv" href="data-deletion.html"><span lang="ko" class="i18n-el">데이터 삭제 안내</span><span lang="en" class="i18n-el">Data Deletion</span><span lang="zh" class="i18n-el">数据删除说明</span><span lang="vi" class="i18n-el">Hướng dẫn xóa dữ liệu</span><span lang="th" class="i18n-el">คำแนะนำการลบข้อมูล</span></a>
             </div>
         </div>
         <div>
             <span lang="ko" class="i18n-el">© 2026 (주)케이시네마 · 사업자등록번호 452-86-03560 · 통신판매업 신고번호 제2026-서울영등포-1199호 · All rights reserved.</span>
             <span lang="en" class="i18n-el">© 2026 K-Cinema Inc. · Business Reg. 452-86-03560 · E-Commerce Reg. 2026-Seoul Yeongdeungpo-1199 · All rights reserved.</span>
+            <span lang="zh" class="i18n-el">© 2026 K-Cinema株式会社 · 营业执照号 452-86-03560 · 通信销售业申报号 第2026-首尔永登浦-1199号 · All rights reserved.</span>
+            <span lang="vi" class="i18n-el">© 2026 K-Cinema Inc. · ĐKKD 452-86-03560 · TMĐT 2026-Seoul Yeongdeungpo-1199 · All rights reserved.</span>
+            <span lang="th" class="i18n-el">© 2026 K-Cinema Inc. · เลขทะเบียนธุรกิจ 452-86-03560 · E-Commerce 2026-Seoul Yeongdeungpo-1199 · All rights reserved.</span>
         </div>
     </div>
 </footer>
 
-<script>
-(function(){
-    var KEY = 'kc-lang';
-    function apply(l){
-        document.documentElement.setAttribute('data-lang', l);
-        document.documentElement.setAttribute('lang', l);
-        try { localStorage.setItem(KEY, l); } catch(e){}
-    }
-    document.addEventListener('DOMContentLoaded', function(){
-        document.querySelectorAll('.lang-toggle button').forEach(function(b){
-            b.addEventListener('click', function(){ apply(b.getAttribute('data-setlang')); });
-        });
-    });
-})();
-</script>
+<script src="js/i18n.js"></script>
 
 </body>
 </html>
