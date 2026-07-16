@@ -7,7 +7,7 @@
     <meta name="description" content="(주)케이시네마 개인정보처리방침 · K-Cinema Inc. Privacy Policy">
     <meta name="robots" content="index,follow">
     <link rel="icon" type="image/png" href="logo.png">
-    <script>(function(){try{var s=localStorage.getItem('kc-lang');var l=(s==='ko'||s==='en')?s:((navigator.language||'').toLowerCase().indexOf('ko')===0?'ko':'en');document.documentElement.setAttribute('data-lang',l);document.documentElement.setAttribute('lang',l);}catch(e){}})();</script>
+    <script>(function(){try{var L=['ko','en','zh','vi','th'];var q=new URLSearchParams(location.search).get('lang');if(q)q=q.toLowerCase();var s=localStorage.getItem('kc-lang');var n=(navigator.language||'').toLowerCase();var l=L.indexOf(q)>=0?q:L.indexOf(s)>=0?s:n.indexOf('ko')===0?'ko':n.indexOf('zh')===0?'zh':n.indexOf('vi')===0?'vi':n.indexOf('th')===0?'th':'en';document.documentElement.setAttribute('data-lang',l);document.documentElement.setAttribute('lang',l);if(L.indexOf(q)>=0)try{localStorage.setItem('kc-lang',q);}catch(e){}}catch(e){}})();</script>
     <style>
         :root {
             --bg: #0B0B0F; --surface: #14141A; --card: #1C1C24; --card-border: #2A2A33;
@@ -23,8 +23,11 @@
         a { color: inherit; text-decoration: none; }
         .container { max-width: 880px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 40px); }
 
-        [data-lang="ko"] [lang="en"].i18n-el { display: none; }
-        [data-lang="en"] [lang="ko"].i18n-el { display: none; }
+        [data-lang="ko"] .i18n-el[lang]:not([lang="ko"]),
+        [data-lang="en"] .i18n-el[lang]:not([lang="en"]),
+        [data-lang="zh"] .i18n-el[lang]:not([lang="zh"]),
+        [data-lang="vi"] .i18n-el[lang]:not([lang="vi"]),
+        [data-lang="th"] .i18n-el[lang]:not([lang="th"]) { display: none; }
 
         .nav { position: sticky; top: 0; z-index: 50; background: rgba(11,11,15,0.75); backdrop-filter: saturate(180%) blur(16px); -webkit-backdrop-filter: saturate(180%) blur(16px); border-bottom: 1px solid var(--card-border); }
         .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
@@ -36,7 +39,11 @@
         .lang-toggle { display: inline-flex; background: var(--card); border: 1px solid var(--card-border); border-radius: var(--radius-chip); padding: 2px; }
         .lang-toggle button { background: transparent; border: 0; color: var(--text-muted); font-weight: 700; font-size: 12px; padding: 6px 14px; border-radius: var(--radius-chip); cursor: pointer; letter-spacing: 0.5px; transition: all 0.15s; }
         .lang-toggle button:hover { color: var(--text); }
-        [data-lang="ko"] .lang-toggle [data-setlang="ko"], [data-lang="en"] .lang-toggle [data-setlang="en"] { background: var(--primary); color: #FFF; }
+        [data-lang="ko"] .lang-toggle [data-setlang="ko"],
+        [data-lang="en"] .lang-toggle [data-setlang="en"],
+        [data-lang="zh"] .lang-toggle [data-setlang="zh"],
+        [data-lang="vi"] .lang-toggle [data-setlang="vi"],
+        [data-lang="th"] .lang-toggle [data-setlang="th"] { background: var(--primary); color: #FFF; }
 
         .legal-wrap { padding: clamp(44px, 6vw, 80px) 0 clamp(64px, 9vw, 120px); }
         .legal-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); font-weight: 600; margin-bottom: 28px; transition: color 0.15s; }
@@ -63,7 +70,10 @@
         .footer-links a { color: var(--text-muted); font-weight: 600; transition: color 0.15s; }
         .footer-links a.priv { color: var(--text); }
         .footer-links a:hover { color: var(--primary-soft); }
-        @media (max-width: 560px) { .legal-doc { font-size: 14px; } }
+        @media (max-width: 560px) {
+            .legal-doc { font-size: 14px; }
+            .lang-toggle button { padding: 5px 8px; font-size: 11px; }
+        }
     </style>
 </head>
 <body>
@@ -78,6 +88,9 @@
             <div class="lang-toggle" role="group" aria-label="Language">
                 <button type="button" data-setlang="ko">KO</button>
                 <button type="button" data-setlang="en">EN</button>
+                <button type="button" data-setlang="zh">ZH</button>
+                <button type="button" data-setlang="vi">VI</button>
+                <button type="button" data-setlang="th">TH</button>
             </div>
         </div>
     </div>
@@ -85,8 +98,8 @@
 
 <main class="legal-wrap">
     <div class="container">
-        <a class="legal-back" href="index.html"><span lang="ko" class="i18n-el">← 홈으로</span><span lang="en" class="i18n-el">← Back to home</span></a>
-        <h1 class="legal-title"><span lang="ko" class="i18n-el">개인정보처리방침</span><span lang="en" class="i18n-el">Privacy Policy</span></h1>
+        <a class="legal-back" href="index.html"><span lang="ko" class="i18n-el">← 홈으로</span><span lang="en" class="i18n-el">← Back to home</span><span lang="zh" class="i18n-el">← 返回首页</span><span lang="vi" class="i18n-el">← Về trang chủ</span><span lang="th" class="i18n-el">← กลับหน้าหลัก</span></a>
+        <h1 class="legal-title"><span lang="ko" class="i18n-el">개인정보처리방침</span><span lang="en" class="i18n-el">Privacy Policy</span><span lang="zh" class="i18n-el">隐私政策</span><span lang="vi" class="i18n-el">Chính sách bảo mật</span><span lang="th" class="i18n-el">นโยบายความเป็นส่วนตัว</span></h1>
 
         <div class="legal-doc">
             <!-- ===== Korean ===== -->
@@ -370,6 +383,429 @@
                 <p>1) This privacy policy applies from its effective date. Where there are additions, deletions, or corrections to its content in accordance with statutes or policy, the Company will give notice through a notice posting from at least 7 days before the changes take effect.</p>
                 <p>2) We value your information and promise to do our best so that you can use our services with greater peace of mind.</p>
             </div>
+
+            <!-- ===== Chinese ===== -->
+            <div lang="zh" class="i18n-el">
+                <p class="intro">K-Cinema株式会社（以下简称“本公司”）依据《个人信息保护法》制定并实施本隐私政策，以保护用户的个人信息及权益，并妥善处理与个人信息相关的用户投诉。如本公司修订本隐私政策，将通过网站公告（或个别通知）予以公布。</p>
+                <p class="legal-effective">○ 本政策自2026年4月15日起施行。</p>
+
+                <h2>1. 个人信息的处理目的及收集</h2>
+                <p>本公司为下列目的处理个人信息。所处理的个人信息不会用于下列目的以外的用途；如使用目的发生变更，本公司将事先征得同意。</p>
+                <h3>1) 必填收集</h3>
+                <p>收集项目：</p>
+                <ul>
+                    <li>姓名、手机号码</li>
+                    <li>个人识别值（i-PIN / CI）</li>
+                    <li>账号、密码</li>
+                    <li>电子邮箱地址</li>
+                </ul>
+                <p>使用目的：会员服务使用过程中的身份识别、实名认证及重复注册确认；保障会员必需服务、支付及预订确认、通知送达及投诉处理等顺畅沟通渠道；客服中心运营；防止不良会员滥用及未经授权使用。</p>
+                <h3>2) 使用移动服务时的必填收集</h3>
+                <p>收集项目：</p>
+                <ul>
+                    <li>移动设备信息</li>
+                    <li>型号、操作系统类型、操作系统版本、设备识别号</li>
+                </ul>
+                <p>使用目的：保障通知送达及投诉处理等顺畅沟通渠道；防范个人信息侵害事故；为争议调解保留记录；客服中心运营；防止不良会员滥用及未经授权使用。</p>
+                <h3>3) 选填收集</h3>
+                <p>收集项目：</p>
+                <ul>
+                    <li>手机号码、电子邮箱地址</li>
+                    <li>地址（工作单位或住所）</li>
+                    <li>社交/简易登录账号关联信息</li>
+                    <li>常用影院</li>
+                    <li>偏好类型、偏好时段、个人资料照片</li>
+                    <li>是否同意接收通知/SMS/邮件/位置信息</li>
+                </ul>
+                <p>使用目的：新服务（产品）开发及定制化服务提供；活动及广告/促销信息提供及参与机会提供；基于人口统计特征的服务提供及广告投放效果验证；访问频率识别或会员服务使用统计；利用位置信息的服务。</p>
+                <h3>4) 服务使用或业务处理过程中生成/收集的信息</h3>
+                <p>收集项目：</p>
+                <ul>
+                    <li>服务使用记录、访问日志</li>
+                    <li>访问IP信息、支付记录（信用卡信息等）</li>
+                    <li>Cookie</li>
+                </ul>
+                <p>使用目的：防范个人信息侵害事故、为争议调解保留记录、商品购买及确认本处理政策。</p>
+
+                <h2>2. 个人信息的使用及保留期限</h2>
+                <p>1) 原则上，本公司在个人信息收集及提供目的达成后，将立即销毁个人信息。但在下列情况下，可对所收集的全部或部分会员信息例外保留一定期限。</p>
+                <p>2) 各类个人信息的处理及保留期限如下：</p>
+                <p>(1) 为减少因随意退会及重新注册造成的损害，并处理退会后反悔的恢复请求，退会后保留会员信息30天，随后立即销毁。</p>
+                <p>(2) 如已事先告知保留期限并获得单独同意，则保留至该保留期限届满。</p>
+                <p>(3) 长期未使用会员的个人信息单独分离保管。</p>
+                <p>相关法规：《促进信息通信网利用及信息保护等相关法律》第29条（2020年8月5日前）、《个人信息保护法》第39条之6（2020年8月5日后）。</p>
+                <p>休眠客户：一年以上未使用服务的客户。</p>
+                <ul>
+                    <li>网站、移动网页或应用程序登录记录一年以上无记录的客户。</li>
+                    <li>分离保管前至少30天，本公司将通过电子邮件、书面、传真或类似方式单独通知相关事实、预定分离保管日期及拟分离保管的个人信息项目等。如已分离保管的客户通过网页/移动端登录或使用服务，视为重新使用申请，该账号将自动恢复。</li>
+                </ul>
+                <p>(4) 根据《商法》及《电子商务等消费者保护相关法律》等相关法规需保留一定期限的，按相关法规规定的期限保留。</p>
+                <ul>
+                    <li>合同或撤销要约等相关记录：5年</li>
+                    <li>货款支付及货物供应等相关记录：5年</li>
+                    <li>消费者投诉或争议处理相关记录：3年</li>
+                    <li>公告板用户身份确认相关记录：6个月</li>
+                </ul>
+
+                <h2>3. 向第三方提供个人信息</h2>
+                <p>1) 除经会员同意或法律法规规定的情形外，本公司在任何情况下均不会超出本隐私政策告知范围使用会员的个人信息。</p>
+                <p>2) 本公司向第三方提供个人信息的情况如下：</p>
+                <p>接收方：</p>
+                <ul><li>影院（影院列表）</li></ul>
+                <p>使用目的：</p>
+                <ul>
+                    <li>现场取票</li>
+                    <li>预订确认及取消等客户指引</li>
+                </ul>
+                <p>提供项目：</p>
+                <ul><li>姓名、账号、电话号码、手机号码、电子邮箱地址、出生日期</li></ul>
+                <p>保留及使用期限：</p>
+                <ul>
+                    <li>至个人信息使用目的达成为止</li>
+                    <li>但如相关法律法规要求保留或已事先获得同意，则保留至该保留期限届满</li>
+                </ul>
+
+                <h2>4. 个人信息处理委托</h2>
+                <p>1) 本公司就个人信息处理相关业务进行如下委托，并确保相关个人信息不被违法使用。</p>
+                <p>2) 为顺利处理个人信息业务，本公司委托处理个人信息业务如下：</p>
+                <table>
+                    <thead><tr><th>受托方</th><th>委托内容</th><th>委托项目</th></tr></thead>
+                    <tbody>
+                        <tr><td>KCP</td><td>身份认证</td><td>仅确认身份认证结果</td></tr>
+                        <tr><td>KS-NET、KCP、Prephis Corea</td><td>支付代理、结算代理</td><td>卡片信息、支付信息</td></tr>
+                        <tr><td>Prephis Corea</td><td>短信发送、KakaoTalk通知消息</td><td>手机号码</td></tr>
+                        <tr><td>Korea Server Hosting Co., Ltd.</td><td>个人信息的保管、管理</td><td>手机号码、出生日期、姓名、CI值</td></tr>
+                    </tbody>
+                </table>
+                <p>3) 如委托业务内容或受托方发生变更，本公司将通过本隐私政策及时公开。</p>
+
+                <h2>5. 个人信息的查阅、更正及撤回同意（会员退会）</h2>
+                <p>1) 用户可随时查阅或更正已登记的个人信息。如需查阅或更正个人信息，请点击[修改会员信息]或[修改选填信息]，完成密码验证流程后直接查阅或更正；或联系 contact@k-cine.com，本公司将立即处理。关于个人信息使用记录、处理委托及向第三方提供情况等，可向 contact@k-cine.com 提出请求后查阅或更正。如希望停止使用个人信息，可退会/撤回条款同意，或向 contact@k-cine.com 提出请求。</p>
+                <p>2) 用户就个人信息错误提出更正请求的，本公司在完成更正前不会使用或提供该个人信息。此外，如错误个人信息已向第三方提供，本公司将立即通知第三方更正结果，以确保更正得以完成。</p>
+                <p>3) 但在下列情况下，可限制查阅及更正个人信息：</p>
+                <ul>
+                    <li>可能显著损害本人或第三方生命、身体、财产或权益的</li>
+                    <li>可能显著妨碍相关服务提供者业务的</li>
+                    <li>违反法律法规等的</li>
+                </ul>
+                <p>4) 用户可随时撤回注册时对个人信息收集、使用及提供所给予的同意。撤回同意（会员退会）可通过“我的页面 &gt; 修改会员信息”完成密码验证流程后直接撤回同意（会员退会）；或联系 contact@k-cine.com，本公司将立即协助办理退会。</p>
+
+                <h2>6. 个人信息的销毁</h2>
+                <p>原则上，本公司在个人信息处理目的达成后，将立即销毁相关个人信息。销毁方法如下：</p>
+                <ul>
+                    <li>电子文件：安全删除，使记录无法恢复或再现</li>
+                    <li>纸质打印的个人信息：通过粉碎或焚烧销毁</li>
+                </ul>
+
+                <h2>7. 通过Cookie收集个人信息</h2>
+                <p>1) 本公司使用存储并随时调取使用信息的“Cookie（曲奇）”，以提供个性化定制服务。</p>
+                <p>2) Cookie是运营网站的服务器（http）向用户电脑浏览器发送的少量信息，也可能存储在用户PC硬盘上。</p>
+                <p>(1) Cookie的使用目的：用于识别用户访问的各服务及网站的访问及使用形态、热门搜索词、是否安全连接等，以向用户提供优化信息。</p>
+                <p>(2) Cookie的安装/运行及拒绝：可通过网页浏览器顶部“工具 &gt; Internet选项 &gt; 隐私”菜单的选项设置拒绝存储Cookie。</p>
+                <p>(3) 如拒绝存储Cookie，使用定制化服务可能出现困难。</p>
+
+                <h2>8. 个人信息保护负责人</h2>
+                <p>1) 本公司指定如下个人信息保护负责人，总括负责个人信息处理相关业务，并处理与个人信息处理相关的用户投诉及损害救济。</p>
+                <p>▶ 个人信息保护负责人：金善泰，IT运营团队，070-4170-6316，contact@k-cine.com</p>
+                <p>▶ 个人信息保护负责部门：IT运营团队个人信息保护组，070-4170-6316，contact@k-cine.com</p>
+                <p>2) 用户可就使用本公司服务过程中发生的一切个人信息保护相关咨询、投诉处理、损害救济等事项，向个人信息保护负责人及负责部门咨询。本公司将立即答复并处理用户的咨询。</p>
+                <p>3) 如个人信息受到侵害，需要举报或咨询的，可向以下机构寻求帮助：</p>
+                <p>▶ 个人信息侵害举报中心：118（无区号），https://privacy.kisa.or.kr</p>
+                <p>▶ 大检察厅网络调查科：1301（无区号），cid@spo.go.kr</p>
+                <p>▶ 警察厅网络安全局：182（无区号），https://cyberbureau.police.go.kr</p>
+
+                <h2>9. 确保个人信息安全的措施</h2>
+                <p>本公司采取下列技术、管理及物理措施，确保用户个人信息不被丢失、被盗、篡改、泄露或毁损。</p>
+                <p>1) 安装并运行入侵阻断系统，控制黑客等外部人员未经授权访问，并按岗位职责向最少人员授予所需的最小访问权限。</p>
+                <p>2) 在处理个人信息的PC、服务器等设备上安装防病毒软件，始终保持最新更新状态，并采用加密技术安全存储及传输客户信息。</p>
+                <p>3) 就个人信息处理输入实施安全培训，并对相关人员及系统进行检查等，尽最大努力确保安全处理。</p>
+
+                <h2>10. 隐私政策变更</h2>
+                <p>1) 本隐私政策自施行日起适用。如根据法律法规或政策对内容进行追加、删除或更正，本公司将于变更事项施行前至少7天通过公告予以通知。</p>
+                <p>2) 我们珍视您的信息，并承诺尽最大努力，让您更安心地使用我们的服务。</p>
+            </div>
+
+            <!-- ===== Vietnamese ===== -->
+            <div lang="vi" class="i18n-el">
+                <p class="intro">K-Cinema Inc. (sau đây gọi là “Công ty”) thiết lập và duy trì chính sách bảo mật sau đây theo Đạo luật Bảo vệ Thông tin Cá nhân, nhằm bảo vệ thông tin cá nhân và quyền lợi của người dùng, đồng thời xử lý trơn tru các khiếu nại của người dùng liên quan đến thông tin cá nhân. Nếu Công ty sửa đổi chính sách bảo mật này, Công ty sẽ thông báo qua thông báo trên website (hoặc thông báo riêng).</p>
+                <p class="legal-effective">○ Chính sách này có hiệu lực từ ngày 15 tháng 4 năm 2026.</p>
+
+                <h2>1. Mục đích xử lý và thu thập thông tin cá nhân</h2>
+                <p>Công ty xử lý thông tin cá nhân cho các mục đích nêu dưới đây. Thông tin cá nhân đã xử lý sẽ không được sử dụng cho bất kỳ mục đích nào khác ngoài các mục đích đã nêu; nếu mục đích sử dụng thay đổi, Công ty sẽ xin ý kiến đồng ý trước.</p>
+                <h3>1) Thu thập bắt buộc</h3>
+                <p>Các mục thu thập:</p>
+                <ul>
+                    <li>Họ tên, số điện thoại di động</li>
+                    <li>Giá trị nhận dạng cá nhân (i-PIN / CI)</li>
+                    <li>ID, mật khẩu</li>
+                    <li>Địa chỉ email</li>
+                </ul>
+                <p>Mục đích sử dụng: Xác minh danh tính, xác minh tên thật và kiểm tra đăng ký trùng lặp khi sử dụng dịch vụ thành viên; đảm bảo kênh giao tiếp trơn tru cho các dịch vụ thành viên thiết yếu, xác nhận thanh toán và đặt vé, gửi thông báo và xử lý khiếu nại, v.v.; vận hành trung tâm khách hàng; ngăn chặn lạm dụng bởi thành viên không phù hợp và sử dụng trái phép.</p>
+                <h3>2) Thu thập bắt buộc khi sử dụng dịch vụ di động</h3>
+                <p>Các mục thu thập:</p>
+                <ul>
+                    <li>Thông tin thiết bị di động</li>
+                    <li>Tên model, loại hệ điều hành, phiên bản hệ điều hành, số nhận dạng thiết bị</li>
+                </ul>
+                <p>Mục đích sử dụng: Đảm bảo kênh giao tiếp trơn tru để gửi thông báo và xử lý khiếu nại, v.v.; phòng ngừa sự cố xâm phạm thông tin cá nhân; lưu giữ hồ sơ để giải quyết tranh chấp; vận hành trung tâm khách hàng; ngăn chặn lạm dụng bởi thành viên không phù hợp và sử dụng trái phép.</p>
+                <h3>3) Thu thập tùy chọn</h3>
+                <p>Các mục thu thập:</p>
+                <ul>
+                    <li>Số điện thoại di động, địa chỉ email</li>
+                    <li>Địa chỉ (nơi làm việc hoặc nhà riêng)</li>
+                    <li>Thông tin liên kết tài khoản đăng nhập mạng xã hội/đơn giản</li>
+                    <li>Rạp chiếu yêu thích</li>
+                    <li>Thể loại ưa thích, khung giờ ưa thích, ảnh hồ sơ</li>
+                    <li>Đồng ý nhận thông báo/SMS/email/thông tin vị trí</li>
+                </ul>
+                <p>Mục đích sử dụng: Phát triển dịch vụ (sản phẩm) mới và cung cấp dịch vụ tùy chỉnh; cung cấp sự kiện và thông tin quảng cáo/khuyến mãi cùng cơ hội tham gia; cung cấp dịch vụ dựa trên đặc điểm nhân khẩu học và xác minh hiệu quả dịch vụ đặt quảng cáo; xác định tần suất truy cập hoặc thống kê việc sử dụng dịch vụ của thành viên; và các dịch vụ sử dụng thông tin vị trí.</p>
+                <h3>4) Thông tin được tạo/thu thập trong quá trình sử dụng dịch vụ hoặc xử lý kinh doanh</h3>
+                <p>Các mục thu thập:</p>
+                <ul>
+                    <li>Hồ sơ sử dụng dịch vụ, nhật ký truy cập</li>
+                    <li>Thông tin IP truy cập, hồ sơ thanh toán (thông tin thẻ tín dụng, v.v.)</li>
+                    <li>Cookie</li>
+                </ul>
+                <p>Mục đích sử dụng: Phòng ngừa sự cố xâm phạm thông tin cá nhân, lưu giữ hồ sơ để giải quyết tranh chấp, mua sản phẩm và xác nhận chính sách xử lý này.</p>
+
+                <h2>2. Thời hạn sử dụng và lưu giữ thông tin cá nhân</h2>
+                <p>1) Theo nguyên tắc, Công ty hủy thông tin cá nhân ngay khi đạt được mục đích thu thập và cung cấp. Tuy nhiên, trong các trường hợp sau, toàn bộ hoặc một phần thông tin thành viên đã thu thập có thể được giữ lại ngoại lệ trong một khoảng thời gian nhất định.</p>
+                <p>2) Thời hạn xử lý và lưu giữ cho từng loại thông tin cá nhân như sau:</p>
+                <p>(1) Để giảm thiểu thiệt hại do rút lui và đăng ký lại bừa bãi, và xử lý yêu cầu khôi phục do đổi ý sau khi rút lui, thông tin thành viên được giữ 30 ngày sau khi rút lui rồi hủy ngay.</p>
+                <p>(2) Nếu thời hạn lưu giữ đã được thông báo trước và có sự đồng ý riêng, thông tin được giữ đến hết thời hạn lưu giữ đó.</p>
+                <p>(3) Thông tin cá nhân của thành viên không hoạt động lâu dài được lưu trữ riêng biệt.</p>
+                <p>Luật liên quan: Đạo luật Khuyến khích Sử dụng Mạng Thông tin và Bảo vệ Thông tin, Điều 29 (trước ngày 5 tháng 8 năm 2020); Đạo luật Bảo vệ Thông tin Cá nhân, Điều 39-6 (từ ngày 5 tháng 8 năm 2020 trở đi).</p>
+                <p>Khách hàng ngủ đông: khách hàng không sử dụng dịch vụ trong một năm trở lên.</p>
+                <ul>
+                    <li>Khách hàng không có lịch sử đăng nhập trên website, web di động hoặc ứng dụng trong một năm trở lên.</li>
+                    <li>Ít nhất 30 ngày trước khi lưu trữ riêng, Công ty sẽ thông báo riêng cho khách hàng—qua email, bằng văn bản, fax hoặc phương thức tương tự—về các sự kiện liên quan, ngày dự kiến lưu trữ riêng và các mục thông tin cá nhân sẽ được lưu trữ riêng. Nếu khách hàng đã lưu trữ riêng đăng nhập qua web/di động hoặc sử dụng dịch vụ, được coi là đơn xin sử dụng lại và tài khoản sẽ được tự động khôi phục.</li>
+                </ul>
+                <p>(4) Nếu thông tin phải được lưu giữ trong một khoảng thời gian nhất định theo luật liên quan như Luật Thương mại và Đạo luật Bảo vệ Người tiêu dùng trong Thương mại Điện tử, v.v., thông tin được lưu giữ theo thời hạn quy định của luật liên quan.</p>
+                <ul>
+                    <li>Hồ sơ về hợp đồng hoặc rút lại đăng ký, v.v.: 5 năm</li>
+                    <li>Hồ sơ về thanh toán và cung cấp hàng hóa, v.v.: 5 năm</li>
+                    <li>Hồ sơ về khiếu nại hoặc xử lý tranh chấp của người tiêu dùng: 3 năm</li>
+                    <li>Hồ sơ về xác minh danh tính người dùng bảng tin: 6 tháng</li>
+                </ul>
+
+                <h2>3. Cung cấp thông tin cá nhân cho bên thứ ba</h2>
+                <p>1) Trừ khi có sự đồng ý của thành viên hoặc theo quy định của pháp luật, Công ty sẽ không trong bất kỳ trường hợp nào sử dụng thông tin cá nhân của thành viên vượt quá phạm vi đã thông báo trong chính sách bảo mật này.</p>
+                <p>2) Công ty cung cấp thông tin cá nhân cho bên thứ ba như sau:</p>
+                <p>Bên nhận:</p>
+                <ul><li>Rạp chiếu (danh sách rạp)</li></ul>
+                <p>Mục đích sử dụng:</p>
+                <ul>
+                    <li>Phát vé tại chỗ</li>
+                    <li>Hướng dẫn khách hàng như xác nhận đặt vé và hủy</li>
+                </ul>
+                <p>Các mục cung cấp:</p>
+                <ul><li>Họ tên, ID, số điện thoại, số điện thoại di động, địa chỉ email, ngày sinh</li></ul>
+                <p>Thời hạn lưu giữ và sử dụng:</p>
+                <ul>
+                    <li>Cho đến khi đạt được mục đích sử dụng thông tin cá nhân</li>
+                    <li>Tuy nhiên, nếu luật liên quan yêu cầu lưu giữ hoặc đã có sự đồng ý trước, cho đến hết thời hạn lưu giữ đó</li>
+                </ul>
+
+                <h2>4. Ủy thác xử lý thông tin cá nhân</h2>
+                <p>1) Công ty ủy thác các công việc liên quan đến xử lý thông tin cá nhân như nêu dưới đây, và đảm bảo thông tin cá nhân liên quan không bị sử dụng trái pháp luật.</p>
+                <p>2) Để xử lý trơn tru các công việc về thông tin cá nhân, Công ty ủy thác xử lý thông tin cá nhân như sau:</p>
+                <table>
+                    <thead><tr><th>Bên nhận ủy thác</th><th>Công việc ủy thác</th><th>Các mục ủy thác</th></tr></thead>
+                    <tbody>
+                        <tr><td>KCP</td><td>Xác minh danh tính</td><td>Chỉ xác minh kết quả xác minh danh tính</td></tr>
+                        <tr><td>KS-NET, KCP, Prephis Corea</td><td>Đại lý thanh toán, đại lý quyết toán</td><td>Thông tin thẻ, thông tin thanh toán</td></tr>
+                        <tr><td>Prephis Corea</td><td>Gửi SMS, tin nhắn thông báo KakaoTalk</td><td>Số điện thoại di động</td></tr>
+                        <tr><td>Korea Server Hosting Co., Ltd.</td><td>Lưu trữ và quản lý thông tin cá nhân</td><td>Số điện thoại di động, ngày sinh, họ tên, giá trị CI</td></tr>
+                    </tbody>
+                </table>
+                <p>3) Nếu nội dung công việc ủy thác hoặc bên nhận ủy thác thay đổi, Công ty sẽ công bố qua chính sách bảo mật này ngay lập tức.</p>
+
+                <h2>5. Truy cập và chỉnh sửa thông tin cá nhân, và rút lại đồng ý (Rút lui thành viên)</h2>
+                <p>1) Người dùng có thể bất cứ lúc nào xem hoặc chỉnh sửa thông tin cá nhân đã đăng ký. Để xem hoặc chỉnh sửa thông tin cá nhân, nhấp [Chỉnh sửa thông tin thành viên] hoặc [Chỉnh sửa thông tin tùy chọn], hoàn tất quy trình xác minh mật khẩu và xem hoặc chỉnh sửa trực tiếp; hoặc liên hệ contact@k-cine.com và chúng tôi sẽ xử lý ngay. Lịch sử sử dụng thông tin cá nhân, chi tiết ủy thác xử lý và cung cấp cho bên thứ ba, v.v., có thể được xem hoặc chỉnh sửa khi yêu cầu tới contact@k-cine.com. Để ngừng sử dụng thông tin cá nhân, bạn có thể rút lui thành viên / rút lại đồng ý với điều khoản, hoặc gửi yêu cầu tới contact@k-cine.com.</p>
+                <p>2) Khi người dùng yêu cầu chỉnh sửa lỗi trong thông tin cá nhân, Công ty sẽ không sử dụng hoặc cung cấp thông tin cá nhân liên quan cho đến khi hoàn tất chỉnh sửa. Ngoài ra, nếu thông tin cá nhân sai đã được cung cấp cho bên thứ ba, Công ty sẽ thông báo cho bên thứ ba kết quả chỉnh sửa ngay để chỉnh sửa được thực hiện.</p>
+                <p>3) Tuy nhiên, việc xem và chỉnh sửa thông tin cá nhân có thể bị hạn chế trong các trường hợp sau:</p>
+                <ul>
+                    <li>Có nguy cơ gây hại đáng kể đến tính mạng, thân thể, tài sản hoặc quyền lợi của người đó hoặc bên thứ ba</li>
+                    <li>Có nguy cơ gây gián đoạn đáng kể đến hoạt động kinh doanh của nhà cung cấp dịch vụ liên quan</li>
+                    <li>Vi phạm pháp luật, v.v.</li>
+                </ul>
+                <p>4) Người dùng có thể bất cứ lúc nào rút lại sự đồng ý đã cho về thu thập, sử dụng và cung cấp thông tin cá nhân khi đăng ký. Rút lại đồng ý (rút lui thành viên) có thể thực hiện trực tiếp qua ‘Trang của tôi &gt; Chỉnh sửa thông tin thành viên’ sau khi hoàn tất quy trình xác minh mật khẩu; hoặc liên hệ contact@k-cine.com, chúng tôi sẽ hỗ trợ rút lui ngay.</p>
+
+                <h2>6. Hủy thông tin cá nhân</h2>
+                <p>Theo nguyên tắc, Công ty hủy thông tin cá nhân liên quan ngay khi đạt được mục đích xử lý. Phương thức hủy như sau:</p>
+                <ul>
+                    <li>Tệp điện tử: xóa an toàn để hồ sơ không thể khôi phục hoặc tái tạo</li>
+                    <li>Thông tin cá nhân in trên giấy: hủy bằng cách cắt nhỏ hoặc đốt</li>
+                </ul>
+
+                <h2>7. Thu thập thông tin cá nhân qua Cookie</h2>
+                <p>1) Công ty sử dụng “cookie” lưu trữ và thường xuyên truy xuất thông tin sử dụng để cung cấp dịch vụ tùy chỉnh cá nhân.</p>
+                <p>2) Cookie là một lượng nhỏ thông tin mà máy chủ (http) vận hành website gửi đến trình duyệt máy tính của người dùng, và có thể được lưu trên ổ cứng PC của người dùng.</p>
+                <p>(1) Mục đích sử dụng cookie: Cookie được sử dụng để cung cấp thông tin tối ưu cho người dùng bằng cách xác định hình thức truy cập và sử dụng từng dịch vụ và website người dùng đã truy cập, từ khóa tìm kiếm phổ biến, có sử dụng kết nối bảo mật hay không, v.v.</p>
+                <p>(2) Cài đặt/vận hành và từ chối cookie: Bạn có thể từ chối lưu trữ cookie qua cài đặt tùy chọn trong Công cụ &gt; Tùy chọn Internet &gt; Quyền riêng tư ở đầu trình duyệt web.</p>
+                <p>(3) Nếu từ chối lưu trữ cookie, bạn có thể gặp khó khăn khi sử dụng dịch vụ tùy chỉnh.</p>
+
+                <h2>8. Người phụ trách bảo vệ thông tin cá nhân</h2>
+                <p>1) Công ty chỉ định Người phụ trách bảo vệ thông tin cá nhân như nêu dưới đây, chịu trách nhiệm tổng thể về xử lý thông tin cá nhân và xử lý khiếu nại, cung cấp biện pháp khắc phục liên quan đến xử lý thông tin cá nhân.</p>
+                <p>▶ Người phụ trách bảo vệ thông tin cá nhân: Kim Seon-tae, Nhóm Vận hành IT, 070-4170-6316, contact@k-cine.com</p>
+                <p>▶ Bộ phận bảo vệ thông tin cá nhân: Bộ phận Bảo vệ thông tin cá nhân, Nhóm Vận hành IT, 070-4170-6316, contact@k-cine.com</p>
+                <p>2) Bạn có thể gửi mọi thắc mắc, khiếu nại hoặc yêu cầu khắc phục về bảo vệ thông tin cá nhân phát sinh khi sử dụng dịch vụ của Công ty tới Người phụ trách bảo vệ thông tin cá nhân và bộ phận phụ trách. Công ty sẽ trả lời và xử lý thắc mắc của bạn ngay.</p>
+                <p>3) Nếu bạn cần báo cáo hoặc tư vấn về xâm phạm thông tin cá nhân, bạn có thể tìm sự hỗ trợ từ các tổ chức sau:</p>
+                <p>▶ Trung tâm Báo cáo Xâm phạm Quyền riêng tư: 118 (không mã vùng), https://privacy.kisa.or.kr</p>
+                <p>▶ Viện Kiểm sát Tối cao, Bộ phận Điều tra Mạng: 1301 (không mã vùng), cid@spo.go.kr</p>
+                <p>▶ Cơ quan Cảnh sát Quốc gia, Cục An ninh Mạng: 182 (không mã vùng), https://cyberbureau.police.go.kr</p>
+
+                <h2>9. Biện pháp đảm bảo an toàn thông tin cá nhân</h2>
+                <p>Công ty thực hiện các biện pháp kỹ thuật, quản lý và vật lý cần thiết sau để đảm bảo an toàn, nhằm thông tin cá nhân của người dùng không bị mất, đánh cắp, thay đổi, rò rỉ hoặc hư hại.</p>
+                <p>1) Công ty cài đặt và vận hành hệ thống ngăn chặn xâm nhập để kiểm soát truy cập trái phép từ bên ngoài như tấn công mạng, và cấp quyền truy cập tối thiểu cần thiết theo vai trò công việc cho số nhân sự tối thiểu.</p>
+                <p>2) Công ty cài đặt phần mềm chống virus trên PC, máy chủ và thiết bị tương tự xử lý thông tin cá nhân, luôn cập nhật phiên bản mới nhất, và áp dụng mã hóa để lưu trữ và truyền tải thông tin khách hàng an toàn.</p>
+                <p>3) Công ty tiến hành đào tạo bảo mật về xử lý và nhập thông tin cá nhân, kiểm tra nhân sự và hệ thống liên quan, cùng các nỗ lực khác để đảm bảo xử lý an toàn.</p>
+
+                <h2>10. Thay đổi chính sách bảo mật</h2>
+                <p>1) Chính sách bảo mật này áp dụng từ ngày có hiệu lực. Nếu có bổ sung, xóa hoặc chỉnh sửa nội dung theo pháp luật hoặc chính sách, Công ty sẽ thông báo qua thông báo từ ít nhất 7 ngày trước khi thay đổi có hiệu lực.</p>
+                <p>2) Chúng tôi trân trọng thông tin của bạn và cam kết nỗ lực hết sức để bạn có thể sử dụng dịch vụ của chúng tôi với sự an tâm hơn.</p>
+            </div>
+
+            <!-- ===== Thai ===== -->
+            <div lang="th" class="i18n-el">
+                <p class="intro">K-Cinema Inc. (ต่อไปนี้เรียกว่า “บริษัท”) จัดทำและรักษานโยบายความเป็นส่วนตัวต่อไปนี้ตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล เพื่อคุ้มครองข้อมูลส่วนบุคคลและสิทธิของผู้ใช้ และจัดการข้อร้องเรียนของผู้ใช้ที่เกี่ยวข้องกับข้อมูลส่วนบุคคลอย่างราบรื่น หากบริษัทแก้ไขนโยบายความเป็นส่วนตัวนี้ จะประกาศผ่านประกาศบนเว็บไซต์ (หรือแจ้งเป็นรายบุคคล)</p>
+                <p class="legal-effective">○ นโยบายนี้มีผลบังคับใช้ตั้งแต่วันที่ 15 เมษายน 2026</p>
+
+                <h2>1. วัตถุประสงค์ในการประมวลผลและการเก็บรวบรวมข้อมูลส่วนบุคคล</h2>
+                <p>บริษัทประมวลผลข้อมูลส่วนบุคคลเพื่อวัตถุประสงค์ที่ระบุด้านล่าง ข้อมูลส่วนบุคคลที่ประมวลผลแล้วจะไม่ถูกใช้เพื่อวัตถุประสงค์อื่นนอกเหนือจากที่ระบุไว้ด้านล่าง และหากวัตถุประสงค์การใช้งานเปลี่ยนแปลง บริษัทจะขอความยินยอมล่วงหน้า</p>
+                <h3>1) การเก็บรวบรวมที่จำเป็น</h3>
+                <p>รายการที่เก็บรวบรวม:</p>
+                <ul>
+                    <li>ชื่อ หมายเลขโทรศัพท์มือถือ</li>
+                    <li>ค่าระบุตัวตนส่วนบุคคล (i-PIN / CI)</li>
+                    <li>ID รหัสผ่าน</li>
+                    <li>ที่อยู่อีเมล</li>
+                </ul>
+                <p>วัตถุประสงค์การใช้งาน: การยืนยันตัวตน การยืนยันชื่อจริง และการตรวจสอบการลงทะเบียนซ้ำในการใช้บริการสมาชิก การสร้างช่องทางสื่อสารที่ราบรื่นสำหรับบริการสมาชิกที่จำเป็น การยืนยันการชำระเงินและการจอง การส่งประกาศและการจัดการข้อร้องเรียน ฯลฯ การดำเนินการศูนย์ลูกค้า และการป้องกันการใช้งานในทางที่ผิดโดยสมาชิกที่ไม่เหมาะสมและการใช้งานโดยไม่ได้รับอนุญาต</p>
+                <h3>2) การเก็บรวบรวมที่จำเป็นเมื่อใช้บริการมือถือ</h3>
+                <p>รายการที่เก็บรวบรวม:</p>
+                <ul>
+                    <li>ข้อมูลอุปกรณ์มือถือ</li>
+                    <li>ชื่อรุ่น ประเภท OS เวอร์ชัน OS หมายเลขระบุอุปกรณ์</li>
+                </ul>
+                <p>วัตถุประสงค์การใช้งาน: การสร้างช่องทางสื่อสารที่ราบรื่นสำหรับการส่งประกาศและการจัดการข้อร้องเรียน ฯลฯ การเตรียมพร้อมต่อเหตุการณ์ละเมิดข้อมูลส่วนบุคคล การเก็บบันทึกเพื่อการไกล่เกลี่ยข้อพิพาท การดำเนินการศูนย์ลูกค้า และการป้องกันการใช้งานในทางที่ผิดโดยสมาชิกที่ไม่เหมาะสมและการใช้งานโดยไม่ได้รับอนุญาต</p>
+                <h3>3) การเก็บรวบรวมทางเลือก</h3>
+                <p>รายการที่เก็บรวบรวม:</p>
+                <ul>
+                    <li>หมายเลขโทรศัพท์มือถือ ที่อยู่อีเมล</li>
+                    <li>ที่อยู่ (ที่ทำงานหรือบ้าน)</li>
+                    <li>ข้อมูลการเชื่อมโยงบัญชีโซเชียล/ล็อกอินง่าย</li>
+                    <li>โรงภาพยนตร์ที่ชื่นชอบ</li>
+                    <li>แนวที่ชอบ ช่วงเวลาที่ชอบ รูปโปรไฟล์</li>
+                    <li>ความยินยอมรับการแจ้งเตือน/SMS/อีเมล/ข้อมูลตำแหน่ง</li>
+                </ul>
+                <p>วัตถุประสงค์การใช้งาน: การพัฒนาบริการ (ผลิตภัณฑ์) ใหม่และการให้บริการที่ปรับแต่ง การจัดกิจกรรมและให้ข้อมูลโฆษณา/ส่งเสริมการขายและโอกาสในการเข้าร่วม การให้บริการตามลักษณะประชากรศาสตร์และการตรวจสอบประสิทธิภาพของบริการวางโฆษณา การระบุความถี่การเข้าถึงหรือสถิติการใช้บริการของสมาชิก และบริการที่ใช้ข้อมูลตำแหน่ง</p>
+                <h3>4) ข้อมูลที่สร้าง/เก็บรวบรวมในระหว่างการใช้บริการหรือการประมวลผลทางธุรกิจ</h3>
+                <p>รายการที่เก็บรวบรวม:</p>
+                <ul>
+                    <li>บันทึกการใช้บริการ บันทึกการเข้าถึง</li>
+                    <li>ข้อมูล IP การเข้าถึง บันทึกการชำระเงิน (ข้อมูลบัตรเครดิต ฯลฯ)</li>
+                    <li>คุกกี้</li>
+                </ul>
+                <p>วัตถุประสงค์การใช้งาน: การเตรียมพร้อมต่อเหตุการณ์ละเมิดข้อมูลส่วนบุคคล การเก็บบันทึกเพื่อการไกล่เกลี่ยข้อพิพาท การซื้อสินค้า และการยืนยันนโยบายการประมวลผลนี้</p>
+
+                <h2>2. ระยะเวลาการใช้งานและการเก็บรักษาข้อมูลส่วนบุคคล</h2>
+                <p>1) โดยหลักการ บริษัทจะทำลายข้อมูลส่วนบุคคลโดยไม่ชักช้าเมื่อบรรลุวัตถุประสงค์ในการเก็บรวบรวมและให้บริการแล้ว อย่างไรก็ตาม ในกรณีต่อไปนี้ ข้อมูลสมาชิกทั้งหมดหรือบางส่วนที่เก็บรวบรวมอาจถูกเก็บรักษาเป็นข้อยกเว้นเป็นระยะเวลาหนึ่ง</p>
+                <p>2) ระยะเวลาการประมวลผลและการเก็บรักษาสำหรับแต่ละประเภทข้อมูลส่วนบุคคลมีดังนี้:</p>
+                <p>(1) เพื่อลดความเสียหายจากการถอนตัวและลงทะเบียนใหม่อย่างไม่จำเป็น และจัดการคำขอคืนสถานะหลังเปลี่ยนใจหลังถอนตัว ข้อมูลสมาชิกจะถูกเก็บรักษา 30 วันหลังถอนตัวแล้วทำลายโดยไม่ชักช้า</p>
+                <p>(2) หากระยะเวลาเก็บรักษาได้แจ้งล่วงหน้าและได้รับความยินยอมแยกต่างหาก ข้อมูลจะถูกเก็บรักษาจนถึงสิ้นสุดระยะเวลานั้น</p>
+                <p>(3) ข้อมูลส่วนบุคคลของสมาชิกที่ไม่ได้ใช้งานระยะยาวจะถูกเก็บแยกต่างหาก</p>
+                <p>กฎหมายที่เกี่ยวข้อง: พระราชบัญญัติส่งเสริมการใช้เครือข่ายสารสนเทศและการคุ้มครองข้อมูล มาตรา 29 (ก่อนวันที่ 5 สิงหาคม 2020) พระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล มาตรา 39-6 (ตั้งแต่วันที่ 5 สิงหาคม 2020 เป็นต้นไป)</p>
+                <p>ลูกค้าที่ไม่ได้ใช้งาน: ลูกค้าที่ไม่ได้ใช้บริการเป็นเวลาหนึ่งปีขึ้นไป</p>
+                <ul>
+                    <li>ลูกค้าที่ไม่มีประวัติการเข้าสู่ระบบบนเว็บไซต์ เว็บมือถือ หรือแอปเป็นเวลาหนึ่งปีขึ้นไป</li>
+                    <li>อย่างน้อย 30 วันก่อนการเก็บแยก บริษัทจะแจ้งแยกต่างหากให้ลูกค้าทราบ—ทางอีเมล เป็นลายลักษณ์อักษร แฟกซ์ หรือวิธีที่คล้ายกัน—เกี่ยวกับข้อเท็จจริงที่เกี่ยวข้อง วันที่กำหนดเก็บแยก และรายการข้อมูลส่วนบุคคลที่จะเก็บแยก หากลูกค้าที่ถูกเก็บแยกเข้าสู่ระบบผ่านเว็บ/มือถือหรือใช้บริการ ถือว่าเป็นคำขอใช้งานใหม่และบัญชีจะถูกกู้คืนอัตโนมัติ</li>
+                </ul>
+                <p>(4) หากข้อมูลต้องถูกเก็บรักษาเป็นระยะเวลาหนึ่งตามกฎหมายที่เกี่ยวข้อง เช่น พระราชบัญญัติพาณิชย์ และพระราชบัญญัติคุ้มครองผู้บริโภคในการค้าอิเล็กทรอนิกส์ ฯลฯ ข้อมูลจะถูกเก็บรักษาตามระยะเวลาที่กฎหมายที่เกี่ยวข้องกำหนด</p>
+                <ul>
+                    <li>บันทึกเกี่ยวกับสัญญาหรือการถอนคำสั่งซื้อ ฯลฯ: 5 ปี</li>
+                    <li>บันทึกเกี่ยวกับการชำระเงินและการจัดหาสินค้า ฯลฯ: 5 ปี</li>
+                    <li>บันทึกเกี่ยวกับข้อร้องเรียนหรือการจัดการข้อพิพาทของผู้บริโภค: 3 ปี</li>
+                    <li>บันทึกเกี่ยวกับการยืนยันตัวตนผู้ใช้กระดานข่าว: 6 เดือน</li>
+                </ul>
+
+                <h2>3. การให้ข้อมูลส่วนบุคคลแก่บุคคลที่สาม</h2>
+                <p>1) ยกเว้นเมื่อได้รับความยินยอมจากสมาชิกหรือตามที่กฎหมายกำหนด บริษัทจะไม่ใช้ข้อมูลส่วนบุคคลของสมาชิกเกินขอบเขตที่แจ้งในนโยบายความเป็นส่วนตัวนี้ในทุกกรณี</p>
+                <p>2) บริษัทให้ข้อมูลส่วนบุคคลแก่บุคคลที่สามดังนี้:</p>
+                <p>ผู้รับ:</p>
+                <ul><li>โรงภาพยนตร์ (รายชื่อโรงภาพยนตร์)</li></ul>
+                <p>วัตถุประสงค์การใช้งาน:</p>
+                <ul>
+                    <li>การออกตั๋วหน้างาน</li>
+                    <li>การแนะนำลูกค้า เช่น การยืนยันการจองและการยกเลิก</li>
+                </ul>
+                <p>รายการที่ให้:</p>
+                <ul><li>ชื่อ ID หมายเลขโทรศัพท์ หมายเลขโทรศัพท์มือถือ ที่อยู่อีเมล วันเกิด</li></ul>
+                <p>ระยะเวลาการเก็บรักษาและการใช้งาน:</p>
+                <ul>
+                    <li>จนกว่าจะบรรลุวัตถุประสงค์ในการใช้ข้อมูลส่วนบุคคล</li>
+                    <li>อย่างไรก็ตาม หากกฎหมายที่เกี่ยวข้องกำหนดให้เก็บรักษาหรือได้รับความยินยอมล่วงหน้า จนถึงสิ้นสุดระยะเวลานั้น</li>
+                </ul>
+
+                <h2>4. การมอบหมายการประมวลผลข้อมูลส่วนบุคคล</h2>
+                <p>1) บริษัทมอบหมายงานที่เกี่ยวข้องกับการประมวลผลข้อมูลส่วนบุคคลดังที่ระบุด้านล่าง และรับรองว่าข้อมูลส่วนบุคคลที่เกี่ยวข้องจะไม่ถูกใช้โดยผิดกฎหมาย</p>
+                <p>2) เพื่อการจัดการงานข้อมูลส่วนบุคคลอย่างราบรื่น บริษัทมอบหมายการประมวลผลข้อมูลส่วนบุคคลดังนี้:</p>
+                <table>
+                    <thead><tr><th>ผู้รับมอบหมาย</th><th>งานที่มอบหมาย</th><th>รายการที่มอบหมาย</th></tr></thead>
+                    <tbody>
+                        <tr><td>KCP</td><td>การยืนยันตัวตน</td><td>ยืนยันผลการยืนยันตัวตนเท่านั้น</td></tr>
+                        <tr><td>KS-NET, KCP, Prephis Corea</td><td>ตัวแทนการชำระเงิน ตัวแทนการชำระบัญชี</td><td>ข้อมูลบัตร ข้อมูลการชำระเงิน</td></tr>
+                        <tr><td>Prephis Corea</td><td>การส่ง SMS ข้อความแจ้งเตือน KakaoTalk</td><td>หมายเลขโทรศัพท์มือถือ</td></tr>
+                        <tr><td>Korea Server Hosting Co., Ltd.</td><td>การเก็บรักษาและจัดการข้อมูลส่วนบุคคล</td><td>หมายเลขโทรศัพท์มือถือ วันเกิด ชื่อ ค่า CI</td></tr>
+                    </tbody>
+                </table>
+                <p>3) หากเนื้อหางานที่มอบหมายหรือผู้รับมอบหมายเปลี่ยนแปลง บริษัทจะเปิดเผยผ่านนโยบายความเป็นส่วนตัวนี้โดยไม่ชักช้า</p>
+
+                <h2>5. การเข้าถึงและแก้ไขข้อมูลส่วนบุคคล และการถอนความยินยอม (การถอนสมาชิก)</h2>
+                <p>1) ผู้ใช้สามารถดูหรือแก้ไขข้อมูลส่วนบุคคลที่ลงทะเบียนได้ตลอดเวลา หากต้องการดูหรือแก้ไขข้อมูลส่วนบุคคล คลิก [แก้ไขข้อมูลสมาชิก] หรือ [แก้ไขข้อมูลทางเลือก] ผ่านขั้นตอนยืนยันรหัสผ่านแล้วดูหรือแก้ไขโดยตรง หรือติดต่อ contact@k-cine.com และเราจะดำเนินการโดยไม่ชักช้า ประวัติการใช้ข้อมูลส่วนบุคคล รายละเอียดการมอบหมายประมวลผล และการให้แก่บุคคลที่สาม ฯลฯ สามารถดูหรือแก้ไขได้เมื่อร้องขอไปยัง contact@k-cine.com หากต้องการหยุดการใช้ข้อมูลส่วนบุคคล คุณสามารถถอนสมาชิก / ถอนความยินยอมต่อข้อกำหนด หรือส่งคำขอไปยัง contact@k-cine.com</p>
+                <p>2) เมื่อผู้ใช้ร้องขอแก้ไขข้อผิดพลาดในข้อมูลส่วนบุคคล บริษัทจะไม่ใช้หรือให้ข้อมูลส่วนบุคคลที่เกี่ยวข้องจนกว่าการแก้ไขจะเสร็จสิ้น นอกจากนี้ หากข้อมูลส่วนบุคคลที่ผิดพลาดได้ถูกให้แก่บุคคลที่สามแล้ว บริษัทจะแจ้งผลการแก้ไขแก่บุคคลที่สามโดยไม่ชักช้าเพื่อให้การแก้ไขเกิดขึ้น</p>
+                <p>3) อย่างไรก็ตาม การดูและแก้ไขข้อมูลส่วนบุคคลอาจถูกจำกัดในกรณีต่อไปนี้:</p>
+                <ul>
+                    <li>มีความเสี่ยงที่จะก่อให้เกิดอันตรายอย่างมีนัยสำคัญต่อชีวิต ร่างกาย ทรัพย์สิน หรือสิทธิและผลประโยชน์ของบุคคลหรือบุคคลที่สาม</li>
+                    <li>มีความเสี่ยงที่จะก่อให้เกิดการหยุดชะงักอย่างมีนัยสำคัญต่อธุรกิจของผู้ให้บริการที่เกี่ยวข้อง</li>
+                    <li>เป็นการละเมิดกฎหมาย ฯลฯ</li>
+                </ul>
+                <p>4) ผู้ใช้สามารถถอนความยินยอมที่ให้ไว้เกี่ยวกับการเก็บรวบรวม ใช้งาน และให้ข้อมูลส่วนบุคคลเมื่อลงทะเบียนได้ตลอดเวลา การถอนความยินยอม (การถอนสมาชิก) สามารถทำได้โดยตรงผ่าน ‘หน้าของฉัน &gt; แก้ไขข้อมูลสมาชิก’ หลังผ่านขั้นตอนยืนยันรหัสผ่าน หรือติดต่อ contact@k-cine.com ซึ่งเราจะช่วยถอนสมาชิกโดยไม่ชักช้า</p>
+
+                <h2>6. การทำลายข้อมูลส่วนบุคคล</h2>
+                <p>โดยหลักการ บริษัทจะทำลายข้อมูลส่วนบุคคลที่เกี่ยวข้องโดยไม่ชักช้าเมื่อบรรลุวัตถุประสงค์ในการประมวลผลแล้ว วิธีการทำลายมีดังนี้:</p>
+                <ul>
+                    <li>ไฟล์อิเล็กทรอนิกส์: ลบอย่างปลอดภัยเพื่อไม่ให้บันทึกกู้คืนหรือทำซ้ำได้</li>
+                    <li>ข้อมูลส่วนบุคคลที่พิมพ์บนกระดาษ: ทำลายโดยการฉีกทำลายหรือเผา</li>
+                </ul>
+
+                <h2>7. การเก็บรวบรวมข้อมูลส่วนบุคคลผ่านคุกกี้</h2>
+                <p>1) บริษัทใช้ “คุกกี้” ที่เก็บและดึงข้อมูลการใช้งานบ่อยครั้งเพื่อให้บริการที่ปรับแต่งเป็นรายบุคคล</p>
+                <p>2) คุกกี้คือข้อมูลปริมาณเล็กน้อยที่เซิร์ฟเวอร์ (http) ที่ใช้ในการดำเนินการเว็บไซต์ส่งไปยังเบราว์เซอร์คอมพิวเตอร์ของผู้ใช้ และอาจถูกเก็บบนฮาร์ดดิสก์ของ PC ของผู้ใช้</p>
+                <p>(1) วัตถุประสงค์ของคุกกี้: คุกกี้ใช้เพื่อให้ข้อมูลที่เหมาะสมแก่ผู้ใช้โดยระบุรูปแบบการเยี่ยมชมและการใช้งานแต่ละบริการและเว็บไซต์ที่ผู้ใช้เยี่ยมชม คำค้นหายอดนิยม การใช้การเชื่อมต่อที่ปลอดภัยหรือไม่ ฯลฯ</p>
+                <p>(2) การติดตั้ง/ดำเนินการและการปฏิเสธคุกกี้: คุณสามารถปฏิเสธการเก็บคุกกี้ผ่านการตั้งค่าตัวเลือกใน เครื่องมือ &gt; ตัวเลือกอินเทอร์เน็ต &gt; ความเป็นส่วนตัว ที่ด้านบนของเบราว์เซอร์เว็บ</p>
+                <p>(3) หากปฏิเสธการเก็บคุกกี้ คุณอาจพบความยากลำบากในการใช้บริการที่ปรับแต่ง</p>
+
+                <h2>8. ผู้รับผิดชอบคุ้มครองข้อมูลส่วนบุคคล</h2>
+                <p>1) บริษัทแต่งตั้งผู้รับผิดชอบคุ้มครองข้อมูลส่วนบุคคลดังที่ระบุด้านล่าง รับผิดชอบโดยรวมในการประมวลผลข้อมูลส่วนบุคคล และจัดการข้อร้องเรียนและการเยียวยาที่เกี่ยวข้องกับการประมวลผลข้อมูลส่วนบุคคล</p>
+                <p>▶ ผู้รับผิดชอบคุ้มครองข้อมูลส่วนบุคคล: คิม ซอนแท (Seon-tae Kim) ทีมปฏิบัติการ IT 070-4170-6316 contact@k-cine.com</p>
+                <p>▶ แผนกคุ้มครองข้อมูลส่วนบุคคล: หน่วยคุ้มครองข้อมูลส่วนบุคคล ทีมปฏิบัติการ IT 070-4170-6316 contact@k-cine.com</p>
+                <p>2) คุณสามารถสอบถาม ร้องเรียน หรือขอเยียวยาเกี่ยวกับการคุ้มครองข้อมูลส่วนบุคคลที่เกิดขึ้นระหว่างใช้บริการของบริษัทไปยังผู้รับผิดชอบคุ้มครองข้อมูลส่วนบุคคลและแผนกที่รับผิดชอบ บริษัทจะตอบและจัดการคำถามของคุณโดยไม่ชักช้า</p>
+                <p>3) หากต้องการรายงานหรือปรึกษาเกี่ยวกับการละเมิดข้อมูลส่วนบุคคล คุณสามารถขอความช่วยเหลือจากองค์กรต่อไปนี้:</p>
+                <p>▶ ศูนย์รายงานการละเมิดความเป็นส่วนตัว: 118 (ไม่ต้องใส่รหัสพื้นที่) https://privacy.kisa.or.kr</p>
+                <p>▶ สำนักงานอัยการสูงสุด กองสืบสวนทางไซเบอร์: 1301 (ไม่ต้องใส่รหัสพื้นที่) cid@spo.go.kr</p>
+                <p>▶ สำนักงานตำรวจแห่งชาติ กองบังคับการอาชญากรรมทางไซเบอร์: 182 (ไม่ต้องใส่รหัสพื้นที่) https://cyberbureau.police.go.kr</p>
+
+                <h2>9. มาตรการเพื่อความปลอดภัยของข้อมูลส่วนบุคคล</h2>
+                <p>บริษัทดำเนินมาตรการทางเทคนิค การบริหาร และทางกายภาพที่จำเป็นต่อไปนี้เพื่อความปลอดภัย เพื่อไม่ให้ข้อมูลส่วนบุคคลของผู้ใช้สูญหาย ถูกขโมย ถูกแก้ไข รั่วไหล หรือเสียหาย</p>
+                <p>1) บริษัทติดตั้งและดำเนินการระบบป้องกันการบุกรุกเพื่อควบคุมการเข้าถึงโดยไม่ได้รับอนุญาตจากภายนอก เช่น การแฮ็ก และมอบสิทธิ์การเข้าถึงขั้นต่ำที่จำเป็นตามบทบาทงานให้กับบุคลากรจำนวนน้อยที่สุด</p>
+                <p>2) บริษัทติดตั้งซอฟต์แวร์ป้องกันไวรัสบน PC เซิร์ฟเวอร์ และอุปกรณ์ที่จัดการข้อมูลส่วนบุคคล และอัปเดตให้เป็นสถานะล่าสุดตลอดเวลา รวมถึงใช้การเข้ารหัสเพื่อเก็บรักษาและส่งข้อมูลลูกค้าอย่างปลอดภัย</p>
+                <p>3) บริษัทจัดการฝึกอบรมด้านความปลอดภัยเกี่ยวกับการจัดการและป้อนข้อมูลส่วนบุคคล และตรวจสอบบุคลากรและระบบที่เกี่ยวข้อง รวมถึงความพยายามอื่นๆ เพื่อให้มั่นใจในการจัดการอย่างปลอดภัย</p>
+
+                <h2>10. การเปลี่ยนแปลงนโยบายความเป็นส่วนตัว</h2>
+                <p>1) นโยบายความเป็นส่วนตัวนี้มีผลบังคับใช้ตั้งแต่วันที่มีผล หากมีการเพิ่ม ลบ หรือแก้ไขเนื้อหาตามกฎหมายหรือนโยบาย บริษัทจะแจ้งผ่านประกาศอย่างน้อย 7 วันก่อนการเปลี่ยนแปลงมีผลบังคับใช้</p>
+                <p>2) เราให้ความสำคัญกับข้อมูลของคุณ และสัญญาว่าจะพยายามอย่างเต็มที่เพื่อให้คุณใช้บริการของเราได้อย่างสบายใจยิ่งขึ้น</p>
+            </div>
         </div>
     </div>
 </main>
@@ -379,33 +815,22 @@
         <div class="footer-left">
             <div class="footer-brand"><span class="k">K</span>-Cinema Inc.</div>
             <div class="footer-links">
-                <a class="priv" href="privacy.html"><span lang="ko" class="i18n-el">개인정보처리방침</span><span lang="en" class="i18n-el">Privacy Policy</span></a>
-                <a href="terms.html"><span lang="ko" class="i18n-el">이용약관</span><span lang="en" class="i18n-el">Terms of Service</span></a>
-                <a href="data-deletion.html"><span lang="ko" class="i18n-el">데이터 삭제 안내</span><span lang="en" class="i18n-el">Data Deletion</span></a>
+                <a class="priv" href="privacy.html"><span lang="ko" class="i18n-el">개인정보처리방침</span><span lang="en" class="i18n-el">Privacy Policy</span><span lang="zh" class="i18n-el">隐私政策</span><span lang="vi" class="i18n-el">Chính sách bảo mật</span><span lang="th" class="i18n-el">นโยบายความเป็นส่วนตัว</span></a>
+                <a href="terms.html"><span lang="ko" class="i18n-el">이용약관</span><span lang="en" class="i18n-el">Terms of Service</span><span lang="zh" class="i18n-el">使用条款</span><span lang="vi" class="i18n-el">Điều khoản sử dụng</span><span lang="th" class="i18n-el">ข้อกำหนดการใช้งาน</span></a>
+                <a href="data-deletion.html"><span lang="ko" class="i18n-el">데이터 삭제 안내</span><span lang="en" class="i18n-el">Data Deletion</span><span lang="zh" class="i18n-el">数据删除说明</span><span lang="vi" class="i18n-el">Hướng dẫn xóa dữ liệu</span><span lang="th" class="i18n-el">คำแนะนำการลบข้อมูล</span></a>
             </div>
         </div>
         <div>
             <span lang="ko" class="i18n-el">© 2026 (주)케이시네마 · 사업자등록번호 452-86-03560 · 통신판매업 신고번호 제2026-서울영등포-1199호 · All rights reserved.</span>
             <span lang="en" class="i18n-el">© 2026 K-Cinema Inc. · Business Reg. 452-86-03560 · E-Commerce Reg. 2026-Seoul Yeongdeungpo-1199 · All rights reserved.</span>
+            <span lang="zh" class="i18n-el">© 2026 K-Cinema株式会社 · 营业执照号 452-86-03560 · 通信销售业申报号 第2026-首尔永登浦-1199号 · All rights reserved.</span>
+            <span lang="vi" class="i18n-el">© 2026 K-Cinema Inc. · ĐKKD 452-86-03560 · TMĐT 2026-Seoul Yeongdeungpo-1199 · All rights reserved.</span>
+            <span lang="th" class="i18n-el">© 2026 K-Cinema Inc. · เลขทะเบียนธุรกิจ 452-86-03560 · E-Commerce 2026-Seoul Yeongdeungpo-1199 · All rights reserved.</span>
         </div>
     </div>
 </footer>
 
-<script>
-(function(){
-    var KEY = 'kc-lang';
-    function apply(l){
-        document.documentElement.setAttribute('data-lang', l);
-        document.documentElement.setAttribute('lang', l);
-        try { localStorage.setItem(KEY, l); } catch(e){}
-    }
-    document.addEventListener('DOMContentLoaded', function(){
-        document.querySelectorAll('.lang-toggle button').forEach(function(b){
-            b.addEventListener('click', function(){ apply(b.getAttribute('data-setlang')); });
-        });
-    });
-})();
-</script>
+<script src="js/i18n.js"></script>
 
 </body>
 </html>

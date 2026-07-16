@@ -8,6 +8,7 @@
     <meta property="og:title" content="K-Cinema | (주)케이시네마">
     <meta property="og:description" content="Language should never be a barrier to enjoying cinema.">
     <meta property="og:type" content="website">
+    <script>(function(){try{var L=['ko','en','zh','vi','th'];var q=new URLSearchParams(location.search).get('lang');if(q)q=q.toLowerCase();var s=localStorage.getItem('kc-lang');var n=(navigator.language||'').toLowerCase();var l=L.indexOf(q)>=0?q:L.indexOf(s)>=0?s:n.indexOf('ko')===0?'ko':n.indexOf('zh')===0?'zh':n.indexOf('vi')===0?'vi':n.indexOf('th')===0?'th':'en';document.documentElement.setAttribute('data-lang',l);document.documentElement.setAttribute('lang',l);if(L.indexOf(q)>=0)try{localStorage.setItem('kc-lang',q);}catch(e){}}catch(e){}})();</script>
     <meta property="og:url" content="https://www.k-cine.com">
     <meta property="og:image" content="https://www.k-cine.com/logo.png">
     <link rel="icon" type="image/png" href="logo.png">
@@ -120,12 +121,19 @@
         }
         .lang-toggle button:hover { color: var(--text); }
         [data-lang="ko"] .lang-toggle [data-setlang="ko"],
-        [data-lang="en"] .lang-toggle [data-setlang="en"] {
+        [data-lang="en"] .lang-toggle [data-setlang="en"],
+        [data-lang="zh"] .lang-toggle [data-setlang="zh"],
+        [data-lang="vi"] .lang-toggle [data-setlang="vi"],
+        [data-lang="th"] .lang-toggle [data-setlang="th"] {
             background: var(--primary);
             color: #FFF;
         }
         @media (max-width: 780px) {
             .nav-links { display: none; }
+            .lang-toggle button {
+                padding: 5px 8px;
+                font-size: 11px;
+            }
         }
 
         /* ===== Hero ===== */
@@ -600,6 +608,9 @@
             <div class="lang-toggle" role="group" aria-label="Language">
                 <button type="button" data-setlang="ko">KO</button>
                 <button type="button" data-setlang="en">EN</button>
+                <button type="button" data-setlang="zh">ZH</button>
+                <button type="button" data-setlang="vi">VI</button>
+                <button type="button" data-setlang="th">TH</button>
             </div>
         </div>
     </div>
@@ -759,7 +770,7 @@
                 <img src="images/ceo.png" alt="" onerror="this.style.display='none'">
             </div>
             <div>
-                <div class="leader-name"><span data-i18n="leader.name">김선태</span><span class="en" lang="en">Seon-tae Kim</span></div>
+                <div class="leader-name" data-i18n="leader.name">김선태</div>
                 <div class="leader-title" data-i18n="leader.role">대표이사 · CEO</div>
                 <dl class="leader-bio">
                     <dt data-i18n="leader.bio1.dt">경력</dt>
@@ -1007,16 +1018,279 @@
             'footer.terms': 'Terms of Service',
             'footer.dataDeletion': 'Data Deletion',
             'footer.meta': '© 2026 K-Cinema Inc. · Business Reg. 452-86-03560 · E-Commerce Reg. 2026-Seoul Yeongdeungpo-1199 · All rights reserved.'
+        },
+        zh: {
+            'nav.about': '介绍', 'nav.service': '功能', 'nav.app': '应用', 'nav.audience': '客户', 'nav.leadership': '代表', 'nav.contact': '公司',
+
+            'hero.tagline': '语言不应成为观影的<span class="emph">障碍</span>。',
+            'hero.sub': '基于AI字幕自动翻译的电影购票服务',
+
+            'about.eyebrow': '介绍',
+            'about.title': '打造没有语言障碍的影院',
+            'about.lead': 'K-Cinema株式会社是一家2026年1月成立的初创企业。我们开发了集AI字幕自动翻译与电影购票于一体的一站式平台，让生活在韩国的约265万外国居留者能够不受语言障碍地享受韩国电影。',
+            'about.card1.title': '让您沉浸其中的字幕',
+            'about.card1.p': '将韩语对白翻译为英语、中文、越南语——不是直译，而是传达原对白的语气和情感。专为已在YouTube和Netflix上欣赏韩国内容的观众而设计。',
+            'about.card2.title': '韩语电影，用您的语言',
+            'about.card2.p': '不是在家，不是流媒体——而是在真正的影院，从上映首日起，在大银幕上提供多语言字幕。选择场次、选择座位，一切搞定。',
+
+            'service.eyebrow': '功能',
+            'service.title': 'K-Cinema提供的服务',
+            'service.s1.title': 'AI字幕自动翻译',
+            'service.s1.desc': '将韩国电影对白转化为外国观众能够自然跟读的字幕——不是逐字翻译，而是保留原作的语气与情感。',
+            'service.s1.li1': '提供英语 · 中文 · 越南语字幕',
+            'service.s1.li2': '配合上映时间快速供应',
+            'service.s1.li3': '保留语境与语感的翻译品质',
+            'service.s2.title': '多语言电影购票应用',
+            'service.s2.desc': '不懂韩语也能用母语选片、选座、支付。从选片到抵达影院前的所有流程，一个应用全部搞定。',
+            'service.s2.li1': '以母语查看上映作品与时间表',
+            'service.s2.li2': '实时选座',
+            'service.s2.li3': '应用内直接支付',
+            'service.s3.title': '专属多语言放映厅',
+            'service.s3.desc': '全国40余家影院从上映首日起每日放映带多语言字幕的韩国电影。不是在家看OTT，而是在影院大银幕上才能体验到的观影。',
+            'service.s3.li1': '上映首日起多语言字幕放映',
+            'service.s3.li2': 'CGV · 乐天影院 · Megabox 40余家分店',
+            'service.s3.li3': '只有在大银幕上才能体验的沉浸感',
+
+            'app.eyebrow': '应用预览',
+            'app.title': '掌中完成的购票体验',
+            'app.lead': '在首页查看多语言上映作品，选座、支付——全程使用您的母语。',
+            'app.phone1.label': '便捷注册',
+            'app.phone1.desc': '手机号验证，几秒即可开始。',
+            'app.phone2.label': '首页 · 浏览作品',
+            'app.phone2.desc': '一目了然地查看正在上映的多语言字幕电影。',
+            'app.phone3.label': '购票 · 选座',
+            'app.phone3.desc': '实时选择场次与座位。',
+
+            'audience.eyebrow': '客户',
+            'audience.title': '生活在韩国，却无法欣赏韩国电影的人们',
+            'audience.lead': '国内外国居留者约265万人——相当于一个广域市的规模，却在韩国电影市场中几乎不可见。K-Cinema将她们作为首要客户。',
+            'audience.s1': '国内外国居留者',
+            'audience.s2': '中文使用者',
+            'audience.s3': '越南语使用者',
+            'audience.s4': '英语使用者',
+            'unit.10k': '万', 'unit.10kplus': '万+',
+
+            'leader.eyebrow': '代表',
+            'leader.title': '由运营过34家影院的人打造',
+            'leader.name': '金善泰',
+            'leader.role': '代表董事 · CEO',
+            'leader.bio1.dt': '经历',
+            'leader.bio1.dd': '<ul class="bio-list"><li>曾任小型影院社会合作社理事长（~2023）</li><li>任内运营全国34家影院、320名员工</li><li>年观众250万人次，年营收192亿韩元（2019年基准）</li></ul>',
+            'leader.bio2.dt': '过往履历',
+            'leader.bio2.dd': '<ul class="bio-list"><li>三星物产建设部门</li><li>CDCash互联网事业团队长</li><li>CineMeister代表</li></ul>',
+            'leader.bio3.dt': '获奖',
+            'leader.bio3.dd': '<ul class="bio-list"><li>文化体育观光部长官表彰（2013）</li><li>国务总理表彰（2020）</li></ul>',
+
+            'contact.eyebrow': '公司',
+            'contact.title': '公司信息与联系方式',
+            'contact.company': '公司名称',
+            'contact.companyV': 'K-Cinema株式会社',
+            'contact.ceo': '代表',
+            'contact.ceoV': '金善泰',
+            'contact.founded': '成立日期',
+            'contact.bizreg': '营业执照号',
+            'contact.ecreg': '通信销售业申报号',
+            'contact.ecregV': '第2026-首尔永登浦-1199号',
+            'contact.corpreg': '法人登记号',
+            'contact.web': '网站',
+            'contact.address': '总部',
+            'contact.addressV': '首尔永登浦区国会议事堂路74街20号 Manhattan21 517室（07238）',
+            'contact.reach': '联系方式',
+
+            'footer.privacy': '隐私政策',
+            'footer.terms': '使用条款',
+            'footer.dataDeletion': '数据删除说明',
+            'footer.meta': '© 2026 K-Cinema株式会社 · 营业执照号 452-86-03560 · 通信销售业申报号 第2026-首尔永登浦-1199号 · All rights reserved.'
+        },
+        vi: {
+            'nav.about': 'Giới thiệu', 'nav.service': 'Tính năng', 'nav.app': 'Ứng dụng', 'nav.audience': 'Khách hàng', 'nav.leadership': 'CEO', 'nav.contact': 'Công ty',
+
+            'hero.tagline': 'Ngôn ngữ không nên là <span class="emph">rào cản</span> khi thưởng thức điện ảnh.',
+            'hero.sub': 'Dịch vụ đặt vé phim dựa trên phụ đề AI tự động dịch',
+
+            'about.eyebrow': 'Giới thiệu',
+            'about.title': 'Xây dựng rạp chiếu không rào cản ngôn ngữ',
+            'about.lead': 'K-Cinema Inc. là startup thành lập tháng 1/2026. Chúng tôi phát triển nền tảng tích hợp — dịch phụ đề AI kết hợp đặt vé phim — giúp khoảng 2,65 triệu người nước ngoài cư trú tại Hàn Quốc thưởng thức phim Hàn mà không bị cản trở bởi ngôn ngữ.',
+            'about.card1.title': 'Phụ đề cuốn hút bạn vào bộ phim',
+            'about.card1.p': 'Lời thoại tiếng Hàn được dịch sang tiếng Anh, Trung và Việt — không phải dịch word-by-word mà giữ nguyên sắc thái và cảm xúc. Phù hợp với khán giả đã quen xem nội dung Hàn trên YouTube và Netflix.',
+            'about.card2.title': 'Phim Hàn, phụ đề ngôn ngữ của bạn',
+            'about.card2.p': 'Không ở nhà, không phải streaming — mà tại rạp thật, từ ngày công chiếu, với phụ đề đa ngôn ngữ trên màn hình lớn. Chọn suất chiếu, chọn ghế, xong.',
+
+            'service.eyebrow': 'Tính năng',
+            'service.title': 'K-Cinema mang đến điều gì',
+            'service.s1.title': 'Dịch phụ đề AI tự động',
+            'service.s1.desc': 'Lời thoại phim Hàn được chuyển thành phụ đề mà khán giả nước ngoài có thể theo dõi tự nhiên — không dịch word-by-word mà giữ cảm xúc và sắc thái của bản gốc.',
+            'service.s1.li1': 'Phụ đề tiếng Anh · Trung · Việt',
+            'service.s1.li2': 'Cung cấp kịp thời theo lịch công chiếu',
+            'service.s1.li3': 'Chất lượng dịch giữ ngữ cảnh và cảm giác ngôn ngữ',
+            'service.s2.title': 'Ứng dụng đặt vé đa ngôn ngữ',
+            'service.s2.desc': 'Không biết tiếng Hàn vẫn chọn phim, chọn ghế và thanh toán bằng ngôn ngữ của bạn. Mọi bước trước khi đến rạp — trong một ứng dụng.',
+            'service.s2.li1': 'Xem lịch chiếu và phim bằng ngôn ngữ của bạn',
+            'service.s2.li2': 'Chọn ghế thời gian thực',
+            'service.s2.li3': 'Thanh toán trực tiếp trong ứng dụng',
+            'service.s3.title': 'Rạp chiếu đa ngôn ngữ chuyên biệt',
+            'service.s3.desc': 'Phim Hàn với phụ đề đa ngôn ngữ, từ ngày công chiếu — chiếu hàng ngày tại hơn 40 rạp trên toàn quốc. Trải nghiệm màn hình lớn, không phải xem ở nhà.',
+            'service.s3.li1': 'Phụ đề đa ngôn ngữ từ ngày công chiếu',
+            'service.s3.li2': 'Hơn 40 địa điểm CGV · Lotte Cinema · Megabox',
+            'service.s3.li3': 'Trải nghiệm màn hình lớn chỉ có tại rạp',
+
+            'app.eyebrow': 'Xem trước ứng dụng',
+            'app.title': 'Trải nghiệm đặt vé trong lòng bàn tay',
+            'app.lead': 'Xem phim đa ngôn ngữ trên màn hình chính, chọn ghế, thanh toán — mọi bước bằng ngôn ngữ của bạn.',
+            'app.phone1.label': 'Đăng ký dễ dàng',
+            'app.phone1.desc': 'Xác minh số điện thoại, bắt đầu trong vài giây.',
+            'app.phone2.label': 'Trang chủ · Duyệt phim',
+            'app.phone2.desc': 'Xem tất cả phim phụ đề đa ngôn ngữ đang chiếu.',
+            'app.phone3.label': 'Đặt vé · Chọn ghế',
+            'app.phone3.desc': 'Chọn suất chiếu và ghế theo thời gian thực.',
+
+            'audience.eyebrow': 'Khách hàng',
+            'audience.title': 'Sống ở Hàn Quốc nhưng không thể xem phim Hàn',
+            'audience.lead': 'Hơn 2,65 triệu người nước ngoài cư trú tại Hàn Quốc — quy mô bằng một thành phố lớn, nhưng gần như vô hình trong thị trường phim Hàn. K-Cinema phục vụ họ trước tiên.',
+            'audience.s1': 'Người nước ngoài cư trú tại Hàn',
+            'audience.s2': 'Người nói tiếng Trung',
+            'audience.s3': 'Người nói tiếng Việt',
+            'audience.s4': 'Người nói tiếng Anh',
+            'unit.10k': ' vạn', 'unit.10kplus': ' vạn+',
+
+            'leader.eyebrow': 'CEO',
+            'leader.title': 'Được xây dựng bởi người từng vận hành 34 rạp phim',
+            'leader.name': 'Kim Seon-tae',
+            'leader.role': 'Giám đốc điều hành · CEO',
+            'leader.bio1.dt': 'Sự nghiệp',
+            'leader.bio1.dd': '<ul class="bio-list"><li>Cựu Chủ tịch Hợp tác xã Xã hội Rạp phim Nhỏ (~2023)</li><li>Quản lý 34 rạp và 320 nhân viên trên toàn quốc</li><li>Đỉnh cao: 2,5 triệu khán giả/năm, doanh thu 192 tỷ KRW (2019)</li></ul>',
+            'leader.bio2.dt': 'Kinh nghiệm trước đây',
+            'leader.bio2.dd': '<ul class="bio-list"><li>Samsung C&amp;T, Bộ phận Xây dựng</li><li>CDCash, Trưởng nhóm Kinh doanh Internet</li><li>CineMeister, CEO</li></ul>',
+            'leader.bio3.dt': 'Giải thưởng',
+            'leader.bio3.dd': '<ul class="bio-list"><li>Bằng khen Bộ Văn hóa, Thể thao và Du lịch (2013)</li><li>Bằng khen Thủ tướng (2020)</li></ul>',
+
+            'contact.eyebrow': 'Công ty',
+            'contact.title': 'Thông tin công ty & Liên hệ',
+            'contact.company': 'Tên công ty',
+            'contact.companyV': 'K-Cinema Inc.',
+            'contact.ceo': 'CEO',
+            'contact.ceoV': 'Kim Seon-tae',
+            'contact.founded': 'Ngày thành lập',
+            'contact.bizreg': 'Số đăng ký kinh doanh',
+            'contact.ecreg': 'Số đăng ký thương mại điện tử',
+            'contact.ecregV': '2026-Seoul Yeongdeungpo-1199',
+            'contact.corpreg': 'Số đăng ký pháp nhân',
+            'contact.web': 'Website',
+            'contact.address': 'Trụ sở',
+            'contact.addressV': 'Manhattan21 #517, 20 Gukhoe-daero 74-gil, Yeongdeungpo-gu, Seoul 07238, Hàn Quốc',
+            'contact.reach': 'Liên hệ',
+
+            'footer.privacy': 'Chính sách bảo mật',
+            'footer.terms': 'Điều khoản sử dụng',
+            'footer.dataDeletion': 'Hướng dẫn xóa dữ liệu',
+            'footer.meta': '© 2026 K-Cinema Inc. · ĐKKD 452-86-03560 · TMĐT 2026-Seoul Yeongdeungpo-1199 · All rights reserved.'
+        },
+        th: {
+            'nav.about': 'แนะนำ', 'nav.service': 'ฟีเจอร์', 'nav.app': 'แอป', 'nav.audience': 'ลูกค้า', 'nav.leadership': 'CEO', 'nav.contact': 'บริษัท',
+
+            'hero.tagline': 'ภาษาไม่ควรเป็น<span class="emph">อุปสรรค</span>ในการรับชมภาพยนตร์',
+            'hero.sub': 'บริการจองตั๋วหนังด้วยคำบรรยาย AI แปลอัตโนมัติ',
+
+            'about.eyebrow': 'แนะนำ',
+            'about.title': 'สร้างโรงภาพยนตร์ที่ไม่มีอุปสรรคด้านภาษา',
+            'about.lead': 'K-Cinema Inc. เป็นสตาร์ทอัพที่ก่อตั้งในเดือนมกราคม 2026 เราพัฒนาแพลตฟอร์มแบบครบวงจร — แปลคำบรรยาย AI ร่วมกับการจองตั๋วหนัง — เพื่อให้ชาวต่างชาติที่อาศัยอยู่ในเกาหลีกว่า 2.65 ล้านคน สามารถเพลิดเพลินกับภาพยนตร์เกาหลีได้โดยไม่มีอุปสรรคด้านภาษา',
+            'about.card1.title': 'คำบรรยายที่ดึงคุณเข้าสู่เรื่อง',
+            'about.card1.p': 'บทสนทนาภาษาเกาหลีแปลเป็นอังกฤษ จีน และเวียดนาม — ไม่ใช่การแปลตรงตัว แต่ถ่ายทอดน้ำเสียงและอารมณ์ของต้นฉบับ เหมาะสำหรับผู้ชมที่คุ้นเคยกับคอนเทนต์เกาหลีบน YouTube และ Netflix',
+            'about.card2.title': 'ภาพยนตร์เกาหลี ด้วยภาษาของคุณ',
+            'about.card2.p': 'ไม่ใช่ที่บ้าน ไม่ใช่สตรีมมิ่ง — แต่ในโรงภาพยนตร์จริง ตั้งแต่วันเปิดฉาย พร้อมคำบรรยายหลายภาษาบนจอใหญ่ เลือกรอบ เลือกที่นั่ง เสร็จสิ้น',
+
+            'service.eyebrow': 'ฟีเจอร์',
+            'service.title': 'K-Cinema มอบอะไรให้คุณ',
+            'service.s1.title': 'แปลคำบรรยาย AI อัตโนมัติ',
+            'service.s1.desc': 'บทสนทนาภาพยนตร์เกาหลีกลายเป็นคำบรรยายที่ผู้ชมต่างชาติติดตามได้อย่างเป็นธรรมชาติ — ไม่ใช่การแปลทีละคำ แต่รักษาความรู้สึกและนuance ของต้นฉบับ',
+            'service.s1.li1': 'คำบรรยายภาษาอังกฤษ · จีน · เวียดนาม',
+            'service.s1.li2': 'พร้อมใช้ทันกำหนดการฉาย',
+            'service.s1.li3': 'คุณภาพการแปลที่รักษาบริบทและน้ำเสียง',
+            'service.s2.title': 'แอปจองตั๋วหลายภาษา',
+            'service.s2.desc': 'ไม่รู้ภาษาเกาหลีก็เลือกหนัง เลือกที่นั่ง และชำระเงินได้ด้วยภาษาของคุณ ทุกขั้นตอนก่อนไปโรงภาพยนตร์ — ในแอปเดียว',
+            'service.s2.li1': 'ดูตารางฉายและเรื่องด้วยภาษาของคุณ',
+            'service.s2.li2': 'เลือกที่นั่งแบบเรียลไทม์',
+            'service.s2.li3': 'ชำระเงินในแอปโดยตรง',
+            'service.s3.title': 'โรงฉายหลายภาษาเฉพาะทาง',
+            'service.s3.desc': 'ภาพยนตร์เกาหลีพร้อมคำบรรยายหลายภาษา ตั้งแต่วันเปิดฉาย — ฉายทุกวันในกว่า 40 โรงทั่วประเทศ ประสบการณ์จอใหญ่ ไม่ใช่สตรีมมิ่งที่บ้าน',
+            'service.s3.li1': 'คำบรรยายหลายภาษาตั้งแต่วันเปิดฉาย',
+            'service.s3.li2': 'กว่า 40 สาขา CGV · Lotte Cinema · Megabox',
+            'service.s3.li3': 'ประสบการณ์จอใหญ่ที่มีเฉพาะในโรงภาพยนตร์',
+
+            'app.eyebrow': 'ตัวอย่างแอป',
+            'app.title': 'ประสบการณ์จองตั๋วในมือคุณ',
+            'app.lead': 'ดูหนังหลายภาษาบนหน้าหลัก เลือกที่นั่ง ชำระเงิน — ทุกขั้นตอนด้วยภาษาของคุณ',
+            'app.phone1.label': 'สมัครง่าย',
+            'app.phone1.desc': 'ยืนยันเบอร์โทร เริ่มต้นในไม่กี่วินาที',
+            'app.phone2.label': 'หน้าหลัก · เรียกดู',
+            'app.phone2.desc': 'ดูหนังคำบรรยายหลายภาษาที่กำลังฉายได้ในที่เดียว',
+            'app.phone3.label': 'จอง · เลือกที่นั่ง',
+            'app.phone3.desc': 'เลือกรอบฉายและที่นั่งแบบเรียลไทม์',
+
+            'audience.eyebrow': 'ลูกค้า',
+            'audience.title': 'อาศัยอยู่ในเกาหลี แต่ไม่สามารถดูภาพยนตร์เกาหลีได้',
+            'audience.lead': 'ชาวต่างชาติที่อาศัยอยู่ในเกาหลีกว่า 2.65 ล้านคน — ขนาดเทียบเท่าเมืองใหญ่ แต่แทบมองไม่เห็นในตลาดภาพยนตร์เกาหลี K-Cinema ให้บริการพวกเขาเป็นอันดับแรก',
+            'audience.s1': 'ชาวต่างชาติในเกาหลี',
+            'audience.s2': 'ผู้พูดภาษาจีน',
+            'audience.s3': 'ผู้พูดภาษาเวียดนาม',
+            'audience.s4': 'ผู้พูดภาษาอังกฤษ',
+            'unit.10k': ' หมื่น', 'unit.10kplus': ' หมื่น+',
+
+            'leader.eyebrow': 'CEO',
+            'leader.title': 'สร้างโดยผู้ที่เคยบริหาร 34 โรงภาพยนตร์',
+            'leader.name': 'Kim Seon-tae',
+            'leader.role': 'ประธานเจ้าหน้าที่บริหาร · CEO',
+            'leader.bio1.dt': 'ประวัติการทำงาน',
+            'leader.bio1.dd': '<ul class="bio-list"><li>อดีตประธานสหกรณ์สังคมโรงภาพยนตร์ขนาดเล็ก (~2023)</li><li>บริหาร 34 โรงและพนักงาน 320 คนทั่วประเทศ</li><li>สูงสุด: ผู้ชม 2.5 ล้านคน/ปี รายได้ 19.2 พันล้านวอน (2019)</li></ul>',
+            'leader.bio2.dt': 'ประสบการณ์ก่อนหน้า',
+            'leader.bio2.dd': '<ul class="bio-list"><li>Samsung C&amp;T ฝ่ายก่อสร้าง</li><li>CDCash หัวหน้าทีมธุรกิจอินเทอร์เน็ต</li><li>CineMeister CEO</li></ul>',
+            'leader.bio3.dt': 'รางวัล',
+            'leader.bio3.dd': '<ul class="bio-list"><li>เกียรติบัตรจากกระทรวงวัฒนธรรม กีฬา และการท่องเที่ยว (2013)</li><li>เกียรติบัตรจากนายกรัฐมนตรี (2020)</li></ul>',
+
+            'contact.eyebrow': 'บริษัท',
+            'contact.title': 'ข้อมูลบริษัทและการติดต่อ',
+            'contact.company': 'ชื่อบริษัท',
+            'contact.companyV': 'K-Cinema Inc.',
+            'contact.ceo': 'CEO',
+            'contact.ceoV': 'Kim Seon-tae',
+            'contact.founded': 'วันที่ก่อตั้ง',
+            'contact.bizreg': 'เลขทะเบียนธุรกิจ',
+            'contact.ecreg': 'เลขแจ้งพาณิชย์อิเล็กทรอนิกส์',
+            'contact.ecregV': '2026-Seoul Yeongdeungpo-1199',
+            'contact.corpreg': 'เลขทะเบียนนิติบุคคล',
+            'contact.web': 'เว็บไซต์',
+            'contact.address': 'สำนักงานใหญ่',
+            'contact.addressV': 'Manhattan21 #517, 20 Gukhoe-daero 74-gil, Yeongdeungpo-gu, Seoul 07238, สาธารณรัฐเกาหลี',
+            'contact.reach': 'ติดต่อ',
+
+            'footer.privacy': 'นโยบายความเป็นส่วนตัว',
+            'footer.terms': 'ข้อกำหนดการใช้งาน',
+            'footer.dataDeletion': 'คำแนะนำการลบข้อมูล',
+            'footer.meta': '© 2026 K-Cinema Inc. · เลขทะเบียนธุรกิจ 452-86-03560 · E-Commerce 2026-Seoul Yeongdeungpo-1199 · All rights reserved.'
         }
     };
 
     const STORAGE_KEY = 'kc-lang';
+    const LANGS = ['ko', 'en', 'zh', 'vi', 'th'];
+
+    function getLangFromQuery() {
+        const param = new URLSearchParams(window.location.search).get('lang');
+        if (!param) return null;
+        const normalized = param.toLowerCase();
+        return LANGS.includes(normalized) ? normalized : null;
+    }
 
     function getInitialLang() {
+        const fromQuery = getLangFromQuery();
+        if (fromQuery) return fromQuery;
         const stored = localStorage.getItem(STORAGE_KEY);
-        if (stored === 'ko' || stored === 'en') return stored;
+        if (LANGS.includes(stored)) return stored;
         const nav = (navigator.language || '').toLowerCase();
-        return nav.startsWith('ko') ? 'ko' : 'en';
+        if (nav.startsWith('ko')) return 'ko';
+        if (nav.startsWith('zh')) return 'zh';
+        if (nav.startsWith('vi')) return 'vi';
+        if (nav.startsWith('th')) return 'th';
+        return 'en';
     }
 
     function apply(lang) {

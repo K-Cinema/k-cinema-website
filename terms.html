@@ -7,7 +7,7 @@
     <meta name="description" content="(주)케이시네마 이용약관 · K-Cinema Inc. Terms of Service">
     <meta name="robots" content="index,follow">
     <link rel="icon" type="image/png" href="logo.png">
-    <script>(function(){try{var s=localStorage.getItem('kc-lang');var l=(s==='ko'||s==='en')?s:((navigator.language||'').toLowerCase().indexOf('ko')===0?'ko':'en');document.documentElement.setAttribute('data-lang',l);document.documentElement.setAttribute('lang',l);}catch(e){}})();</script>
+    <script>(function(){try{var L=['ko','en','zh','vi','th'];var q=new URLSearchParams(location.search).get('lang');if(q)q=q.toLowerCase();var s=localStorage.getItem('kc-lang');var n=(navigator.language||'').toLowerCase();var l=L.indexOf(q)>=0?q:L.indexOf(s)>=0?s:n.indexOf('ko')===0?'ko':n.indexOf('zh')===0?'zh':n.indexOf('vi')===0?'vi':n.indexOf('th')===0?'th':'en';document.documentElement.setAttribute('data-lang',l);document.documentElement.setAttribute('lang',l);if(L.indexOf(q)>=0)try{localStorage.setItem('kc-lang',q);}catch(e){}}catch(e){}})();</script>
     <style>
         :root {
             --bg: #0B0B0F; --surface: #14141A; --card: #1C1C24; --card-border: #2A2A33;
@@ -23,8 +23,11 @@
         a { color: inherit; text-decoration: none; }
         .container { max-width: 880px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 40px); }
 
-        [data-lang="ko"] [lang="en"].i18n-el { display: none; }
-        [data-lang="en"] [lang="ko"].i18n-el { display: none; }
+        [data-lang="ko"] .i18n-el[lang]:not([lang="ko"]),
+        [data-lang="en"] .i18n-el[lang]:not([lang="en"]),
+        [data-lang="zh"] .i18n-el[lang]:not([lang="zh"]),
+        [data-lang="vi"] .i18n-el[lang]:not([lang="vi"]),
+        [data-lang="th"] .i18n-el[lang]:not([lang="th"]) { display: none; }
 
         .nav { position: sticky; top: 0; z-index: 50; background: rgba(11,11,15,0.75); backdrop-filter: saturate(180%) blur(16px); -webkit-backdrop-filter: saturate(180%) blur(16px); border-bottom: 1px solid var(--card-border); }
         .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
@@ -36,7 +39,11 @@
         .lang-toggle { display: inline-flex; background: var(--card); border: 1px solid var(--card-border); border-radius: var(--radius-chip); padding: 2px; }
         .lang-toggle button { background: transparent; border: 0; color: var(--text-muted); font-weight: 700; font-size: 12px; padding: 6px 14px; border-radius: var(--radius-chip); cursor: pointer; letter-spacing: 0.5px; transition: all 0.15s; }
         .lang-toggle button:hover { color: var(--text); }
-        [data-lang="ko"] .lang-toggle [data-setlang="ko"], [data-lang="en"] .lang-toggle [data-setlang="en"] { background: var(--primary); color: #FFF; }
+        [data-lang="ko"] .lang-toggle [data-setlang="ko"],
+        [data-lang="en"] .lang-toggle [data-setlang="en"],
+        [data-lang="zh"] .lang-toggle [data-setlang="zh"],
+        [data-lang="vi"] .lang-toggle [data-setlang="vi"],
+        [data-lang="th"] .lang-toggle [data-setlang="th"] { background: var(--primary); color: #FFF; }
 
         .legal-wrap { padding: clamp(44px, 6vw, 80px) 0 clamp(64px, 9vw, 120px); }
         .legal-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); font-weight: 600; margin-bottom: 28px; transition: color 0.15s; }
@@ -59,7 +66,10 @@
         .footer-links a { color: var(--text-muted); font-weight: 600; transition: color 0.15s; }
         .footer-links a.priv { color: var(--text); }
         .footer-links a:hover { color: var(--primary-soft); }
-        @media (max-width: 560px) { .legal-doc { font-size: 14px; } }
+        @media (max-width: 560px) {
+            .legal-doc { font-size: 14px; }
+            .lang-toggle button { padding: 5px 8px; font-size: 11px; }
+        }
     </style>
 </head>
 <body>
@@ -74,6 +84,9 @@
             <div class="lang-toggle" role="group" aria-label="Language">
                 <button type="button" data-setlang="ko">KO</button>
                 <button type="button" data-setlang="en">EN</button>
+                <button type="button" data-setlang="zh">ZH</button>
+                <button type="button" data-setlang="vi">VI</button>
+                <button type="button" data-setlang="th">TH</button>
             </div>
         </div>
     </div>
@@ -81,8 +94,8 @@
 
 <main class="legal-wrap">
     <div class="container">
-        <a class="legal-back" href="index.html"><span lang="ko" class="i18n-el">← 홈으로</span><span lang="en" class="i18n-el">← Back to home</span></a>
-        <h1 class="legal-title"><span lang="ko" class="i18n-el">이용약관</span><span lang="en" class="i18n-el">Terms of Service</span></h1>
+        <a class="legal-back" href="index.html"><span lang="ko" class="i18n-el">← 홈으로</span><span lang="en" class="i18n-el">← Back to home</span><span lang="zh" class="i18n-el">← 返回首页</span><span lang="vi" class="i18n-el">← Về trang chủ</span><span lang="th" class="i18n-el">← กลับหน้าหลัก</span></a>
+        <h1 class="legal-title"><span lang="ko" class="i18n-el">이용약관</span><span lang="en" class="i18n-el">Terms of Service</span><span lang="zh" class="i18n-el">使用条款</span><span lang="vi" class="i18n-el">Điều khoản sử dụng</span><span lang="th" class="i18n-el">ข้อกำหนดการใช้งาน</span></h1>
 
         <div class="legal-doc">
             <!-- ===== Korean ===== -->
@@ -382,6 +395,453 @@
                 <h2>[Addendum] (Effective Date)</h2>
                 <p>These Terms take effect on April 15, 2026.</p>
             </div>
+
+            <!-- ===== Chinese ===== -->
+            <div lang="zh" class="i18n-el">
+                <h2>第1章 总则</h2>
+                <h3>第1条（目的）</h3>
+                <p>本条款旨在规定K-Cinema株式会社（以下简称"公司"）所提供的K-Cinema网站（以下简称"服务"）之使用过程中，公司与用户之间的权利、义务及责任事项。</p>
+                <h3>第2条（条款的效力及变更）</h3>
+                <p>1）本条款对所有为使用服务而同意本条款的会员均具有效力。</p>
+                <p>2）本条款自会员同意会员（服务）注册时公布或通知的内容之日起生效。</p>
+                <p>3）公司变更条款时，应确定变更后条款的内容及施行日期，并于施行日前至少7日通过公司网站、电子邮件等方式予以公告；若变更内容对客户不利或涉及重要事项，应至少提前30日公告。</p>
+                <p>4）会员不同意变更后条款的，可请求注销会员资格/撤回对条款的同意。若会员在变更后条款生效日之后未提出注销/撤回请求，则视为同意变更事项。</p>
+                <h3>第3条（条款外准则）</h3>
+                <p>1）本条款未明示的事项，应依照《电子签名法》《电子商务等消费者保护相关法律》《信息通信网利用促进及信息保护等相关法律》等相关法规及商业惯例处理。</p>
+                <p>2）本条款未规定的服务相关事项，应依照公司通过网站、移动端或影院现场发布的服务公告处理。</p>
+                <h3>第4条（术语定义）</h3>
+                <p>本条款中使用的主要术语定义如下：</p>
+                <p>1）"网站"指公司为向用户提供商品、服务及信息，利用计算机等信息通信设备设置的虚拟营业场所，或公司运营的网站（主页、移动网页/应用程序、社交网络等）；亦指运营该网站的事业者。</p>
+                <p>2）"会员"指向公司提供个人信息并完成会员注册，可接收公司提供的信息并持续使用公司服务者；统指下列各款会员。</p>
+                <p>（1）会员：在K-Cinema网站注册的用户。</p>
+                <p>（2）非会员：未注册为会员而使用K-Cinema网站所提供服务者。</p>
+                <p>（3）账号（ID）：会员为识别身份及使用服务而选定并经公司批准的字符或数字或其组合（以下简称"ID"）。</p>
+                <p>（4）密码：会员为确认其与所分配ID一致并保护自身机密而设定的字符与数字组合。</p>
+                <p>（5）使用中止：公司依其规定条件在一定期间内中止提供服务。</p>
+
+                <h2>第2章 服务使用条款</h2>
+                <h3>第5条（会员注册）</h3>
+                <p>1）会员注册可通过公司运营的网站进行；申请服务注册时，同意本条款及隐私政策（包括"个人信息收集及使用说明"及"营销使用同意"等）即视为申请会员注册。</p>
+                <p>2）客户提出会员注册申请后，公司可依内部标准进行审核并授予会员资格；获得会员资格的客户自收到公司发出的注册完成通知时起取得会员身份。</p>
+                <h3>第6条（使用条款的成立）</h3>
+                <p>1）申请服务时阅读本条款并点击"同意"按钮，即视为同意本条款。</p>
+                <p>2）使用条款于服务希望使用者同意使用条款后提出使用申请，并经公司批准后成立；使用申请及公司批准依本条款第7条及第8条规定处理。</p>
+                <p>3）依据《信息通信网利用促进及信息保护等相关法律》，未满14周岁的儿童在网上向他人发送个人信息前，须充分了解个人信息收集及使用目的，并取得法定代理人（父母）同意。即使取得法定代理人同意，预订19岁以上观影电影等部分服务仍可能受到限制。</p>
+                <h3>第7条（使用申请）</h3>
+                <p>希望注册为会员并使用服务者，应按公司规定的格式提供所要求的个人身份信息并提交使用申请。</p>
+                <h3>第8条（使用申请的批准）</h3>
+                <p>1）公司对依第7条提出的使用申请，除特殊情况外，按受理顺序予以批准。</p>
+                <p>2）公司在下列各款情形下，可限制批准使用申请，并在相关事由消除前暂缓批准：</p>
+                <p>（1）技术上无法提供服务时</p>
+                <p>（2）未满足公司规定的其他申请条件时</p>
+                <p>（3）未以本人真实姓名申请时</p>
+                <p>（4）使用他人名义申请时</p>
+                <p>（5）使用申请中虚假填写必要事项时</p>
+                <p>（6）以损害社会安宁秩序或良好风俗为目的申请时</p>
+                <p>（7）未满足公司规定的其他使用申请条件时</p>
+                <p>3）公司暂缓或不予批准使用申请的，应通知申请人；但因不可归责于公司的事由而无法通知申请人的除外。</p>
+                <p>4）因第9条第2款、第13条或第15条事由之一而遭注销会员或撤回条款者，依第7条再次提出使用申请的，公司可不予批准。</p>
+                <h3>第9条（合同解除、使用限制及再注册限制）</h3>
+                <p>1）会员希望解除（退出）使用合同的，可通过网站、客服中心、电子邮件或公司规定的其他方式请求注销会员或撤回对条款的同意；公司应根据会员请求迅速办理注销所需程序。但会员注销后，为防止活动不正当利用等，自注销日起30日内不得再注册；注销时累积的积分及持有的优惠券等个人权益均予删除。</p>
+                <p>2）会员有下列各款行为之一的，公司可不经事先通知解除使用条款，或设定期间中止服务使用：</p>
+                <p>（1）盗用他人个人信息、ID及密码时</p>
+                <p>（2）注册姓名非本人真实姓名时</p>
+                <p>（3）损害他人名誉或造成不利时</p>
+                <p>（4）侵犯公司、其他会员或第三方的知识产权时</p>
+                <p>（5）故意散布损害公共秩序及良好风俗的内容时</p>
+                <p>（6）会员以损害国家利益或社会公共利益为目的计划或实施服务使用时</p>
+                <p>（7）故意妨碍服务运营时</p>
+                <p>（8）以妨碍服务稳定运营为目的大量传输信息或传输广告性信息时</p>
+                <p>（9）散布导致信息通信设备故障或信息毁损的计算机病毒程序等时</p>
+                <p>（10）信息通信伦理委员会等外部机构提出整改要求，或与非法选举活动相关而收到选举管理委员会权威解释时</p>
+                <p>（11）未经公司事先同意，复制或流通通过公司服务获得的信息，或将其用于商业目的时</p>
+                <p>（12）会员在其主页及公告栏发布淫秽内容或链接淫秽网站时</p>
+                <p>（13）违反本条款或公司规定的其他使用条件时</p>
+                <p>3）会员自愿退出或向公司请求注销会员之日起1个月内不得再注册；依第9条第2款、第13条第6款、第15条丧失会员资格的，为防止服务不正当利用及进一步损害，自资格丧失日起1个月内亦不得再注册及使用服务。</p>
+                <h3>第10条（对会员的通知）</h3>
+                <p>1）公司对会员进行通知时，可通过会员注册的电子邮件地址或短信等方式进行。</p>
+                <p>2）公司对不特定多数会员进行通知时，可在服务公告栏等发布以代替个别通知。</p>
+                <h3>第11条（会员信息变更）</h3>
+                <p>1）会员可随时通过隐私政策查阅并修改本人个人信息。</p>
+                <p>2）使用申请时填写的事项发生变更的，会员应在线直接修改，或联系 contact@k-cine.com 请求修改；因未变更会员信息而产生的问题由会员自行承担责任。</p>
+
+                <h2>第3章 合同当事人的义务</h2>
+                <h3>第12条（公司的义务）</h3>
+                <p>1）除特殊情况外，公司应在会员申请使用服务的当日使其能够使用服务。</p>
+                <p>2）公司应依本条款规定持续努力提供持续、稳定的服务；设备发生故障或灭失时应立即修复。但因自然灾害、紧急情况或其他不得已事由，可暂时中断或停止服务。</p>
+                <p>3）公司认定会员依规定程序提出的意见或投诉正当的，应经适当程序处理；处理需一定期间的，应告知会员事由及处理日程。</p>
+                <p>4）公司应遵守隐私政策第2条关于保护会员隐私的规定。</p>
+                <p>5）公司应努力在与客户相关的合同缔结、合同事项变更及解除等程序及内容方面为客户提供便利。</p>
+                <h3>第13条（会员的义务）</h3>
+                <p>1）会员应遵守本条款规定事项及公司通过使用指南或公告通知的事项，不得实施妨碍公司业务的其他行为。</p>
+                <p>2）会员ID及密码的管理责任均由会员承担；因管理疏忽或非法使用所分配ID及密码而产生的一切后果由会员承担。</p>
+                <p>3）会员发现其ID或密码被非法使用时，应立即向公司报告；因未报告而产生的一切后果由会员承担。</p>
+                <p>4）会员未经公司事先同意，不得利用服务从事营业活动；公司对该等营业活动的结果及会员违反条款从事营业活动所产生的结果不承担责任。会员因该等营业活动使公司遭受损害的，应向公司承担损害赔偿责任。</p>
+                <p>5）未经公司明示同意，会员不得将服务使用权或其他使用合同上的地位转让、赠与给他人，亦不得提供为担保。</p>
+                <p>6）会员在服务使用过程中不得实施下列各款行为：</p>
+                <p>（1）盗用其他会员ID、密码等个人信息的行为</p>
+                <p>（2）未经公司事先同意，将通过本服务获得的信息用于会员本人使用以外的目的而复制，或用于出版、广播等，或提供给第三方的行为</p>
+                <p>（3）以发布、电子邮件或其他方式向他人散布侵犯他人专利、商标、商业秘密、著作权及其他知识产权内容的行为</p>
+                <p>（4）以传输、发布、电子邮件或其他方式向他人散布违反公共秩序及良好风俗的低俗、淫秽信息、文字、图形等的行为</p>
+                <p>（5）以传输、发布、电子邮件或其他方式向他人散布侮辱性或威胁性且可能侵犯他人隐私的内容的行为</p>
+                <p>（6）客观上判断与犯罪相关的行为</p>
+                <p>（7）未经公司批准收集或存储其他用户个人信息的行为</p>
+                <p>（8）其他违反相关法令的行为</p>
+
+                <h2>第4章 服务使用细则</h2>
+                <h3>第14条（会员服务权益）</h3>
+                <p>1）会员可通过公司网站进行网络预订，并通过电子邮件、手机短信（SMS）、移动应用推送（app push）接收电影及影院信息。</p>
+                <p>2）公司应尽可能赋予会员优先参与公司计划的所有活动的权利。</p>
+                <h3>第15条（会员服务权益的限制）</h3>
+                <p>1）会员以下列各款规定方式转让票务的，公司可采取注销会员/撤回条款等措施；此种情况下，公司应在限制会员服务权益之日起1周内向会员通报事由。</p>
+                <p>2）为积累合作积分或营利目的而出票后向他人有偿转让或积累积分时</p>
+                <p>3）转售等营业行为（第16条第1款第1项）重复2次以上，或收到登录限制等整改通知后30日内事由未纠正的，无论转售是否成交，公司均可采取注销会员/撤回条款等措施。</p>
+                <h3>第16条（信息的提供）</h3>
+                <p>1）公司可在服务使用过程中，通过公告、电子邮件等方式向会员提供其认为必要的各类信息。</p>
+                <p>2）公司可通过电话、通知函、邮件等多种方式向会员提供服务相关信息，以提供更好的服务权益。但会员表示不愿接收服务权益信息的，公司应将其排除在信息提供对象之外；因被排除而未能接收服务信息所产生的不利后果，公司不承担责任。</p>
+                <h3>第17条（会员发布内容）</h3>
+                <p>1）公司认定会员在[网站、移动网页/应用程序、社交网络等]发布或登记的内容符合下列各款情形之一的，可不经事先通知予以删除：</p>
+                <p>（1）诽谤其他会员或第三方，或以中伤方式损害名誉的内容</p>
+                <p>（2）违反公共秩序及良好风俗的内容</p>
+                <p>（3）认定与犯罪行为相关的内容</p>
+                <p>（4）侵犯公司著作权、第三方著作权或其他权利的内容</p>
+                <p>（5）超过公司规定的发布期限或容量的内容</p>
+                <p>（6）会员在其主页及公告栏发布淫秽内容或链接淫秽网站时</p>
+                <p>（7）与公告栏性质不符的发布内容</p>
+                <p>（8）其他认定违反相关法令的内容</p>
+                <h3>第18条（发布内容的著作权）</h3>
+                <p>1）发布于[网站、移动网页/应用程序、社交网络等]的资料权利如下：</p>
+                <p>（1）发布内容的权利及责任归发布者所有；未经发布者同意，公司不得将其用于[网站、移动网页/应用程序、社交网络等]发布以外的营利目的。但非营利情形不在此限；且公司保有[网站、移动网页/应用程序、社交网络等]的发布权。</p>
+                <p>（2）会员不得将通过服务获得的信息进行加工、销售等，商业性使用发布于[网站、移动网页/应用程序、社交网络等]的资料。</p>
+                <h3>第19条（广告投放及与广告主的交易）</h3>
+                <p>1）公司向会员提供服务所依赖的部分服务投资基础来自广告投放收益。希望使用服务者在使用服务时，视为同意所展示的广告投放。</p>
+                <p>2）公司对会员参与或通过本服务与发布于[网站、移动网页/应用程序、社交网络等]的广告主促销活动进行交流或交易而产生的一切损失或损害不承担责任。</p>
+                <h3>第20条（服务使用时间）</h3>
+                <p>1）服务使用原则上全年无休、每日24小时可用，但公司运营上或技术上存在特别障碍的除外。需要定期检修等时，公司通过网站事先公告相关内容。</p>
+                <p>2）公司可将服务划分为一定范围，对各范围另行规定可使用时间；此种情况下，公司通过网站事先公告相关内容。</p>
+                <h3>第21条（服务使用责任）</h3>
+                <p>除公司通过加盖正式印章的书面文件明示同意外，会员不得利用服务销售商品从事营业活动，尤其不得通过黑客、牟利广告、淫秽网站等进行商业行为，或非法传播商用软件。违反本规定所产生营业活动的结果及损失、相关机关采取的拘留等法律措施，公司不承担责任。</p>
+                <h3>第22条（服务提供的停止等）</h3>
+                <p>1）公司在下列各款情形下可停止提供服务：</p>
+                <p>（1）因服务设备维修等施工而不得已时</p>
+                <p>（2）《电信事业法》规定的基干电信事业者停止电信服务时</p>
+                <p>（3）存在其他不可抗力事由时</p>
+                <p>2）因国家紧急状态、停电、服务设备故障或服务使用激增等导致正常服务使用受阻时，公司可限制或停止全部或部分服务。</p>
+                <p>3）公司依第1款及第2款规定限制或停止服务使用的，应立即将事由及限制期间等通知会员。</p>
+
+                <h2>第5章 损害赔偿及其他</h2>
+                <h3>第23条（损害赔偿）</h3>
+                <p>公司对与免费服务使用相关的会员所遭受的任何损害均不承担责任。付费服务依各服务使用条款处理。</p>
+                <h3>第24条（免责条款）</h3>
+                <p>1）因自然灾害或同等不可抗力而无法提供服务时，公司免除提供服务方面的责任。</p>
+                <p>2）因可归责于会员的事由导致服务使用障碍的，公司不承担责任。</p>
+                <p>3）公司对会员因使用服务而丧失的预期收益，或因通过服务获得的资料所造成的损害不承担责任。</p>
+                <p>4）公司对会员在[网站、移动网页/应用程序、社交网络等]发布的信息、资料、事实的可信度、准确性等内容不承担责任。</p>
+                <p>5）公司对与服务使用相关的会员所受损害中，因会员故意或过失造成的损害不承担责任。</p>
+                <h3>第25条（管辖法院）</h3>
+                <p>因服务使用发生争议而提起诉讼的，以对公司总部所在地有管辖权的法院为专属管辖法院。</p>
+
+                <h2>【附则】（施行日）</h2>
+                <p>本条款自2026年4月15日起施行。</p>
+            </div>
+
+            <!-- ===== Vietnamese ===== -->
+            <div lang="vi" class="i18n-el">
+                <h2>Chương 1. Quy định chung</h2>
+                <h3>Điều 1 (Mục đích)</h3>
+                <p>Mục đích của các Điều khoản này là quy định quyền, nghĩa vụ và trách nhiệm của Công ty và người dùng liên quan đến việc sử dụng trang web K-Cinema (sau đây gọi là "Dịch vụ") do K-Cinema Inc. (sau đây gọi là "Công ty") cung cấp.</p>
+                <h3>Điều 2 (Hiệu lực và sửa đổi Điều khoản)</h3>
+                <p>1) Các Điều khoản này có hiệu lực đối với tất cả thành viên đã đồng ý với các Điều khoản này để sử dụng Dịch vụ.</p>
+                <p>2) Các Điều khoản này có hiệu lực khi thành viên đồng ý với nội dung được đăng hoặc thông báo tại thời điểm đăng ký thành viên (dịch vụ).</p>
+                <p>3) Khi sửa đổi Điều khoản, Công ty sẽ xác định nội dung và ngày hiệu lực của Điều khoản sửa đổi và thông báo qua trang web, email hoặc các phương tiện tương tự của Công ty ít nhất 7 ngày trước ngày hiệu lực, hoặc ít nhất 30 ngày trước nếu việc sửa đổi bất lợi cho khách hàng hoặc liên quan đến các vấn đề quan trọng.</p>
+                <p>4) Thành viên không đồng ý với Điều khoản sửa đổi có thể yêu cầu rút lui khỏi tư cách thành viên / rút lại sự đồng ý với Điều khoản. Nếu thành viên không yêu cầu rút lui sau ngày hiệu lực của Điều khoản sửa đổi, thành viên được coi là đã đồng ý với các sửa đổi.</p>
+                <h3>Điều 3 (Quy tắc ngoài Điều khoản)</h3>
+                <p>1) Các vấn đề không được quy định trong các Điều khoản này sẽ được điều chỉnh bởi các quy định liên quan và thông lệ thương mại, bao gồm Luật Chữ ký số, Luật Bảo vệ người tiêu dùng trong thương mại điện tử và Luật Khuyến khích sử dụng mạng thông tin và bảo vệ thông tin.</p>
+                <p>2) Các vấn đề liên quan đến dịch vụ không được quy định trong các Điều khoản này sẽ được điều chỉnh bởi các thông báo dịch vụ liên quan được cung cấp qua trang web, thiết bị di động hoặc tại rạp chiếu phim của Công ty.</p>
+                <h3>Điều 4 (Định nghĩa)</h3>
+                <p>Các thuật ngữ chính được sử dụng trong các Điều khoản này được định nghĩa như sau:</p>
+                <p>1) "Trang web" có nghĩa là nơi kinh doanh ảo được Công ty thiết lập bằng máy tính và các thiết bị thông tin và truyền thông khác để người dùng có thể giao dịch hàng hóa, dịch vụ và thông tin, hoặc trang web do Công ty vận hành (trang chủ, web/di động ứng dụng, mạng xã hội, v.v.); thuật ngữ này cũng được dùng để chỉ người vận hành Trang web.</p>
+                <p>2) "Thành viên" có nghĩa là người đã cung cấp thông tin cá nhân cho Công ty và đăng ký làm thành viên, có thể nhận thông tin do Công ty cung cấp và liên tục sử dụng dịch vụ của Công ty. Thuật ngữ này bao gồm các thành viên được liệt kê dưới đây.</p>
+                <p>(1) Thành viên: người đã đăng ký trên trang web K-Cinema.</p>
+                <p>(2) Không phải thành viên: người sử dụng dịch vụ được cung cấp trên trang web K-Cinema mà không đăng ký làm thành viên.</p>
+                <p>(3) ID: tổ hợp ký tự hoặc số do thành viên lựa chọn và được Công ty phê duyệt để nhận diện thành viên và sử dụng Dịch vụ (sau đây gọi là "ID").</p>
+                <p>(4) Mật khẩu: tổ hợp ký tự và số do thành viên xác định để xác nhận thành viên khớp với ID được gán và bảo vệ tính bảo mật của chính thành viên.</p>
+                <p>(5) Tạm ngừng sử dụng: việc tạm ngừng cung cấp Dịch vụ trong một khoảng thời gian nhất định theo các yêu cầu do Công ty xác định.</p>
+
+                <h2>Chương 2. Điều khoản sử dụng dịch vụ</h2>
+                <h3>Điều 5 (Đăng ký thành viên)</h3>
+                <p>1) Đăng ký thành viên có thể thực hiện qua Trang web do Công ty vận hành. Khi đăng ký dịch vụ, người đăng ký đăng ký thành viên bằng cách đồng ý với các Điều khoản này và Chính sách bảo mật (bao gồm "Thông báo về thu thập và sử dụng thông tin cá nhân" và "Đồng ý sử dụng cho mục đích tiếp thị", v.v.).</p>
+                <p>2) Khi khách hàng đăng ký thành viên, Công ty có thể cấp tư cách thành viên sau khi xem xét theo tiêu chí riêng. Khách hàng được cấp tư cách thành viên có được địa vị thành viên kể từ thời điểm nhận thông báo hoàn tất đăng ký từ Công ty.</p>
+                <h3>Điều 6 (Hình thành Điều khoản sử dụng)</h3>
+                <p>1) Nếu khi đăng ký Dịch vụ, bạn đọc các Điều khoản này và nhấp nút "Đồng ý", bạn được coi là đã đồng ý với các Điều khoản này.</p>
+                <p>2) Điều khoản sử dụng được hình thành khi Công ty chấp nhận đơn đăng ký sử dụng của người dùng tiềm năng sau khi người đó đồng ý với Điều khoản sử dụng. Đơn đăng ký sử dụng và việc chấp nhận của Công ty được điều chỉnh theo Điều 7 và Điều 8 của các Điều khoản này.</p>
+                <p>3) Theo Luật Khuyến khích sử dụng mạng thông tin và bảo vệ thông tin, trẻ em dưới 14 tuổi phải, trước khi gửi thông tin cá nhân cho người khác trực tuyến, hiểu đầy đủ mục đích thu thập và sử dụng thông tin cá nhân và có được sự đồng ý của người đại diện theo pháp luật (cha mẹ). Ngay cả khi có sự đồng ý của người đại diện theo pháp luật, một số dịch vụ—như đặt vé phim dành cho độ tuổi từ 19 trở lên—có thể bị hạn chế.</p>
+                <h3>Điều 7 (Đơn đăng ký sử dụng)</h3>
+                <p>Người muốn đăng ký làm thành viên và sử dụng Dịch vụ nộp đơn đăng ký sử dụng bằng cách cung cấp thông tin cá nhân theo mẫu quy định do Công ty đặt ra.</p>
+                <h3>Điều 8 (Chấp nhận đơn đăng ký sử dụng)</h3>
+                <p>1) Công ty chấp nhận đơn đăng ký sử dụng theo Điều 7 theo thứ tự tiếp nhận, trừ trường hợp đặc biệt.</p>
+                <p>2) Công ty có thể hạn chế chấp nhận đơn đăng ký sử dụng trong các trường hợp sau và có thể tạm hoãn chấp nhận cho đến khi nguyên nhân liên quan được giải quyết:</p>
+                <p>(1) Khi về mặt kỹ thuật không thể cung cấp Dịch vụ</p>
+                <p>(2) Khi không đáp ứng các yêu cầu đăng ký khác do Công ty quy định</p>
+                <p>(3) Khi đơn đăng ký không được thực hiện dưới tên thật của người đăng ký</p>
+                <p>(4) Khi đơn đăng ký được thực hiện bằng tên người khác</p>
+                <p>(5) Khi các thông tin bắt buộc được khai báo sai trong đơn đăng ký sử dụng</p>
+                <p>(6) Khi đơn đăng ký được thực hiện nhằm mục đích làm suy yếu trật tự công cộng, an ninh hoặc đạo đức tốt đẹp</p>
+                <p>(7) Khi không đáp ứng các yêu cầu đăng ký sử dụng khác do Công ty quy định</p>
+                <p>3) Khi Công ty tạm hoãn hoặc từ chối chấp nhận đơn đăng ký sử dụng, Công ty phải thông báo cho người đăng ký. Tuy nhiên, điều này không áp dụng khi Công ty không thể thông báo cho người đăng ký vì lý do không thuộc về Công ty.</p>
+                <p>4) Khi người đã bị rút lui khỏi tư cách thành viên hoặc rút lại Điều khoản vì một trong các lý do tại Điều 9(2), Điều 13 hoặc Điều 15 nộp đơn đăng ký sử dụng theo Điều 7, Công ty có thể từ chối chấp nhận đơn.</p>
+                <h3>Điều 9 (Chấm dứt hợp đồng, hạn chế sử dụng và hạn chế đăng ký lại)</h3>
+                <p>1) Thành viên muốn chấm dứt (rút lui khỏi) thỏa thuận sử dụng có thể yêu cầu rút lui khỏi tư cách thành viên hoặc rút lại sự đồng ý với Điều khoản qua Trang web, trung tâm khách hàng, email hoặc các phương thức khác do Công ty xác định; Công ty sẽ nhanh chóng thực hiện các thủ tục cần thiết cho việc rút lui theo yêu cầu của thành viên. Tuy nhiên, khi rút lui, để ngăn chặn việc lạm dụng sự kiện và tương tự, không được phép đăng ký lại trong vòng 30 ngày kể từ ngày rút lui; điểm tích lũy và phiếu giảm giá đang sở hữu cùng các lợi ích cá nhân khác đều bị xóa khi rút lui.</p>
+                <p>2) Công ty có thể, mà không cần thông báo trước, chấm dứt Điều khoản sử dụng hoặc tạm ngừng sử dụng Dịch vụ trong một khoảng thời gian cố định khi thành viên thực hiện bất kỳ hành vi nào sau đây:</p>
+                <p>(1) Chiếm đoạt thông tin cá nhân, ID và mật khẩu của người khác</p>
+                <p>(2) Khi tên đăng ký không phải là tên thật của thành viên</p>
+                <p>(3) Làm tổn hại danh dự người khác hoặc thực hiện hành vi gây bất lợi cho người khác</p>
+                <p>(4) Xâm phạm quyền sở hữu trí tuệ của Công ty, thành viên khác hoặc bên thứ ba</p>
+                <p>(5) Cố ý phát tán nội dung làm suy yếu trật tự công cộng và đạo đức tốt đẹp</p>
+                <p>(6) Khi thành viên lập kế hoạch hoặc thực hiện việc sử dụng Dịch vụ nhằm mục đích làm suy yếu lợi ích quốc gia hoặc lợi ích công cộng xã hội</p>
+                <p>(7) Cố ý cản trở hoạt động của Dịch vụ</p>
+                <p>(8) Truyền khối lượng lớn thông tin hoặc thông tin quảng cáo nhằm mục đích cản trở hoạt động ổn định của Dịch vụ</p>
+                <p>(9) Phát tán chương trình virus máy tính hoặc tương tự gây trục trặc thiết bị thông tin và truyền thông hoặc phá hủy thông tin</p>
+                <p>(10) Khi có yêu cầu sửa chữa từ cơ quan bên ngoài như Ủy ban Đạo đức Thông tin và Truyền thông, hoặc giải thích có thẩm quyền từ Ủy ban Quản lý Bầu cử Quốc gia liên quan đến vận động bầu cử bất hợp pháp</p>
+                <p>(11) Sao chép hoặc phân phối thông tin thu được qua dịch vụ của Công ty mà không có sự đồng ý trước của Công ty, hoặc sử dụng cho mục đích thương mại</p>
+                <p>(12) Khi thành viên đăng nội dung khiêu dâm trên hoặc liên kết đến trang web khiêu dâm từ trang chủ và bảng tin của chính mình</p>
+                <p>(13) Vi phạm các Điều khoản này hoặc các điều kiện sử dụng khác do Công ty quy định</p>
+                <p>3) Không được phép đăng ký lại trong vòng một tháng kể từ thời điểm thành viên tự nguyện rút lui hoặc rút lui theo yêu cầu của thành viên đến Công ty. Tương tự, khi tư cách thành viên bị mất theo Điều 9(2), Điều 13(6) hoặc Điều 15, việc đăng ký lại và sử dụng Dịch vụ không được phép trong một tháng kể từ ngày mất tư cách, nhằm ngăn chặn việc lạm dụng Dịch vụ và thiệt hại bổ sung.</p>
+                <h3>Điều 10 (Thông báo cho thành viên)</h3>
+                <p>1) Khi Công ty thông báo cho thành viên, Công ty có thể thực hiện qua địa chỉ email hoặc SMS do thành viên đăng ký.</p>
+                <p>2) Đối với thông báo cho số lượng lớn thành viên không xác định, Công ty có thể thay thế thông báo cá nhân bằng cách đăng trên bảng tin Dịch vụ hoặc tương tự.</p>
+                <h3>Điều 11 (Thay đổi thông tin thành viên)</h3>
+                <p>1) Thành viên có thể xem và chỉnh sửa thông tin cá nhân của mình bất cứ lúc nào thông qua Chính sách bảo mật.</p>
+                <p>2) Khi các thông tin đã khai báo tại thời điểm đăng ký sử dụng thay đổi, thành viên phải chỉnh sửa trực tiếp trực tuyến hoặc yêu cầu chỉnh sửa bằng cách liên hệ contact@k-cine.com. Thành viên chịu trách nhiệm về mọi vấn đề phát sinh do không cập nhật thông tin thành viên.</p>
+
+                <h2>Chương 3. Nghĩa vụ của các bên</h2>
+                <h3>Điều 12 (Nghĩa vụ của Công ty)</h3>
+                <p>1) Trừ trường hợp đặc biệt, Công ty sẽ cho phép thành viên sử dụng Dịch vụ vào ngày thành viên đăng ký sử dụng Dịch vụ.</p>
+                <p>2) Công ty sẽ liên tục nỗ lực cung cấp Dịch vụ liên tục và ổn định theo quy định trong các Điều khoản này, và sẽ sửa chữa hoặc khôi phục thiết bị không chậm trễ nếu chúng bị hỏng hoặc mất. Tuy nhiên, trong trường hợp thiên tai, tình trạng khẩn cấp hoặc các hoàn cảnh bất khả kháng khác, Công ty có thể tạm thời gián đoạn hoặc tạm ngừng Dịch vụ.</p>
+                <p>3) Khi Công ty nhận thấy ý kiến hoặc khiếu nại do thành viên đưa ra theo thủ tục quy định là hợp lệ, Công ty sẽ xử lý thông qua các thủ tục thích hợp. Nếu việc xử lý cần một khoảng thời gian nhất định, Công ty sẽ thông báo cho thành viên về lý do và lịch trình xử lý.</p>
+                <p>4) Công ty sẽ tuân thủ các quy định tại Điều 2 của Chính sách bảo mật liên quan đến bảo vệ quyền riêng tư của thành viên.</p>
+                <p>5) Công ty sẽ nỗ lực mang lại sự thuận tiện cho khách hàng trong các thủ tục và nội dung liên quan đến hợp đồng với khách hàng, chẳng hạn như ký kết các Điều khoản này và sửa đổi hoặc chấm dứt các vấn đề hợp đồng.</p>
+                <h3>Điều 13 (Nghĩa vụ của thành viên)</h3>
+                <p>1) Thành viên phải tuân thủ các quy định trong các Điều khoản này và các vấn đề Công ty thông báo qua hướng dẫn sử dụng hoặc thông báo, và không được thực hiện các hành vi khác cản trở hoạt động kinh doanh của Công ty.</p>
+                <p>2) Toàn bộ trách nhiệm quản lý ID và mật khẩu của thành viên thuộc về thành viên. Thành viên chịu trách nhiệm về mọi hậu quả phát sinh từ việc quản lý sơ suất hoặc sử dụng trái phép ID và mật khẩu được gán cho thành viên.</p>
+                <p>3) Khi thành viên phát hiện ID hoặc mật khẩu của mình bị sử dụng gian lận, thành viên phải báo cáo ngay cho Công ty. Thành viên chịu trách nhiệm về mọi hậu quả phát sinh do không báo cáo.</p>
+                <p>4) Thành viên không được thực hiện hoạt động kinh doanh bằng cách sử dụng Dịch vụ mà không có sự đồng ý trước của Công ty. Công ty không chịu trách nhiệm về kết quả của các hoạt động kinh doanh đó hoặc kết quả phát sinh từ hoạt động kinh doanh do thành viên thực hiện vi phạm các Điều khoản này. Khi Công ty bị thiệt hại do các hoạt động kinh doanh đó, thành viên có nghĩa vụ bồi thường cho Công ty.</p>
+                <p>5) Trừ khi được Công ty đồng ý rõ ràng, thành viên không được chuyển nhượng hoặc tặng quyền sử dụng Dịch vụ hoặc bất kỳ địa vị nào khác theo thỏa thuận sử dụng cho bên thứ ba, cũng như không được cung cấp làm tài sản thế chấp.</p>
+                <p>6) Thành viên không được thực hiện bất kỳ hành vi nào sau đây liên quan đến việc sử dụng Dịch vụ:</p>
+                <p>(1) Chiếm đoạt thông tin cá nhân như ID và mật khẩu của thành viên khác</p>
+                <p>(2) Sao chép thông tin thu được qua Dịch vụ cho mục đích khác ngoài việc sử dụng của chính thành viên, hoặc sử dụng trong ấn phẩm hoặc phát sóng, hoặc cung cấp cho bên thứ ba, mà không có sự đồng ý trước của Công ty</p>
+                <p>(3) Đăng hoặc phát tán cho người khác, qua email hoặc các phương tiện khác, nội dung xâm phạm bằng sáng chế, nhãn hiệu, bí mật kinh doanh, bản quyền hoặc quyền sở hữu trí tuệ khác của người khác</p>
+                <p>(4) Truyền, đăng hoặc phát tán cho người khác, qua email hoặc các phương tiện khác, thông tin, văn bản hoặc hình ảnh thô tục hoặc khiêu dâm vi phạm trật tự công cộng và đạo đức tốt đẹp</p>
+                <p>(5) Truyền, đăng hoặc phát tán cho người khác, qua email hoặc các phương tiện khác, nội dung xúc phạm hoặc đe dọa và có thể xâm phạm quyền riêng tư của người khác</p>
+                <p>(6) Các hành vi được đánh giá khách quan là liên quan đến tội phạm</p>
+                <p>(7) Thu thập hoặc lưu trữ thông tin cá nhân của người dùng khác mà không được Công ty phê duyệt</p>
+                <p>(8) Các hành vi khác vi phạm các quy định pháp luật hiện hành</p>
+
+                <h2>Chương 4. Chi tiết sử dụng dịch vụ</h2>
+                <h3>Điều 14 (Lợi ích dịch vụ thành viên)</h3>
+                <p>1) Thành viên có thể đặt vé trực tuyến qua trang web của Công ty và nhận thông tin phim và rạp chiếu qua email, SMS và thông báo đẩy ứng dụng di động.</p>
+                <p>2) Công ty sẽ, nếu có thể, trao cho thành viên quyền ưu tiên tham gia tất cả các sự kiện do Công ty lên kế hoạch.</p>
+                <h3>Điều 15 (Hạn chế lợi ích dịch vụ thành viên)</h3>
+                <p>1) Khi thành viên chuyển nhượng vé theo các phương thức quy định trong các mục sau, Công ty có thể thực hiện các biện pháp như rút lui khỏi tư cách thành viên / rút lại sự đồng ý với Điều khoản. Trong trường hợp này, Công ty phải thông báo lý do cho thành viên trong vòng một tuần kể từ thời điểm hạn chế lợi ích dịch vụ thành viên.</p>
+                <p>2) Khi, nhằm mục đích tích lũy điểm đối tác hoặc vì lợi nhuận, thành viên phát hành vé rồi chuyển nhượng cho người khác để nhận đối ứng hoặc tích lũy điểm.</p>
+                <p>3) Khi các hành vi kinh doanh như bán lại (Điều 16(1)(1)) lặp lại hai lần trở lên, hoặc khi nguyên nhân không được khắc phục trong vòng 30 ngày sau thông báo sửa chữa như hạn chế đăng nhập, Công ty có thể thực hiện các biện pháp như rút lui khỏi tư cách thành viên / rút lại sự đồng ý với Điều khoản, bất kể việc bán lại có thành công hay không.</p>
+                <h3>Điều 16 (Cung cấp thông tin)</h3>
+                <p>1) Công ty có thể cung cấp cho thành viên các thông tin đa dạng được cho là cần thiết trong quá trình sử dụng Dịch vụ, bằng thông báo, email hoặc các phương thức khác.</p>
+                <p>2) Công ty có thể cung cấp thông tin liên quan đến dịch vụ qua nhiều phương thức truyền tải (điện thoại, thông báo, thư, v.v.) để mang lại lợi ích dịch vụ tốt hơn cho thành viên. Tuy nhiên, khi thành viên bày tỏ ý định không muốn nhận thông tin lợi ích dịch vụ, Công ty phải loại trừ thành viên đó khỏi đối tượng cung cấp thông tin; và Công ty không chịu trách nhiệm về bất kỳ bất lợi nào phát sinh do thành viên không nhận được thông tin dịch vụ vì bị loại trừ.</p>
+                <h3>Điều 17 (Bài đăng của thành viên)</h3>
+                <p>1) Công ty có thể xóa, mà không cần thông báo trước, nội dung do thành viên đăng hoặc đăng ký trên [trang web, web/di động ứng dụng, mạng xã hội, v.v.] khi Công ty đánh giá nội dung thuộc bất kỳ trường hợp nào sau đây:</p>
+                <p>(1) Nội dung bôi nhọ hoặc, thông qua vu khống, làm tổn hại danh dự của thành viên khác hoặc bên thứ ba</p>
+                <p>(2) Nội dung vi phạm trật tự công cộng và đạo đức tốt đẹp</p>
+                <p>(3) Nội dung được nhận diện là liên quan đến hành vi phạm tội</p>
+                <p>(4) Nội dung xâm phạm bản quyền của Công ty, bản quyền của bên thứ ba hoặc các quyền khác</p>
+                <p>(5) Nội dung vượt quá thời hạn đăng hoặc dung lượng do Công ty quy định</p>
+                <p>(6) Khi thành viên đăng nội dung khiêu dâm trên hoặc liên kết đến trang web khiêu dâm từ trang chủ và bảng tin của chính mình</p>
+                <p>(7) Bài đăng không phù hợp với tính chất của bảng tin</p>
+                <p>(8) Nội dung khác được đánh giá là vi phạm các quy định pháp luật hiện hành</p>
+                <h3>Điều 18 (Bản quyền bài đăng)</h3>
+                <p>1) Quyền đối với tài liệu đăng trên [trang web, web/di động ứng dụng, mạng xã hội, v.v.] như sau:</p>
+                <p>(1) Quyền và trách nhiệm đối với bài đăng thuộc về người đăng, và Công ty không được sử dụng cho mục đích thương mại ngoài việc đăng trên [trang web, web/di động ứng dụng, mạng xã hội, v.v.] mà không có sự đồng ý của người đăng. Tuy nhiên, điều này không áp dụng cho các trường hợp phi thương mại, và Công ty giữ quyền đăng trên [trang web, web/di động ứng dụng, mạng xã hội, v.v.].</p>
+                <p>(2) Thành viên không được sử dụng thương mại tài liệu đăng trên [trang web, web/di động ứng dụng, mạng xã hội, v.v.], chẳng hạn như xử lý hoặc bán thông tin thu được qua Dịch vụ.</p>
+                <h3>Điều 19 (Quảng cáo và giao dịch với nhà quảng cáo)</h3>
+                <p>1) Một phần cơ sở đầu tư dịch vụ cho phép Công ty cung cấp Dịch vụ cho thành viên đến từ doanh thu qua quảng cáo. Người muốn sử dụng Dịch vụ được coi là đồng ý với quảng cáo hiển thị khi sử dụng Dịch vụ.</p>
+                <p>2) Công ty không chịu trách nhiệm về bất kỳ tổn thất hoặc thiệt hại nào phát sinh do thành viên tham gia, giao tiếp hoặc giao dịch với các hoạt động khuyến mãi của nhà quảng cáo được đăng trên [trang web, web/di động ứng dụng, mạng xã hội, v.v.] hoặc qua Dịch vụ.</p>
+                <h3>Điều 20 (Giờ sử dụng dịch vụ)</h3>
+                <p>1) Việc sử dụng Dịch vụ, về nguyên tắc, có sẵn 24 giờ một ngày, quanh năm, trừ khi có trở ngại vận hành hoặc kỹ thuật đặc biệt từ phía Công ty. Tuy nhiên, khi cần bảo trì định kỳ hoặc tương tự, Công ty sẽ thông báo trước qua trang web.</p>
+                <p>2) Công ty có thể chia Dịch vụ thành các phạm vi nhất định và đặt giờ sử dụng riêng cho từng phạm vi. Trong trường hợp này, Công ty sẽ thông báo trước qua trang web.</p>
+                <h3>Điều 21 (Trách nhiệm sử dụng dịch vụ)</h3>
+                <p>Trừ khi Công ty đã đồng ý rõ ràng bằng văn bản có đóng dấu chính thức, thành viên không được thực hiện hoạt động kinh doanh bán hàng hóa bằng cách sử dụng Dịch vụ, và đặc biệt không được thực hiện hành vi thương mại qua hack, quảng cáo kiếm tiền, trang web khiêu dâm hoặc phân phối trái phép phần mềm thương mại. Công ty không chịu trách nhiệm về kết quả và tổn thất của hoạt động kinh doanh thực hiện vi phạm điều này, hoặc các biện pháp pháp lý như bị cơ quan có thẩm quyền giam giữ.</p>
+                <h3>Điều 22 (Tạm ngừng cung cấp dịch vụ, v.v.)</h3>
+                <p>1) Công ty có thể tạm ngừng cung cấp Dịch vụ trong các trường hợp sau:</p>
+                <p>(1) Khi không thể tránh khỏi do thi công như sửa chữa thiết bị dịch vụ</p>
+                <p>(2) Khi nhà khai thác viễn thông chủ yếu theo quy định của Luật Kinh doanh Viễn thông đã tạm ngừng dịch vụ viễn thông</p>
+                <p>(3) Khi có các lý do bất khả kháng khác</p>
+                <p>2) Công ty có thể hạn chế hoặc tạm ngừng toàn bộ hoặc một phần Dịch vụ khi có trở ngại đối với việc sử dụng dịch vụ bình thường do tình trạng khẩn cấp quốc gia, mất điện, hỏng thiết bị dịch vụ hoặc tăng đột biến việc sử dụng dịch vụ, v.v.</p>
+                <p>3) Khi Công ty hạn chế hoặc tạm ngừng việc sử dụng Dịch vụ theo khoản 1 và 2, Công ty phải thông báo cho thành viên về lý do và thời hạn hạn chế không chậm trễ.</p>
+
+                <h2>Chương 5. Bồi thường thiệt hại và điều khoản khác</h2>
+                <h3>Điều 23 (Bồi thường thiệt hại)</h3>
+                <p>Công ty không chịu trách nhiệm về bất kỳ thiệt hại nào mà thành viên phải chịu liên quan đến việc sử dụng dịch vụ miễn phí. Dịch vụ trả phí được điều chỉnh theo điều khoản sử dụng của từng dịch vụ.</p>
+                <h3>Điều 24 (Miễn trừ trách nhiệm)</h3>
+                <p>1) Công ty được miễn trách nhiệm cung cấp Dịch vụ khi không thể cung cấp Dịch vụ do thiên tai hoặc bất khả kháng tương đương.</p>
+                <p>2) Công ty không chịu trách nhiệm về trở ngại sử dụng dịch vụ do nguyên nhân thuộc về thành viên.</p>
+                <p>3) Công ty không chịu trách nhiệm về việc thành viên mất lợi nhuận kỳ vọng từ việc sử dụng Dịch vụ, hoặc thiệt hại phát sinh từ tài liệu thu được qua Dịch vụ.</p>
+                <p>4) Công ty không chịu trách nhiệm về độ tin cậy, tính chính xác hoặc nội dung khác của thông tin, tài liệu hoặc sự kiện do thành viên đăng trên [trang web, web/di động ứng dụng, mạng xã hội, v.v.].</p>
+                <p>5) Công ty không chịu trách nhiệm, trong số thiệt hại mà thành viên phải chịu liên quan đến việc sử dụng Dịch vụ, đối với thiệt hại do ý định hoặc sơ suất của thành viên gây ra.</p>
+                <h3>Điều 25 (Thẩm quyền tài phán)</h3>
+                <p>Khi khởi kiện về tranh chấp phát sinh từ việc sử dụng Dịch vụ, tòa án có thẩm quyền tại địa điểm trụ sở chính của Công ty sẽ là tòa án thẩm quyền độc quyền.</p>
+
+                <h2>[Phụ lục] (Ngày hiệu lực)</h2>
+                <p>Các Điều khoản này có hiệu lực từ ngày 15 tháng 4 năm 2026.</p>
+            </div>
+
+            <!-- ===== Thai ===== -->
+            <div lang="th" class="i18n-el">
+                <h2>บทที่ 1 บทบัญญัติทั่วไป</h2>
+                <h3>ข้อ 1 (วัตถุประสงค์)</h3>
+                <p>ข้อกำหนดเหล่านี้มีวัตถุประสงค์เพื่อกำหนดสิทธิ หน้าที่ และความรับผิดชอบของบริษัทและผู้ใช้ที่เกี่ยวข้องกับการใช้งานเว็บไซต์ K-Cinema (ต่อไปนี้เรียกว่า "บริการ") ซึ่งจัดให้โดย K-Cinema Inc. (ต่อไปนี้เรียกว่า "บริษัท")</p>
+                <h3>ข้อ 2 (ผลบังคับและการแก้ไขข้อกำหนด)</h3>
+                <p>1) ข้อกำหนดเหล่านี้มีผลบังคับต่อสมาชิกทุกรายที่ตกลงยอมรับข้อกำหนดเหล่านี้เพื่อใช้บริการ</p>
+                <p>2) ข้อกำหนดเหล่านี้มีผลบังคับเมื่อสมาชิกตกลงยอมรับเนื้อหาที่เผยแพร่หรือแจ้งให้ทราบ ณ เวลาที่ลงทะเบียนสมาชิก (บริการ)</p>
+                <p>3) เมื่อมีการแก้ไขข้อกำหนด บริษัทจะกำหนดเนื้อหาและวันที่มีผลบังคับของข้อกำหนดที่แก้ไข และแจ้งให้ทราบผ่านเว็บไซต์ อีเมล หรือช่องทางอื่น ๆ ของบริษัทอย่างน้อย 7 วันก่อนวันที่มีผลบังคับ หรืออย่างน้อย 30 วันล่วงหน้า หากการแก้ไขเป็นการเปลี่ยนแปลงที่ไม่เป็นประโยชน์ต่อลูกค้าหรือเกี่ยวข้องกับเรื่องสำคัญ</p>
+                <p>4) สมาชิกที่ไม่ตกลงยอมรับข้อกำหนดที่แก้ไขแล้ว อาจขอถอนตัวจากสมาชิกภาพ / ถอนความยินยอมต่อข้อกำหนด หากสมาชิกไม่ขอถอนตัวหลังจากวันที่มีผลบังคับของข้อกำหนดที่แก้ไขแล้ว จะถือว่าสมาชิกตกลงยอมรับการแก้ไข</p>
+                <h3>ข้อ 3 (กฎเกณฑ์นอกเหนือจากข้อกำหนด)</h3>
+                <p>1) เรื่องที่ไม่ได้ระบุไว้ในข้อกำหนดเหล่านี้ ให้เป็นไปตามบทบัญญัติที่เกี่ยวข้องและแนวทางปฏิบัติทางการค้า รวมถึงพระราชบัญญัติลายมือชื่ออิเล็กทรอนิกส์ พระราชบัญญัติคุ้มครองผู้บริโภคในการค้าอิเล็กทรอนิกส์ และพระราชบัติส่งเสริมการใช้เครือข่ายสารสนเทศและการคุ้มครองข้อมูล</p>
+                <p>2) เรื่องที่เกี่ยวกับบริการซึ่งไม่ได้ระบุไว้ในข้อกำหนดเหล่านี้ ให้เป็นไปตามประกาศบริการที่เกี่ยวข้องซึ่งบริษัทจัดให้ผ่านเว็บไซต์ อุปกรณ์เคลื่อนที่ หรือ ณ โรงภาพยนตร์</p>
+                <h3>ข้อ 4 (คำจำกัดความ)</h3>
+                <p>คำศัพท์หลักที่ใช้ในข้อกำหนดเหล่านี้มีความหมายดังต่อไปนี้:</p>
+                <p>1) "เว็บไซต์" หมายถึง สถานที่ทำธุรกิจเสมือนที่บริษัทจัดตั้งขึ้นโดยใช้คอมพิวเตอร์และอุปกรณ์สารสนเทศและการสื่อสารอื่น ๆ เพื่อให้ผู้ใช้สามารถซื้อขายสินค้า บริการ และข้อมูล หรือเว็บไซต์ที่บริษัทดำเนินการ (หน้าแรก เว็บ/แอปพลิเคชันมือถือ เครือข่ายสังคมออนไลน์ ฯลฯ) และยังใช้หมายถึงผู้ดำเนินการเว็บไซต์ด้วย</p>
+                <p>2) "สมาชิก" หมายถึง บุคคลที่ให้ข้อมูลส่วนบุคคลแก่บริษัทและลงทะเบียนเป็นสมาชิก ซึ่งสามารถรับข้อมูลที่บริษัทจัดให้และใช้บริการของบริษัทอย่างต่อเนื่อง รวมถึงสมาชิกตามรายการด้านล่าง</p>
+                <p>(1) สมาชิก: บุคคลที่ลงทะเบียนบนเว็บไซต์ K-Cinema</p>
+                <p>(2) ผู้ที่ไม่ใช่สมาชิก: บุคคลที่ใช้บริการบนเว็บไซต์ K-Cinema โดยไม่ได้ลงทะเบียนเป็นสมาชิก</p>
+                <p>(3) ID: ชุดตัวอักษรหรือตัวเลขที่สมาชิกเลือกและได้รับการอนุมัติจากบริษัทเพื่อระบุตัวตนและใช้บริการ (ต่อไปนี้เรียกว่า "ID")</p>
+                <p>(4) รหัสผ่าน: ชุดตัวอักษรและตัวเลขที่สมาชิกกำหนดเพื่อยืนยันว่าสมาชิกตรงกับ ID ที่ได้รับมอบหมาย และเพื่อปกป้องความลับของตนเอง</p>
+                <p>(5) การระงับการใช้งาน: การระงับการให้บริการเป็นระยะเวลาหนึ่งตามเงื่อนไขที่บริษัทกำหนด</p>
+
+                <h2>บทที่ 2 ข้อกำหนดการใช้บริการ</h2>
+                <h3>ข้อ 5 (การลงทะเบียนสมาชิก)</h3>
+                <p>1) การลงทะเบียนสมาชิกสามารถทำได้ผ่านเว็บไซต์ที่บริษัทดำเนินการ เมื่อสมัครใช้บริการ ผู้สมัครจะสมัครเป็นสมาชิกโดยตกลงยอมรับข้อกำหนดเหล่านี้และนโยบายความเป็นส่วนตัว (รวมถึง "ประกาศเกี่ยวกับการเก็บรวบรวมและใช้ข้อมูลส่วนบุคคล" และ "ความยินยอมในการใช้เพื่อการตลาด" ฯลฯ)</p>
+                <p>2) เมื่อลูกค้าสมัครเป็นสมาชิก บริษัทอาจมอบสถานะสมาชิกหลังจากพิจารณาตามเกณฑ์ของตนเอง ลูกค้าที่ได้รับสถานะสมาชิกจะได้รับสถานะสมาชิกตั้งแต่เวลาที่ได้รับแจ้งการลงทะเบียนเสร็จสมบูรณ์จากบริษัท</p>
+                <h3>ข้อ 6 (การก่อตั้งข้อกำหนดการใช้งาน)</h3>
+                <p>1) หากเมื่อสมัครใช้บริการ คุณอ่านข้อกำหนดเหล่านี้และคลิกปุ่ม "ตกลงยอมรับ" จะถือว่าคุณตกลงยอมรับข้อกำหนดเหล่านี้</p>
+                <p>2) ข้อกำหนดการใช้งานจะก่อตั้งขึ้นเมื่อบริษัทอนุมัติคำขอใช้งานของผู้ที่ต้องการใช้บริการหลังจากผู้นั้นตกลงยอมรับข้อกำหนดการใช้งาน คำขอใช้งานและการอนุมัติของบริษัทอยู่ภายใต้ข้อ 7 และข้อ 8 ของข้อกำหนดเหล่านี้</p>
+                <p>3) ตามพระราชบัญญัติส่งเสริมการใช้เครือข่ายสารสนเทศและการคุ้มครองข้อมูล เด็กอายุต่ำกว่า 14 ปี ต้องทำความเข้าใจวัตถุประสงค์ของการเก็บรวบรวมและใช้ข้อมูลส่วนบุคคลอย่างเพียงพอก่อนส่งข้อมูลส่วนบุคคลให้ผู้อื่นทางออนไลน์ และต้องได้รับความยินยอมจากผู้แทนโดยชอบธรรม (ผู้ปกครอง) แม้จะได้รับความยินยอมจากผู้แทนโดยชอบธรรม บริการบางอย่าง—เช่น การจองภาพยนตร์ที่จำกัดอายุ 19 ปีขึ้นไป—อาจถูกจำกัด</p>
+                <h3>ข้อ 7 (การสมัครใช้งาน)</h3>
+                <p>บุคคลที่ต้องการลงทะเบียนเป็นสมาชิกและใช้บริการ จะสมัครใช้งานโดยให้ข้อมูลส่วนบุคคลตามแบบฟอร์มที่บริษัทกำหนด</p>
+                <h3>ข้อ 8 (การอนุมัติคำขอใช้งาน)</h3>
+                <p>1) บริษัทจะอนุมัติคำขอใช้งานตามข้อ 7 ตามลำดับที่ได้รับ ยกเว้นกรณีพิเศษ</p>
+                <p>2) บริษัทอาจจำกัดการอนุมัติคำขอใช้งานในกรณีต่อไปนี้ และอาจระงับการอนุมัติจนกว่าเหตุผลที่เกี่ยวข้องจะได้รับการแก้ไข:</p>
+                <p>(1) เมื่อไม่สามารถให้บริการได้ทางเทคนิค</p>
+                <p>(2) เมื่อไม่เป็นไปตามเงื่อนไขการสมัครอื่น ๆ ที่บริษัทกำหนด</p>
+                <p>(3) เมื่อการสมัครไม่ได้ทำภายใต้ชื่อจริงของผู้สมัคร</p>
+                <p>(4) เมื่อการสมัครทำโดยใช้ชื่อของบุคคลอื่น</p>
+                <p>(5) เมื่อกรอกข้อมูลที่จำเป็นในคำขอใช้งานโดยไม่ตรงความจริง</p>
+                <p>(6) เมื่อการสมัครมีวัตถุประสงค์เพื่อทำลายความสงบเรียบร้อย ความมั่นคง หรือศีลธรรมอันดีของสังคม</p>
+                <p>(7) เมื่อไม่เป็นไปตามเงื่อนไขการสมัครใช้งานอื่น ๆ ที่บริษัทกำหนด</p>
+                <p>3) เมื่อบริษัทระงับหรือปฏิเสธการอนุมัติคำขอใช้งาน บริษัทต้องแจ้งให้ผู้สมัครทราบ อย่างไรก็ตาม ไม่ใช้บังคับเมื่อบริษัทไม่สามารถแจ้งผู้สมัครได้ด้วยเหตุผลที่ไม่เกิดจากบริษัท</p>
+                <p>4) เมื่อบุคคลที่ถูกถอนสมาชิกภาพหรือถอนข้อกำหนดเนื่องจากเหตุผลใดเหตุผลหนึ่งในข้อ 9(2) ข้อ 13 หรือข้อ 15 สมัครใช้งานตามข้อ 7 บริษัทอาจปฏิเสธการอนุมัติคำขอ</p>
+                <h3>ข้อ 9 (การยกเลิกสัญญา การจำกัดการใช้งาน และการจำกัดการลงทะเบียนใหม่)</h3>
+                <p>1) สมาชิกที่ต้องการยกเลิก (ถอนตัวจาก) สัญญาการใช้งาน อาจขอถอนสมาชิกภาพหรือถอนความยินยอมต่อข้อกำหนดผ่านเว็บไซต์ ศูนย์ลูกค้า อีเมล หรือวิธีการอื่นที่บริษัทกำหนด และบริษัทจะดำเนินการตามขั้นตอนที่จำเป็นสำหรับการถอนตัวโดยเร็วตามคำขอของสมาชิก อย่างไรก็ตาม เมื่อถอนตัว เพื่อป้องกันการใช้กิจกรรมในทางที่ผิด จะไม่อนุญาตให้ลงทะเบียนใหม่ภายใน 30 วันนับจากวันที่ถอนตัว และคะแนนสะสม คูปองที่ถือครอง และสิทธิประโยชน์ส่วนบุคคลอื่น ๆ จะถูกลบทั้งหมดเมื่อถอนตัว</p>
+                <p>2) บริษัทอาจยกเลิกข้อกำหนดการใช้งานหรือระงับการใช้บริการเป็นระยะเวลาที่กำหนด โดยไม่ต้องแจ้งล่วงหน้า เมื่อสมาชิกกระทำการใด ๆ ดังต่อไปนี้:</p>
+                <p>(1) การนำข้อมูลส่วนบุคคล ID และรหัสผ่านของผู้อื่นไปใช้โดยมิชอบ</p>
+                <p>(2) เมื่อชื่อที่ลงทะเบียนไม่ใช่ชื่อจริงของสมาชิก</p>
+                <p>(3) การทำลายชื่อเสียงของผู้อื่นหรือกระทำการที่ก่อให้เกิดความเสียหายแก่ผู้อื่น</p>
+                <p>(4) การละเมิดสิทธิในทรัพย์สินทางปัญญาของบริษัท สมาชิกอื่น หรือบุคคลที่สาม</p>
+                <p>(5) การเผยแพร่เนื้อหาที่ทำลายความสงบเรียบร้อยและศีลธรรมอันดีของสังคมโดยเจตนา</p>
+                <p>(6) เมื่อสมาชิกวางแผนหรือดำเนินการใช้บริการเพื่อทำลายผลประโยชน์ของชาติหรือผลประโยชน์สาธารณะของสังคม</p>
+                <p>(7) การรบกวนการดำเนินงานของบริการโดยเจตนา</p>
+                <p>(8) การส่งข้อมูลจำนวนมากหรือข้อมูลโฆษณาเพื่อรบกวนการดำเนินงานที่เสถียรของบริการ</p>
+                <p>(9) การเผยแพร่โปรแกรมไวรัสคอมพิวเตอร์หรือสิ่งที่คล้ายกันซึ่งทำให้อุปกรณ์สารสนเทศและการสื่อสารทำงานผิดปกติหรือทำลายข้อมูล</p>
+                <p>(10) เมื่อมีคำขอแก้ไขจากหน่วยงานภายนอก เช่น คณะกรรมการจริยธรรมสารสนเทศและการสื่อสาร หรือการตีความที่มีอำนาจจากคณะกรรมการการเลือกตั้งที่เกี่ยวข้องกับการรณรงค์เลือกตั้งที่ผิดกฎหมาย</p>
+                <p>(11) การทำสำเนาหรือเผยแพร่ข้อมูลที่ได้จากบริการของบริษัทโดยไม่ได้รับความยินยอมล่วงหน้าจากบริษัท หรือใช้เพื่อวัตถุประสงค์ทางการค้า</p>
+                <p>(12) เมื่อสมาชิกโพสต์เนื้อหาลามกอนาจารบนหรือเชื่อมโยงไปยังเว็บไซต์ลามกอนาจารจากหน้าแรกและกระดานข้อความของตนเอง</p>
+                <p>(13) การละเมิดข้อกำหนดเหล่านี้หรือเงื่อนไขการใช้งานอื่น ๆ ที่บริษัทกำหนด</p>
+                <p>3) ไม่อนุญาตให้ลงทะเบียนใหม่ภายในหนึ่งเดือนนับจากเวลาที่สมาชิกถอนตัวโดยสมัครใจหรือถอนตัวตามคำขอของสมาชิกต่อบริษัท เช่นเดียวกัน เมื่อสมาชิกสูญเสียสถานะสมาชิกตามข้อ 9(2) ข้อ 13(6) หรือข้อ 15 จะไม่อนุญาตให้ลงทะเบียนใหม่และใช้บริการเป็นระยะเวลาหนึ่งเดือนนับจากวันที่สูญเสียสถานะ เพื่อป้องกันการใช้บริการในทางที่ผิดและความเสียหายเพิ่มเติม</p>
+                <h3>ข้อ 10 (การแจ้งให้สมาชิกทราบ)</h3>
+                <p>1) เมื่อบริษัทแจ้งให้สมาชิกทราบ อาจทำผ่านที่อยู่อีเมลหรือ SMS ที่สมาชิกลงทะเบียนไว้</p>
+                <p>2) สำหรับการแจ้งให้สมาชิกจำนวนมากที่ไม่ระบุตัวตน บริษัทอาจใช้การโพสต์บนกระดานข้อความบริการหรือช่องทางอื่นแทนการแจ้งเป็นรายบุคคล</p>
+                <h3>ข้อ 11 (การเปลี่ยนแปลงข้อมูลสมาชิก)</h3>
+                <p>1) สมาชิกสามารถดูและแก้ไขข้อมูลส่วนบุคคลของตนเองได้ตลอดเวลาผ่านนโยบายความเป็นส่วนตัว</p>
+                <p>2) เมื่อข้อมูลที่กรอก ณ เวลาที่สมัครใช้งานมีการเปลี่ยนแปลง สมาชิกต้องแก้ไขโดยตรงทางออนไลน์หรือขอแก้ไขโดยติดต่อ contact@k-cine.com สมาชิกรับผิดชอบต่อปัญหาที่เกิดขึ้นจากการไม่อัปเดตข้อมูลสมาชิก</p>
+
+                <h2>บทที่ 3 หน้าที่ของคู่สัญญา</h2>
+                <h3>ข้อ 12 (หน้าที่ของบริษัท)</h3>
+                <p>1) ยกเว้นกรณีพิเศษ บริษัทจะทำให้สมาชิกสามารถใช้บริการได้ในวันที่สมาชิกสมัครใช้บริการ</p>
+                <p>2) บริษัทจะพยายามอย่างต่อเนื่องเพื่อให้บริการอย่างต่อเนื่องและเสถียรตามที่กำหนดในข้อกำหนดเหล่านี้ และจะซ่อมแซมหรือกู้คืนอุปกรณ์โดยไม่ชักช้าหากเกิดความเสียหายหรือสูญหาย อย่างไรก็ตาม ในกรณีภัยธรรมชาติ สถานการณ์ฉุกเฉิน หรือเหตุสุดวิสัยอื่น ๆ บริษัทอาจหยุดชั่วคราวหรือระงับบริการ</p>
+                <p>3) เมื่อบริษัทเห็นว่าความคิดเห็นหรือข้อร้องเรียนที่สมาชิกยื่นตามขั้นตอนที่กำหนดเป็นที่ยุติธรรม บริษัทจะดำเนินการผ่านขั้นตอนที่เหมาะสม หากการดำเนินการต้องใช้เวลาหนึ่ง บริษัทจะแจ้งให้สมาชิกทราบถึงเหตุผลและกำหนดการดำเนินการ</p>
+                <p>4) บริษัทจะปฏิบัติตามข้อที่กำหนดในข้อ 2 ของนโยบายความเป็นส่วนตัวเกี่ยวกับการคุ้มครองความเป็นส่วนตัวของสมาชิก</p>
+                <p>5) บริษัทจะพยายามอำนวยความสะดวกให้แก่ลูกค้าในขั้นตอนและเนื้อหาที่เกี่ยวข้องกับสัญญากับลูกค้า เช่น การทำข้อกำหนดเหล่านี้ การแก้ไขหรือการยกเลิกเรื่องสัญญา</p>
+                <h3>ข้อ 13 (หน้าที่ของสมาชิก)</h3>
+                <p>1) สมาชิกต้องปฏิบัติตามข้อที่กำหนดในข้อกำหนดเหล่านี้และเรื่องที่บริษัทประกาศผ่านคู่มือการใช้งานหรือประกาศ และต้องไม่กระทำการอื่นใดที่รบกวนการดำเนินธุรกิจของบริษัท</p>
+                <p>2) ความรับผิดชอบทั้งหมดในการจัดการ ID และรหัสผ่านของสมาชิกอยู่ที่สมาชิก สมาชิกรับผิดชอบต่อผลที่ตามมาทั้งหมดจากการจัดการอย่างประมาทหรือการใช้ ID และรหัสผ่านที่ได้รับมอบหมายโดยไม่ได้รับอนุญาต</p>
+                <p>3) เมื่อสมาชิกพบว่า ID หรือรหัสผ่านของตนถูกใช้ในทางที่ผิด สมาชิกต้องรายงานต่อบริษัททันที สมาชิกรับผิดชอบต่อผลที่ตามมาทั้งหมดจากการไม่รายงาน</p>
+                <p>4) สมาชิกต้องไม่ดำเนินกิจกรรมทางธุรกิจโดยใช้บริการโดยไม่ได้รับความยินยอมล่วงหน้าจากบริษัท บริษัทไม่รับผิดชอบต่อผลของกิจกรรมทางธุรกิจดังกล่าวหรือผลที่เกิดจากกิจกรรมทางธุรกิจที่สมาชิกดำเนินการโดยละเมิดข้อกำหนดเหล่านี้ หากบริษัทได้รับความเสียหายจากกิจกรรมทางธุรกิจดังกล่าว สมาชิกมีหน้าที่ชดใช้ค่าเสียหายแก่บริษัท</p>
+                <p>5) เว้นแต่บริษัทจะยินยอมอย่างชัดแจ้ง สมาชิกต้องไม่โอนหรือมอบสิทธิในการใช้บริการหรือสถานะอื่นใดภายใต้สัญญาการใช้งานให้แก่บุคคลที่สาม หรือจำนำเป็นหลักประกัน</p>
+                <p>6) สมาชิกต้องไม่กระทำการใด ๆ ดังต่อไปนี้ที่เกี่ยวข้องกับการใช้บริการ:</p>
+                <p>(1) การนำข้อมูลส่วนบุคคล เช่น ID และรหัสผ่านของสมาชิกอื่นไปใช้โดยมิชอบ</p>
+                <p>(2) การทำสำเนาข้อมูลที่ได้จากบริการเพื่อวัตถุประสงค์อื่นนอกจากการใช้ของสมาชิกเอง หรือใช้ในการตีพิมพ์หรือออกอากาศ หรือให้แก่บุคคลที่สาม โดยไม่ได้รับความยินยอมล่วงหน้าจากบริษัท</p>
+                <p>(3) การโพสต์หรือเผยแพร่ให้ผู้อื่นทราบ ทางอีเมลหรือวิธีอื่น เนื้อหาที่ละเมิดสิทธิบัตร เครื่องหมายการค้า ความลับทางการค้า ลิขสิทธิ์ หรือทรัพย์สินทางปัญญาอื่นของผู้อื่น</p>
+                <p>(4) การส่ง โพสต์ หรือเผยแพร่ให้ผู้อื่นทราบ ทางอีเมลหรือวิธีอื่น ข้อมูล ข้อความ หรือภาพที่หยาบคายหรือลามกอนาจารซึ่งละเมิดความสงบเรียบร้อยและศีลธรรมอันดีของสังคม</p>
+                <p>(5) การส่ง โพสต์ หรือเผยแพร่ให้ผู้อื่นทราบ ทางอีเมลหรือวิธีอื่น เนื้อหาที่ดูหมิ่นหรือคุกคามและอาจละเมิดความเป็นส่วนตัวของผู้อื่น</p>
+                <p>(6) การกระทำที่ตัดสินโดยวัตถุประสงค์ว่าเกี่ยวข้องกับอาชญากรรม</p>
+                <p>(7) การเก็บรวบรวมหรือจัดเก็บข้อมูลส่วนบุคคลของผู้ใช้อื่นโดยไม่ได้รับการอนุมัติจากบริษัท</p>
+                <p>(8) การกระทำอื่นใดที่ละเมิดกฎหมายที่บังคับใช้</p>
+
+                <h2>บทที่ 4 รายละเอียดการใช้บริการ</h2>
+                <h3>ข้อ 14 (สิทธิประโยชน์บริการสมาชิก)</h3>
+                <p>1) สมาชิกสามารถจองตั๋วออนไลน์ผ่านเว็บไซต์ของบริษัท และรับข้อมูลภาพยนตร์และโรงภาพยนตร์ทางอีเมล SMS และการแจ้งเตือนแบบพุชแอปพลิเคชันมือถือ</p>
+                <p>2) บริษัทจะมอบสิทธิให้สมาชิกมีสิทธิเข้าร่วมกิจกรรมทั้งหมดที่บริษัทวางแผนไว้เป็นอันดับแรก เท่าที่เป็นไปได้</p>
+                <h3>ข้อ 15 (การจำกัดสิทธิประโยชน์บริการสมาชิก)</h3>
+                <p>1) เมื่อสมาชิกโอนตั๋วตามวิธีการที่กำหนดในรายการต่อไปนี้ บริษัทอาจดำเนินการเช่น ถอนสมาชิกภาพ / ถอนความยินยอมต่อข้อกำหนด ในกรณีนี้ บริษัทต้องแจ้งเหตุผลให้สมาชิกทราบภายในหนึ่งสัปดาห์นับจากเวลาที่จำกัดสิทธิประโยชน์บริการสมาชิก</p>
+                <p>2) เมื่อเพื่อวัตถุประสงค์สะสมคะแนนพันธมิตรหรือเพื่อผลกำไร สมาชิกออกตั๋วแล้วโอนให้ผู้อื่นเพื่อรับค่าตอบแทนหรือสะสมคะแนน</p>
+                <p>3) เมื่อการกระทำทางธุรกิจเช่น การขายต่อ (ข้อ 16(1)(1)) เกิดขึ้นซ้ำสองครั้งขึ้นไป หรือเมื่อเหตุผลไม่ได้รับการแก้ไขภายใน 30 วันหลังการแจ้งให้แก้ไข เช่น การจำกัดการเข้าสู่ระบบ บริษัทอาจดำเนินการเช่น ถอนสมาชิกภาพ / ถอนความยินยอมต่อข้อกำหนด โดยไม่คำนึงว่าการขายต่อสำเร็จหรือไม่</p>
+                <h3>ข้อ 16 (การจัดให้ข้อมูล)</h3>
+                <p>1) บริษัทอาจจัดให้สมาชิกได้รับข้อมูลต่าง ๆ ที่เห็นว่าจำเป็นระหว่างการใช้บริการ ทางประกาศ อีเมล หรือวิธีอื่น ๆ</p>
+                <p>2) บริษัทอาจจัดให้ข้อมูลที่เกี่ยวข้องกับบริการผ่านช่องทางส่งมอบต่าง ๆ (โทรศัพท์ ประกาศ จดหมาย ฯลฯ) เพื่อมอบสิทธิประโยชน์บริการที่ดีขึ้นแก่สมาชิก อย่างไรก็ตาม เมื่อสมาชิกแสดงเจตนาว่าไม่ต้องการรับข้อมูลสิทธิประโยชน์บริการ บริษัทต้องยกเว้นสมาชิกรายนั้นจากการจัดให้ข้อมูล และบริษัทไม่รับผิดชอบต่อความเสียหายใด ๆ ที่เกิดจากการที่สมาชิกไม่ได้รับข้อมูลบริการเนื่องจากถูกยกเว้น</p>
+                <h3>ข้อ 17 (การโพสต์ของสมาชิก)</h3>
+                <p>1) บริษัทอาจลบเนื้อหาที่สมาชิกโพสต์หรือลงทะเบียนบน [เว็บไซต์ เว็บ/แอปพลิเคชันมือถือ เครือข่ายสังคมออนไลน์ ฯลฯ] โดยไม่ต้องแจ้งล่วงหน้า เมื่อบริษัทพิจารณาว่าเนื้อหานั้นตกอยู่ในกรณีใดกรณีหนึ่งดังต่อไปนี้:</p>
+                <p>(1) เนื้อหาที่หมิ่นประมาทหรือทำลายชื่อเสียงของสมาชิกอื่นหรือบุคคลที่สาม</p>
+                <p>(2) เนื้อหาที่ละเมิดความสงบเรียบร้อยและศีลธรรมอันดีของสังคม</p>
+                <p>(3) เนื้อหาที่รับรู้ว่าเกี่ยวข้องกับการกระทำผิดกฎหมาย</p>
+                <p>(4) เนื้อหาที่ละเมิดลิขสิทธิ์ของบริษัท ลิขสิทธิ์ของบุคคลที่สาม หรือสิทธิอื่น ๆ</p>
+                <p>(5) เนื้อหาที่เกินระยะเวลาโพสต์หรือความจุที่บริษัทกำหนด</p>
+                <p>(6) เมื่อสมาชิกโพสต์เนื้อหาลามกอนาจารบนหรือเชื่อมโยงไปยังเว็บไซต์ลามกอนาจารจากหน้าแรกและกระดานข้อความของตนเอง</p>
+                <p>(7) การโพสต์ที่ไม่สอดคล้องกับลักษณะของกระดานข้อความ</p>
+                <p>(8) เนื้อหาอื่นที่พิจารณาว่าละเมิดกฎหมายที่บังคับใช้</p>
+                <h3>ข้อ 18 (ลิขสิทธิ์ของการโพสต์)</h3>
+                <p>1) สิทธิในวัสดุที่โพสต์บน [เว็บไซต์ เว็บ/แอปพลิเคชันมือถือ เครือข่ายสังคมออนไลน์ ฯลฯ] มีดังนี้:</p>
+                <p>(1) สิทธิและความรับผิดชอบต่อการโพสต์อยู่ที่ผู้โพสต์ และบริษัทต้องไม่ใช้เพื่อวัตถุประสงค์ทางการค้านอกจากการโพสต์บน [เว็บไซต์ เว็บ/แอปพลิเคชันมือถือ เครือข่ายสังคมออนไลน์ ฯลฯ] โดยไม่ได้รับความยินยอมจากผู้โพสต์ อย่างไรก็ตาม ไม่ใช้บังคับในกรณีที่ไม่ใช่เชิงพาณิชย์ และบริษัทยังคงสิทธิในการโพสต์บน [เว็บไซต์ เว็บ/แอปพลิเคชันมือถือ เครือข่ายสังคมออนไลน์ ฯลฯ]</p>
+                <p>(2) สมาชิกต้องไม่ใช้วัสดุที่โพสต์บน [เว็บไซต์ เว็บ/แอปพลิเคชันมือถือ เครือข่ายสังคมออนไลน์ ฯลฯ] เพื่อวัตถุประสงค์ทางการค้า เช่น การประมวลผลหรือขายข้อมูลที่ได้จากบริการ</p>
+                <h3>ข้อ 19 (การลงโฆษณาและการทำธุรกรรมกับผู้ลงโฆษณา)</h3>
+                <p>1) ส่วนหนึ่งของฐานการลงทุนบริการที่ทำให้บริษัทสามารถให้บริการแก่สมาชิกมาจากรายได้จากการลงโฆษณา ผู้ที่ต้องการใช้บริการจะถือว่าตกลงยอมรับการลงโฆษณาที่แสดงเมื่อใช้บริการ</p>
+                <p>2) บริษัทไม่รับผิดชอบต่อความสูญเสียหรือความเสียหายใด ๆ ที่เกิดจากการที่สมาชิกเข้าร่วม สื่อสาร หรือทำธุรกรรมกับกิจกรรมส่งเสริมการขายของผู้ลงโฆษณาที่โพสต์บน [เว็บไซต์ เว็บ/แอปพลิเคชันมือถือ เครือข่ายสังคมออนไลน์ ฯลฯ] หรือผ่านบริการ</p>
+                <h3>ข้อ 20 (เวลาการใช้บริการ)</h3>
+                <p>1) การใช้บริการโดยหลักการแล้วสามารถใช้ได้ตลอด 24 ชั่วโมงต่อวัน ตลอดทั้งปี ยกเว้นเมื่อมีอุปสรรคด้านการดำเนินงานหรือเทคนิคพิเศษจากบริษัท อย่างไรก็ตาม เมื่อจำเป็นต้องบำรุงรักษาตามกำหนดหรือสิ่งที่คล้ายกัน บริษัทจะแจ้งล่วงหน้าผ่านเว็บไซต์</p>
+                <p>2) บริษัทอาจแบ่งบริการเป็นช่วงต่าง ๆ และกำหนดเวลาที่ใช้ได้แยกต่างหากสำหรับแต่ละช่วง ในกรณีนี้ บริษัทจะแจ้งล่วงหน้าผ่านเว็บไซต์</p>
+                <h3>ข้อ 21 (ความรับผิดชอบในการใช้บริการ)</h3>
+                <p>ยกเว้นเมื่อบริษัทได้ยินยอมอย่างชัดแจ้งเป็นลายลักษณ์อักษรที่มีตราประทับอย่างเป็นทางการ สมาชิกต้องไม่ดำเนินกิจกรรมทางธุรกิจขายสินค้าโดยใช้บริการ และโดยเฉพาะต้องไม่ดำเนินการค้าโดยใช้การแฮ็ก โฆษณาหารายได้ หรือเว็บไซต์ลามกอนาจาร หรือการเผยแพร่ซอฟต์แวร์เชิงพาณิชย์โดยผิดกฎหมาย บริษัทไม่รับผิดชอบต่อผลและความสูญเสียของกิจกรรมทางธุรกิจที่ดำเนินการโดยละเมิดข้อนี้ หรือมาตรการทางกฎหมายเช่น การควบคุมตัวโดยหน่วยงานที่เกี่ยวข้อง</p>
+                <h3>ข้อ 22 (การระงับการให้บริการ ฯลฯ)</h3>
+                <p>1) บริษัทอาจระงับการให้บริการในกรณีต่อไปนี้:</p>
+                <p>(1) เมื่อไม่อาจหลีกเลี่ยงได้เนื่องจากการก่อสร้างเช่น การซ่อมแซมอุปกรณ์บริการ</p>
+                <p>(2) เมื่อผู้ให้บริการโทรคมนาคมหลักตามที่กำหนดในพระราชบัญญัติธุรกิจโทรคมนาคมได้ระงับบริการโทรคมนาคม</p>
+                <p>(3) เมื่อมีเหตุสุดวิสัยอื่น ๆ</p>
+                <p>2) บริษัทอาจจำกัดหรือระงับบริการทั้งหมดหรือบางส่วน เมื่อมีอุปสรรคต่อการใช้บริการตามปกติเนื่องจากสถานการณ์ฉุกเฉินของชาติ ไฟฟ้าดับ ความเสียหายของอุปกรณ์บริการ หรือการใช้บริการเพิ่มขึ้นอย่างฉุกเฉิน ฯลฯ</p>
+                <p>3) เมื่อบริษัทจำกัดหรือระงับการใช้บริการตามวรรค 1 และ 2 บริษัทต้องแจ้งให้สมาชิกทราบถึงเหตุผลและระยะเวลาจำกัดโดยไม่ชักช้า</p>
+
+                <h2>บทที่ 5 ค่าเสียหายและข้อกำหนดอื่น ๆ</h2>
+                <h3>ข้อ 23 (ค่าเสียหาย)</h3>
+                <p>บริษัทไม่รับผิดชอบต่อความเสียหายใด ๆ ที่สมาชิกได้รับที่เกี่ยวข้องกับการใช้บริการที่ไม่มีค่าใช้จ่าย บริการที่มีค่าใช้จ่ายอยู่ภายใต้ข้อกำหนดการใช้งานของแต่ละบริการ</p>
+                <h3>ข้อ 24 (ข้อจำกัดความรับผิด)</h3>
+                <p>1) บริษัทได้รับการยกเว้นความรับผิดในการให้บริการเมื่อไม่สามารถให้บริการได้เนื่องจากภัยธรรมชาติหรือเหตุสุดวิสัยที่เทียบเท่า</p>
+                <p>2) บริษัทไม่รับผิดชอบต่ออุปสรรคในการใช้บริการที่เกิดจากเหตุผลที่เกิดจากสมาชิก</p>
+                <p>3) บริษัทไม่รับผิดชอบต่อการสูญเสียผลกำไรที่คาดหวังจากการใช้บริการของสมาชิก หรือความเสียหายที่เกิดจากวัสดุที่ได้รับผ่านบริการ</p>
+                <p>4) บริษัทไม่รับผิดชอบต่อความน่าเชื่อถือ ความถูกต้อง หรือเนื้อหาอื่น ๆ ของข้อมูล วัสดุ หรือข้อเท็จจริงที่สมาชิกโพสต์บน [เว็บไซต์ เว็บ/แอปพลิเคชันมือถือ เครือข่ายสังคมออนไลน์ ฯลฯ]</p>
+                <p>5) บริษัทไม่รับผิดชอบ ในบรรดาความเสียหายที่สมาชิกได้รับที่เกี่ยวข้องกับการใช้บริการ ต่อความเสียหายที่เกิดจากเจตนาหรือความประมาทของสมาชิก</p>
+                <h3>ข้อ 25 (เขตอำนาจศาล)</h3>
+                <p>เมื่อมีการฟ้องร้องเกี่ยวกับข้อพิพาทที่เกิดจากการใช้บริการ ศาลที่มีเขตอำนาจเหนือที่ตั้งสำนักงานใหญ่ของบริษัทจะเป็นศาลที่มีเขตอำนาจเฉพาะ</p>
+
+                <h2>[บทเฉพาะกาล] (วันที่มีผลบังคับ)</h2>
+                <p>ข้อกำหนดเหล่านี้มีผลบังคับตั้งแต่วันที่ 15 เมษายน 2026</p>
+            </div>
         </div>
     </div>
 </main>
@@ -391,33 +851,22 @@
         <div class="footer-left">
             <div class="footer-brand"><span class="k">K</span>-Cinema Inc.</div>
             <div class="footer-links">
-                <a class="priv" href="privacy.html"><span lang="ko" class="i18n-el">개인정보처리방침</span><span lang="en" class="i18n-el">Privacy Policy</span></a>
-                <a href="terms.html"><span lang="ko" class="i18n-el">이용약관</span><span lang="en" class="i18n-el">Terms of Service</span></a>
-                <a href="data-deletion.html"><span lang="ko" class="i18n-el">데이터 삭제 안내</span><span lang="en" class="i18n-el">Data Deletion</span></a>
+                <a class="priv" href="privacy.html"><span lang="ko" class="i18n-el">개인정보처리방침</span><span lang="en" class="i18n-el">Privacy Policy</span><span lang="zh" class="i18n-el">隐私政策</span><span lang="vi" class="i18n-el">Chính sách bảo mật</span><span lang="th" class="i18n-el">นโยบายความเป็นส่วนตัว</span></a>
+                <a href="terms.html"><span lang="ko" class="i18n-el">이용약관</span><span lang="en" class="i18n-el">Terms of Service</span><span lang="zh" class="i18n-el">使用条款</span><span lang="vi" class="i18n-el">Điều khoản sử dụng</span><span lang="th" class="i18n-el">ข้อกำหนดการใช้งาน</span></a>
+                <a href="data-deletion.html"><span lang="ko" class="i18n-el">데이터 삭제 안내</span><span lang="en" class="i18n-el">Data Deletion</span><span lang="zh" class="i18n-el">数据删除说明</span><span lang="vi" class="i18n-el">Hướng dẫn xóa dữ liệu</span><span lang="th" class="i18n-el">คำแนะนำการลบข้อมูล</span></a>
             </div>
         </div>
         <div>
             <span lang="ko" class="i18n-el">© 2026 (주)케이시네마 · 사업자등록번호 452-86-03560 · 통신판매업 신고번호 제2026-서울영등포-1199호 · All rights reserved.</span>
             <span lang="en" class="i18n-el">© 2026 K-Cinema Inc. · Business Reg. 452-86-03560 · E-Commerce Reg. 2026-Seoul Yeongdeungpo-1199 · All rights reserved.</span>
+            <span lang="zh" class="i18n-el">© 2026 K-Cinema株式会社 · 营业执照号 452-86-03560 · 通信销售业申报号 第2026-首尔永登浦-1199号 · All rights reserved.</span>
+            <span lang="vi" class="i18n-el">© 2026 K-Cinema Inc. · ĐKKD 452-86-03560 · TMĐT 2026-Seoul Yeongdeungpo-1199 · All rights reserved.</span>
+            <span lang="th" class="i18n-el">© 2026 K-Cinema Inc. · เลขทะเบียนธุรกิจ 452-86-03560 · E-Commerce 2026-Seoul Yeongdeungpo-1199 · All rights reserved.</span>
         </div>
     </div>
 </footer>
 
-<script>
-(function(){
-    var KEY = 'kc-lang';
-    function apply(l){
-        document.documentElement.setAttribute('data-lang', l);
-        document.documentElement.setAttribute('lang', l);
-        try { localStorage.setItem(KEY, l); } catch(e){}
-    }
-    document.addEventListener('DOMContentLoaded', function(){
-        document.querySelectorAll('.lang-toggle button').forEach(function(b){
-            b.addEventListener('click', function(){ apply(b.getAttribute('data-setlang')); });
-        });
-    });
-})();
-</script>
+<script src="js/i18n.js"></script>
 
 </body>
 </html>
