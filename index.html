@@ -296,6 +296,104 @@
         }
         @media (max-width: 900px) { .service-grid { grid-template-columns: 1fr; } }
 
+        /* ===== App Download ===== */
+        #download {
+            border-top: 1px solid var(--card-border);
+            padding-top: clamp(56px, 8vw, 96px);
+            padding-bottom: clamp(56px, 8vw, 96px);
+        }
+        .download-panel {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: clamp(36px, 6vw, 72px);
+            align-items: center;
+            max-width: 880px;
+            margin: 0 auto;
+        }
+        .download-qr {
+            display: block;
+            width: clamp(180px, 28vw, 240px);
+            padding: 16px;
+            background: #F2F2F4;
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.06);
+            box-shadow:
+                0 24px 48px rgba(0,0,0,0.35),
+                0 0 0 1px rgba(229, 57, 53, 0.12);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .download-qr:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                0 28px 56px rgba(0,0,0,0.4),
+                0 0 0 1px rgba(229, 57, 53, 0.28);
+        }
+        .download-qr img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .download-copy {
+            text-align: left;
+        }
+        .download-copy .section-eyebrow {
+            margin-bottom: 14px;
+        }
+        .download-copy h2 {
+            font-size: clamp(26px, 3.5vw, 38px);
+            margin-bottom: 14px;
+        }
+        .download-copy .section-lead {
+            margin: 0 0 28px;
+            max-width: 440px;
+            text-align: left;
+        }
+        .download-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-soft));
+            color: #FFF;
+            font-weight: 700;
+            font-size: 15px;
+            padding: 14px 26px;
+            border-radius: 12px;
+            letter-spacing: -0.2px;
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+        .download-cta:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.06);
+        }
+        .download-cta::after {
+            content: "→";
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+        .download-cta:hover::after {
+            transform: translateX(3px);
+        }
+        .download-hint {
+            margin-top: 14px;
+            font-size: 13px;
+            color: var(--text-dim);
+        }
+        @media (max-width: 720px) {
+            .download-panel {
+                grid-template-columns: 1fr;
+                justify-items: center;
+                text-align: center;
+                gap: 32px;
+            }
+            .download-copy { text-align: center; }
+            .download-copy .section-eyebrow { justify-content: center; }
+            .download-copy .section-lead {
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+            }
+        }
+
         /* ===== App Preview ===== */
         .app-preview {
             display: grid;
@@ -689,6 +787,31 @@
     </div>
 </section>
 
+<section id="download">
+    <div class="container">
+        <div class="download-panel">
+            <a class="download-qr"
+               href="https://www.qrcodechimp.page/page/ti942w9sitqf?v=chk1784186593"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="K-Cinema app download">
+                <img src="images/app-download-qr.png" alt="K-Cinema app download QR" data-i18n-alt="download.qrAlt">
+            </a>
+            <div class="download-copy">
+                <div class="section-eyebrow" data-i18n="download.eyebrow">앱 다운로드</div>
+                <h2 data-i18n="download.title">QR로 바로 앱을 받아보세요</h2>
+                <p class="section-lead" data-i18n="download.lead">스마트폰으로 QR 코드를 스캔하거나, 아래 버튼을 눌러 앱 다운로드 페이지로 이동하세요.</p>
+                <a class="download-cta"
+                   href="https://www.qrcodechimp.page/page/ti942w9sitqf?v=chk1784186593"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   data-i18n="download.cta">앱 다운로드 페이지 열기</a>
+                <p class="download-hint" data-i18n="download.hint">iOS · Android 모두 지원</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="surface" id="app">
     <div class="container">
         <div class="section-head">
@@ -885,6 +1008,13 @@
             'service.s3.li2': 'CGV · 롯데시네마 · 메가박스 40여 개 지점',
             'service.s3.li3': '극장에서만 만나는 대형 스크린 관람 경험',
 
+            'download.eyebrow': '앱 다운로드',
+            'download.title': 'QR로 바로 앱을 받아보세요',
+            'download.lead': '스마트폰으로 QR 코드를 스캔하거나, 아래 버튼을 눌러 앱 다운로드 페이지로 이동하세요.',
+            'download.cta': '앱 다운로드 페이지 열기',
+            'download.hint': 'iOS · Android 모두 지원',
+            'download.qrAlt': 'K-Cinema 앱 다운로드 QR 코드',
+
             'app.eyebrow': '앱 미리보기',
             'app.title': '손 안에서 끝나는 예매 경험',
             'app.lead': '홈 화면에서 다국어 상영작을 확인하고, 좌석을 고르고, 결제까지 — 전 과정을 자국어로.',
@@ -968,6 +1098,13 @@
             'service.s3.li1': 'Multilingual subtitles from opening day',
             'service.s3.li2': '40+ locations across CGV, Lotte Cinema, Megabox',
             'service.s3.li3': 'The immersive big-screen experience',
+
+            'download.eyebrow': 'Download',
+            'download.title': 'Get the app with a quick QR scan',
+            'download.lead': 'Scan the QR code with your phone, or tap the button below to open the app download page.',
+            'download.cta': 'Open app download page',
+            'download.hint': 'Available on iOS and Android',
+            'download.qrAlt': 'K-Cinema app download QR code',
 
             'app.eyebrow': 'App Preview',
             'app.title': 'Booking that fits in your hand',
@@ -1053,6 +1190,13 @@
             'service.s3.li2': 'CGV · 乐天影院 · Megabox 40余家分店',
             'service.s3.li3': '只有在大银幕上才能体验的沉浸感',
 
+            'download.eyebrow': '应用下载',
+            'download.title': '扫码即可下载应用',
+            'download.lead': '用手机扫描二维码，或点击下方按钮前往应用下载页面。',
+            'download.cta': '打开应用下载页面',
+            'download.hint': '支持 iOS · Android',
+            'download.qrAlt': 'K-Cinema 应用下载二维码',
+
             'app.eyebrow': '应用预览',
             'app.title': '掌中完成的购票体验',
             'app.lead': '在首页查看多语言上映作品，选座、支付——全程使用您的母语。',
@@ -1137,6 +1281,13 @@
             'service.s3.li2': 'Hơn 40 địa điểm CGV · Lotte Cinema · Megabox',
             'service.s3.li3': 'Trải nghiệm màn hình lớn chỉ có tại rạp',
 
+            'download.eyebrow': 'Tải ứng dụng',
+            'download.title': 'Quét QR để tải ứng dụng ngay',
+            'download.lead': 'Quét mã QR bằng điện thoại hoặc nhấn nút bên dưới để mở trang tải ứng dụng.',
+            'download.cta': 'Mở trang tải ứng dụng',
+            'download.hint': 'Hỗ trợ iOS · Android',
+            'download.qrAlt': 'Mã QR tải ứng dụng K-Cinema',
+
             'app.eyebrow': 'Xem trước ứng dụng',
             'app.title': 'Trải nghiệm đặt vé trong lòng bàn tay',
             'app.lead': 'Xem phim đa ngôn ngữ trên màn hình chính, chọn ghế, thanh toán — mọi bước bằng ngôn ngữ của bạn.',
@@ -1220,6 +1371,13 @@
             'service.s3.li1': 'คำบรรยายหลายภาษาตั้งแต่วันเปิดฉาย',
             'service.s3.li2': 'กว่า 40 สาขา CGV · Lotte Cinema · Megabox',
             'service.s3.li3': 'ประสบการณ์จอใหญ่ที่มีเฉพาะในโรงภาพยนตร์',
+
+            'download.eyebrow': 'ดาวน์โหลดแอป',
+            'download.title': 'สแกน QR เพื่อดาวน์โหลดแอปทันที',
+            'download.lead': 'สแกนคิวอาร์โค้ดด้วยสมาร์ทโฟน หรือกดปุ่มด้านล่างเพื่อไปยังหน้าดาวน์โหลดแอป',
+            'download.cta': 'เปิดหน้าดาวน์โหลดแอป',
+            'download.hint': 'รองรับ iOS · Android',
+            'download.qrAlt': 'คิวอาร์โค้ดดาวน์โหลดแอป K-Cinema',
 
             'app.eyebrow': 'ตัวอย่างแอป',
             'app.title': 'ประสบการณ์จองตั๋วในมือคุณ',
@@ -1309,6 +1467,10 @@
         document.querySelectorAll('[data-i18n-html]').forEach(el => {
             const key = el.getAttribute('data-i18n-html');
             if (d[key] !== undefined) el.innerHTML = d[key];
+        });
+        document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+            const key = el.getAttribute('data-i18n-alt');
+            if (d[key] !== undefined) el.setAttribute('alt', d[key]);
         });
         localStorage.setItem(STORAGE_KEY, lang);
     }
