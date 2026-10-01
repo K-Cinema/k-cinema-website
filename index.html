@@ -12,6 +12,7 @@
     <meta property="og:url" content="https://www.k-cine.com">
     <meta property="og:image" content="https://www.k-cine.com/logo.png">
     <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="css/safety-notice.css">
     <style>
         :root {
             --bg: #0B0B0F;
@@ -687,6 +688,63 @@
     </style>
 </head>
 <body>
+
+<aside class="safety-banner" aria-label="사칭 주의" data-notice-label="bannerLabel">
+    <div class="safety-banner-inner">
+        <span class="safety-banner-icon" aria-hidden="true">⚠</span>
+        <p data-notice="banner">[사칭 주의] 당사를 사칭한 'k-cinee.com' 및 카카오톡 상품권 이벤트는 (주)케이시네마와 무관합니다. 공식 사이트는 www.k-cine.com 뿐입니다.</p>
+        <button type="button" class="safety-banner-more" data-notice-open aria-haspopup="dialog" aria-controls="safety-notice" data-notice="more">자세히 보기</button>
+    </div>
+</aside>
+
+<dialog class="safety-notice" id="safety-notice" aria-labelledby="safety-notice-title">
+    <div class="safety-notice-header">
+        <div class="safety-notice-heading">
+            <span class="safety-notice-badge" data-notice="badge">공식 안내</span>
+            <button type="button" class="safety-notice-close" data-notice-close aria-label="공지 닫기" data-notice-label="closeLabel"><span aria-hidden="true">×</span></button>
+        </div>
+        <h2 id="safety-notice-title" tabindex="-1" autofocus data-notice="title">[주의] (주)케이시네마 사칭 피싱 사기 안내</h2>
+        <div class="lang-toggle safety-notice-languages" role="group" aria-label="공지 언어" data-notice-label="languageLabel">
+            <button type="button" data-setlang="ko" lang="ko">한국어</button>
+            <button type="button" data-setlang="en" lang="en">English</button>
+            <button type="button" data-setlang="zh" lang="zh">中文</button>
+            <button type="button" data-setlang="vi" lang="vi">Tiếng Việt</button>
+            <button type="button" data-setlang="th" lang="th">ไทย</button>
+        </div>
+    </div>
+    <div class="safety-notice-body" tabindex="0" role="region" aria-labelledby="safety-notice-title">
+        <p data-notice="intro">최근 카카오톡 등에서 '케이시네마', 'K CINEMA', '네이버 영화 배급사'를 사칭하여 이벤트 참여를 유도하는 사례가 확인되었습니다.</p>
+        <div class="safety-notice-section" data-notice-section="methods">
+            <h3 data-notice="methodsTitle">확인된 사칭 수법</h3>
+            <ol data-notice-list="methods">
+                <li>카카오톡으로 접근해 네이버에서 특정 영화를 검색하고 '하트(좋아요)'를 누른 뒤 캡처를 보내면 상품권(CU·다이소·신세계·배달의민족 등)을 준다고 안내</li>
+                <li>당사 공식 도메인(k-cine.com)과 유사한 k-cinee.com 사이트 가입을 요구하고 아이디를 받아 감</li>
+                <li>이후 대화 내용을 삭제</li>
+            </ol>
+        </div>
+        <div class="safety-notice-section safety-notice-policy">
+            <h3 data-notice="policyTitle">(주)케이시네마는</h3>
+            <ul data-notice-list="policy">
+                <li>카카오톡 개인 메시지로 상품권 이벤트나 부업·미션을 진행하지 않습니다.</li>
+                <li>어떠한 경우에도 가입비, 수수료, 선입금, 티켓 구매 비용 등 금전을 요구하지 않습니다.</li>
+                <li>'네이버 영화 배급사'가 아니며, 위 사이트·계정과 아무런 관련이 없습니다.</li>
+            </ul>
+        </div>
+        <div class="safety-notice-section safety-notice-channels">
+            <h3 data-notice="channelsTitle">공식 채널은 아래뿐입니다</h3>
+            <dl>
+                <div><dt data-notice="website">홈페이지</dt><dd><a href="https://www.k-cine.com">www.k-cine.com</a></dd></div>
+                <div><dt data-notice="phone">전화</dt><dd><a href="tel:+827041706316">070-4170-6316</a></dd></div>
+            </dl>
+        </div>
+        <p class="safety-notice-guidance" data-notice="guidance">유사한 연락을 받으셨다면 링크를 누르거나 개인정보를 입력하지 마시고, 위 공식 연락처로 사실 여부를 확인해 주세요. 이미 가입하거나 송금하셨다면 즉시 경찰청(112, ecrm.police.go.kr) 또는 한국인터넷진흥원(118)에 신고해 주시기 바랍니다.</p>
+        <p data-notice="legal">당사는 사칭 행위에 대해 수사기관 신고 등 법적 조치를 진행하고 있습니다.</p>
+        <p class="safety-notice-signature"><time datetime="2026-10-01" data-notice="date">2026년 10월 1일</time><br><strong data-notice="company">(주)케이시네마</strong></p>
+    </div>
+    <div class="safety-notice-footer">
+        <button type="button" class="safety-notice-confirm" data-notice-close data-notice="confirm">확인했습니다</button>
+    </div>
+</dialog>
 
 <nav class="nav">
     <div class="container nav-inner">
@@ -1482,6 +1540,10 @@
             }
         });
         try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
+        document.querySelectorAll('[data-setlang]').forEach(btn => {
+            btn.setAttribute('aria-pressed', String(btn.getAttribute('data-setlang') === lang));
+        });
+        document.dispatchEvent(new CustomEvent('kc:languagechange', { detail: { lang } }));
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -1492,6 +1554,7 @@
     });
 })();
 </script>
+<script src="js/safety-notice.js"></script>
 
 </body>
 </html>
